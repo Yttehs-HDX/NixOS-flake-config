@@ -60,6 +60,9 @@
   environment.systemPackages = with pkgs; [
     neovim
     bat
+
+    # Driver
+    asusctl
   ];
   environment.variables = {
     EDITOR = "nvim";
@@ -76,6 +79,7 @@
       wayland.enable = true;
     };
     gnome.gnome-keyring.enable = true;
+    asusd.enable = true;
   };
 
   # Configure keymap in X11
