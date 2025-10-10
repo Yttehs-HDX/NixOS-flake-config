@@ -46,6 +46,7 @@ in {
 
       # Unfree
       google-chrome
+      qq
     ];
 
     sessionVariables = {
