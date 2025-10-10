@@ -76,6 +76,7 @@ in {
 
   services = {
     hyprpolkitagent.enable = true;
+    swww.enable = true;
   };
 
   programs = {
