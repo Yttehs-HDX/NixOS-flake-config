@@ -74,7 +74,6 @@ in {
   };
 
   services = {
-    # gnome-keyring.enable = true;
     hyprpolkitagent.enable = true;
   };
 
