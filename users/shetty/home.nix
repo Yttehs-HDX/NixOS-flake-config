@@ -165,7 +165,12 @@ in {
 
     tmux.enable = true;
 
-    git.enable = true;
+    git = {
+      enable = true;
+      aliases = {
+        lazy = "!lazygit";
+      };
+    };
 
     lazygit.enable = true;
 
