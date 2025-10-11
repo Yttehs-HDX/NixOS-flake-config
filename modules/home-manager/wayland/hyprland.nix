@@ -33,7 +33,7 @@ in {
         "$mod, F, fullscreen"
         "$mod, C, killactive"
         "$mod, M, exec, hyprctl dispatch exit"
-        "$mod, L, exec, swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 25x25 --effect-vignette 0.5:0.5 --ring-color b7bdf8 --key-hl-color f5bde6 --line-color 00000000 --inside-color 00000088 --separator-color 00000000"
+        "$mod, L, exec, swaylock --screenshots --clock --text-color=b7bdf8 --text-caps-lock-color=f5bde6 --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 25x25 --effect-vignette 0.5:0.5 --ring-color b7bdf8 --key-hl-color f5bde6 --line-color 00000000 --inside-color 00000088 --separator-color 00000000"
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
