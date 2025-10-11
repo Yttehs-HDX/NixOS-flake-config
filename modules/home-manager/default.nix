@@ -16,6 +16,7 @@
   ./programs/vscode.nix
 
   ./services/hyprpolkitagent.nix
+  ./services/hypridle.nix
   ./services/swww.nix
   ./services/swaync.nix
 
