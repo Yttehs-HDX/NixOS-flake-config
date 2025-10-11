@@ -69,17 +69,62 @@
     PAGER = "bat";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Wayland windowing system
   services = {
+    # Wayland windowing system
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
     };
+
+    # Keyring
     gnome.gnome-keyring.enable = true;
+
+    # ASUS driver
     asusd.enable = true;
+
+    # Sound
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+  };
+
+  # Nvidia
+  nixpkgs.config = {
+    nvidia.acceptLicense = true;
+    cudaSupport = true;
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "cudatoolkit"
+        "nvidia-persistenced"
+        "nvidia-settings"
+        "nvidia-x11"
+      ];
+  };
+  services.xserver.videoDrivers = [ "nvidia" ];
+  boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
+    "nvidia-drm.modeset=1"
+    "nvidia_drm.fbdev=1"
+  ];
+  hardware = {
+    nvidia = {
+      open = false;
+      nvidiaSettings = false;
+      powerManagement.enable = true;
+      modesetting.enable = true;
+    };
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        nvidia-vaapi-driver
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
   };
 
   # Configure keymap in X11
@@ -88,14 +133,6 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Sound
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
