@@ -116,6 +116,7 @@
         offload = {
           enable = true;
           enableOffloadCmd = true;
+          offloadCmdMainProgram = "prime-run";
         };
         nvidiaBusId = "PCI:1:0:0";
         intelBusId = "PCI:0:2:0";
