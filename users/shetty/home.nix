@@ -26,6 +26,7 @@
       playerctl
       brightnessctl
       swaylock-effects
+      libnotify
 
       # Fonts
       nerd-fonts.jetbrains-mono

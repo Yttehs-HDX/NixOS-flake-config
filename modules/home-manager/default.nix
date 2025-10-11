@@ -17,6 +17,7 @@
 
   ./services/hyprpolkitagent.nix
   ./services/swww.nix
+  ./services/swaync.nix
 
   ./wayland/hyprland.nix
 
