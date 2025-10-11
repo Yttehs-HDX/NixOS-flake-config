@@ -82,6 +82,11 @@ in {
   programs = {
     home-manager.enable = true;
 
+    waybar = {
+      enable = true;
+      systemd.enable = true;
+    };
+
     kitty = {
       enable = true;
       enableGitIntegration = true;
