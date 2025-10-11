@@ -25,6 +25,7 @@
       wofi
       playerctl
       brightnessctl
+      swaylock-effects
 
       # Fonts
       nerd-fonts.jetbrains-mono
