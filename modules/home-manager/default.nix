@@ -18,6 +18,8 @@
   ./services/hyprpolkitagent.nix
   ./services/hypridle.nix
   ./services/swww.nix
+  ./services/network-manager.nix
+  ./services/blueman.nix
   ./services/swaync.nix
 
   ./wayland/hyprland.nix

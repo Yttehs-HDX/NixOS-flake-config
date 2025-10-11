@@ -39,6 +39,9 @@
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Internationalisation properties
   time.timeZone = "Asia/Taipei";
   i18n = {
