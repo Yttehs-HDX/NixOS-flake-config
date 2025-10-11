@@ -381,13 +381,13 @@ in {
     style.name = "kvantum";
   };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = cursorSize;
-  };
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   x11.enable = true;
+  #   package = pkgs.bibata-cursors;
+  #   name = "Bibata-Modern-Classic";
+  #   size = cursorSize;
+  # };
 
   xdg.configFile = {
     "gtk-4.0/assets" = {
