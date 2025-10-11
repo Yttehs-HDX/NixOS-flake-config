@@ -165,7 +165,10 @@
   programs = {
     zsh.enable = true;
     hyprland.enable = true;
-    clash-verge.enable = true;
+    clash-verge = {
+      enable = true;
+      autoStart = true;
+    };
   };
 
   # programs.firefox.enable = true;
