@@ -98,13 +98,10 @@
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
-        "cudatoolkit"
-        "nvidia-persistenced"
-        "nvidia-settings"
         "nvidia-x11"
       ];
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ]; # Must have
   boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
     "nvidia-drm.modeset=1"
     "nvidia_drm.fbdev=1"
@@ -115,6 +112,14 @@
       nvidiaSettings = false;
       powerManagement.enable = true;
       modesetting.enable = true;
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0:2:0";
+      };
     };
     graphics = {
       enable = true;
