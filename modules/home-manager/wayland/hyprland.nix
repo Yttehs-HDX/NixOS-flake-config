@@ -2,6 +2,7 @@
 
 let
   terminal = "kitty";
+  launcher = "rofi -show drun";
 in {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -28,7 +29,7 @@ in {
       ];
       bind = [
         "$mod, Q, exec, ${terminal}"
-        "$mod, R, exec, wofi --show drun"
+        "$mod, R, exec, ${launcher}"
         "$mod, V, exec, hyprctl dispatch togglefloating"
         "$mod, F, fullscreen"
         "$mod, C, killactive"

@@ -3,6 +3,7 @@
 
   ./programs/home-manager.nix
   ./programs/waybar.nix
+  ./programs/rofi.nix
   ./programs/kitty.nix
   ./programs/zsh.nix
   ./programs/yazi.nix

@@ -22,7 +22,6 @@
       yazi
 
       # Desktop
-      wofi
       playerctl
       brightnessctl
       swaylock-effects
