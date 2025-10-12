@@ -27,6 +27,9 @@
       swaylock-effects
       libnotify
       wl-clipboard
+      grimblast
+      swappy
+      hyprpicker
       rofimoji
 
       # Fonts
