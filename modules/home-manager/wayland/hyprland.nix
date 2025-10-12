@@ -122,6 +122,12 @@ in {
           "specialWorkspace, 1, 3, md3_decel, slidevert"
         ];
       };
+
+      layerrule = [
+        "blur,rofi"
+        "ignorezero,rofi"
+        "ignorealpha 0.7, rofi"
+      ];
     };
   };
 }
