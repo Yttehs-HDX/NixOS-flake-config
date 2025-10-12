@@ -92,6 +92,9 @@
       pulse.enable = true;
       jack.enable = true;
     };
+
+    # Bluetooth
+    blueman.enable = true;
   };
 
   # Nvidia
