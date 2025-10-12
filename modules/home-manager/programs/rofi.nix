@@ -31,7 +31,8 @@
         bg-col = mkLiteral "rgba(30, 30, 46, 0.75)";
         bg-col-light = mkLiteral "rgba(49, 50, 68, 0.7)";
         fg-col = mkLiteral "#cdd6f4";
-        highlight = mkLiteral "#89b4fa";
+        highlight = mkLiteral "#f38ba8";
+        blue = mkLiteral "#89b4fa";
         accent = mkLiteral "#b4befecc";
         text = mkLiteral "#6c7086";
         width = 800;
@@ -63,7 +64,7 @@
 
       prompt = {
         border-radius = mkLiteral "15px";
-        background-color = mkLiteral "@highlight";
+        background-color = mkLiteral "@blue";
         text-color = mkLiteral "@bg-col";
         padding = mkLiteral "10px";
       };
@@ -125,7 +126,7 @@
 
       "button selected" = {
         background-color = mkLiteral "transparent";
-        text-color = mkLiteral "@highlight";
+        text-color = mkLiteral "@blue";
       };
 
       message = {
