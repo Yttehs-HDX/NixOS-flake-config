@@ -27,6 +27,7 @@
       swaylock-effects
       libnotify
       wl-clipboard
+      rofimoji
 
       # Fonts
       nerd-fonts.jetbrains-mono
