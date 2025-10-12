@@ -8,6 +8,10 @@ in {
     enable = true;
     xwayland.enable = true;
     settings = {
+      exec-once = [
+        "wl-paste --watch cliphist store"
+      ];
+
       "$mod" = "SUPER";
       bindm = [
         "$mod, mouse:272, movewindow"

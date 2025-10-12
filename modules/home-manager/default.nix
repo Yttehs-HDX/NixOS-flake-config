@@ -17,6 +17,7 @@
   ./programs/vscode.nix
 
   ./services/hyprpolkitagent.nix
+  ./services/cliphist.nix
   ./services/hypridle.nix
   ./services/swww.nix
   ./services/network-manager.nix

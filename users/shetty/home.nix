@@ -26,6 +26,7 @@
       brightnessctl
       swaylock-effects
       libnotify
+      wl-clipboard
 
       # Fonts
       nerd-fonts.jetbrains-mono
