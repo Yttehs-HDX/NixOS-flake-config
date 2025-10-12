@@ -94,23 +94,23 @@
         background-color = mkLiteral "@accent";
       };
 
+      element-icon = {
+        border-radius = mkLiteral "10px";
+        size = mkLiteral "32px";
+        padding = mkLiteral "5px";
+        margin = mkLiteral "0px 5px 0px 0px";
+      };
+
       element-text = {
         border-radius = mkLiteral "10px";
         vertical-align = mkLiteral "0.5";
         text-color = mkLiteral "0.5";
         padding = mkLiteral "10px";
-        margin = mkLiteral "0px 0px 0px 5px";
       };
 
       "element-text selected" = {
         background-color = mkLiteral "@accent";
         text-color = mkLiteral "inherit";
-      };
-
-      element-icon = {
-        border-radius = mkLiteral "10px";
-        size = mkLiteral "32px";
-        padding = mkLiteral "5px";
       };
 
       mode-switcher = {
