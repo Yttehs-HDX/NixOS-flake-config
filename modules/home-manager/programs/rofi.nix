@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   programs.rofi = {
@@ -7,6 +7,10 @@
 
     modes = [
       "run" "drun" "window" "filebrowser"
+      {
+        name = "emoji";
+        path = lib.getExe pkgs.rofimoji;
+      }
     ];
     terminal = "kitty";
 
@@ -19,6 +23,7 @@
       display-run = "  Run ";
       display-window = "󰕰  Window";
       display-filebrowser = "󰉋  File";
+      display-emoji = "󰞅  emoji";
       sidebar-mode = true;
     };
 
