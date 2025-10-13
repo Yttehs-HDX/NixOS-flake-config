@@ -74,15 +74,15 @@
           locale = "ja_JP.utf8";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           calendar = {
-            mode = "year";
+            mode = "month";
             mode-mon-col = 3;
             weeks-pos = "right";
             format = {
-              months = "<span color='#ffead3'><b>{}</b></span>";
-              days = "<span color='#ecc6d9'><b>{}</b></span>";
-              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+              months = "<span color='#f5e0dc'><b>{}</b></span>";
+              days = "<span color='#f5c2e7'><b>{}</b></span>";
+              weeks = "<span color='#94e2d5'><b>W{}</b></span>";
+              weekdays = "<span color='#f9e2af'><b>{}</b></span>";
+              today = "<span color='#f38ba8'><b><u>{}</u></b></span>";
             };
           };
           actions = {
@@ -193,6 +193,7 @@
       #clock,
       #monitor,
       #menu {
+        border: 2px solid;
         border-color: @lavender;
         border-radius: 1rem;
         background-color: @surface0;
@@ -230,15 +231,18 @@
       }
 
       #cava {
+        border-color: @pink;
         color: @pink;
         margin: 0rem 0rem 0rem 0.3rem;
       }
 
       #clock {
+        border-color: @blue;
         color: @blue;
       }
 
       #monitor {
+        border-color: @yellow;
         padding: 0.5rem 0.7rem;
         margin: 0rem 0.3rem 0rem 0rem;
       }
@@ -268,6 +272,7 @@
       }
 
       #menu {
+        border-color: @green;
       }
 
       #tray {
