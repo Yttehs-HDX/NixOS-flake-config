@@ -202,6 +202,7 @@
       }
 
       #hyprland {
+        border-color: @sky;
         padding: 0.5rem 0rem 0.5rem 0.5rem;
       }
 
@@ -219,11 +220,13 @@
       }
 
       #workspaces button.active {
-        color: @sky;
+        background: @sky;
+        color: @surface1;
       }
 
       #workspaces button:hover {
-        color: @sapphire;
+        background: @sky;
+        color: @surface1;
       }
 
       #window {
