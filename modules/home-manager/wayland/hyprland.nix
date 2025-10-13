@@ -149,9 +149,13 @@ in {
       };
 
       layerrule = [
+        # Rofi
         "blur,rofi"
         "ignorezero,rofi"
-        "ignorealpha 0.7, rofi"
+
+        # Waybar
+        "blur,waybar"
+        "ignorezero,waybar"
       ];
     };
   };

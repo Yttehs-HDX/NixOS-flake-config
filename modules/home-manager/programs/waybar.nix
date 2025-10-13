@@ -216,6 +216,9 @@
       @define-color surface2 #585b70;
       @define-color surface1 #45475a;
       @define-color surface0 #313244;
+      @define-color surface0-alpha rgba(49, 50, 68, 0.8);
+      @define-color base-alpha rgba(30, 30, 46, 0.6);
+      @define-color border-alpha rgba(180, 190, 254, 0.7);
       @define-color base #1e1e2e;
       @define-color mantle #181825;
       @define-color crust #11111b;
@@ -240,9 +243,9 @@
         border: 2px solid;
         border-color: @lavender;
         border-radius: 1rem;
-        background-color: @surface0;
+        background-color: @surface0-alpha;
         padding: 0.5rem 0.7rem;
-        margin: 0rem 0rem;
+        margin: 0rem;
       }
 
       #hyprland {
