@@ -32,8 +32,7 @@
         ];
         modules-right = [
           "group/monitor"
-          "tray"
-          "battery"
+          "group/menu"
         ];
 
         # Module settings
@@ -99,6 +98,18 @@
             "memory"
             "backlight"
             "pulseaudio"
+          ];
+        };
+        "group/menu" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            children-class = "not-power";
+            transition-left-to-right = false;
+          };
+          modules = [
+            "battery"
+            "tray"
           ];
         };
         cpu = {
@@ -181,8 +192,7 @@
       #cava,
       #clock,
       #monitor,
-      #tray,
-      #battery {
+      #menu {
         border-color: @lavender;
         border-radius: 1rem;
         background-color: @surface0;
@@ -257,8 +267,11 @@
         margin: 0rem;
       }
 
+      #menu {
+      }
+
       #tray {
-        margin: 0rem 0.3rem 0rem 0rem;
+        margin: 0rem 1rem 0rem 0rem;
       }
 
       #battery {
