@@ -114,11 +114,11 @@
         };
         cpu = {
           interval = 10;
-          format = "  {usage}%";
+          format = "  {usage}";
         };
         memory = {
           interval = 30;
-          format = "  {percentage}%";
+          format = "  {percentage}";
           max-length = 10;
         };
         backlight = {
