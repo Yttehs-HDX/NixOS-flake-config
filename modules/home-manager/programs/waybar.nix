@@ -32,10 +32,13 @@
         ];
         modules-right = [
           "group/monitor"
+          "group/connection"
           "group/menu"
         ];
 
         # Module settings
+
+        # Hyprland
         "group/hyprland" = {
           orientation = "horizontal";
           modules = [
@@ -58,6 +61,8 @@
           icon = true;
           icon-size = 15;
         };
+
+        # Cava
         cava = {
           hide_on_silence = true;
           framerate = 60;
@@ -68,6 +73,8 @@
           bar_delimiter = 0;
           on-click = "playerctl play-pause";
         };
+
+        # Clock
         clock = {
           format = "󰥔  {:%H:%M}";
           format-alt = "󰃭  {:%Y-%m-%d %A}";
@@ -91,6 +98,8 @@
           interval = 1;
           timezone = "Asia/Taipei";
         };
+
+        # Monitor
         "group/monitor" = {
           orientation = "horizontal";
           modules = [
@@ -98,18 +107,6 @@
             "memory"
             "backlight"
             "pulseaudio"
-          ];
-        };
-        "group/menu" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            children-class = "not-power";
-            transition-left-to-right = false;
-          };
-          modules = [
-            "battery"
-            "tray"
           ];
         };
         cpu = {
@@ -132,6 +129,41 @@
           format-icons = {
             default = [ "" "" "" ];
           };
+        };
+
+        # Connection
+        "group/connection" = {
+          orientation = "horizontal";
+          modules = [
+            "network"
+            # "bluetooth"
+          ];
+        };
+        network = {
+          interface = "wlo1";
+          format = "{icon}";
+          format-icons = {
+            wifi = [ "󰤯 " "󰤟 " "󰤢 " "󰤥 " "󰤨 " ];
+            ethernet = [ "󰈀 " ];
+            disconnected = [ "󰤭 " ];
+          };
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          tooltip-format-ethernet = "{ifname}";
+          tooltip-format-disconnected = "Disconnected";
+        };
+
+        # Menu
+        "group/menu" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            children-class = "not-power";
+            transition-left-to-right = false;
+          };
+          modules = [
+            "battery"
+            "tray"
+          ];
         };
         tray = {
           icon-size = 15;
@@ -192,6 +224,7 @@
       #cava,
       #clock,
       #monitor,
+      #connection,
       #menu {
         border: 2px solid;
         border-color: @lavender;
@@ -244,10 +277,14 @@
         color: @blue;
       }
 
-      #monitor {
-        border-color: @yellow;
+      #monitor,
+      #connection {
         padding: 0.5rem 0.7rem;
         margin: 0rem 0.3rem 0rem 0rem;
+      }
+
+      #monitor {
+        border-color: @yellow;
       }
 
       #cpu,
@@ -272,6 +309,19 @@
       #pulseaudio {
         color: @maroon;
         margin: 0rem;
+      }
+
+      #connection {
+        border-color: @lavender;
+      }
+
+      #network {
+        margin: 0rem 0.7rem 0rem 0rem;
+      }
+
+      #network {
+        margin: 0rem;
+        color: @lavender;
       }
 
       #menu {
