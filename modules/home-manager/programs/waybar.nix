@@ -136,7 +136,7 @@
           orientation = "horizontal";
           modules = [
             "network"
-            # "bluetooth"
+            "bluetooth"
           ];
         };
         network = {
@@ -150,6 +150,16 @@
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname}";
           tooltip-format-disconnected = "Disconnected";
+        };
+        bluetooth = {
+          format = "";
+          format-disabled = "󰂲";
+          format-connected = "󰂱";
+          tooltip-format = "{controller_alias}";
+          tooltip-format-connected = "{device_enumerate}";
+          tooltip-format-off = "Off";
+          tooltip-format-disabled = "Off";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_battery_percentage}%";
         };
 
         # Menu
@@ -315,13 +325,18 @@
         border-color: @lavender;
       }
 
-      #network {
+      #network,
+      #bluetooth {
         margin: 0rem 0.7rem 0rem 0rem;
       }
 
       #network {
-        margin: 0rem;
         color: @lavender;
+      }
+
+      #bluetooth {
+        margin: 0rem;
+        color: @mauve;
       }
 
       #menu {
