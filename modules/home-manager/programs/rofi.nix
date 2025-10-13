@@ -15,7 +15,7 @@
       show-icons = true;
       drun-display-format = "{icon} {name}";
       hide-scrollbar = false;
-      display-drun = "  Apps ";
+      display-drun = "󰵆  Apps ";
       display-run = "  Run ";
       display-window = "󰕰  Window";
       display-filebrowser = "󰉋  File";
@@ -27,7 +27,7 @@
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
-        border-col = mkLiteral "#ca9ee6ff";
+        border-col = mkLiteral "@blue";
         bg-col = mkLiteral "rgba(30, 30, 46, 0.75)";
         bg-col-light = mkLiteral "rgba(49, 50, 68, 0.7)";
         fg-col = mkLiteral "#cdd6f4";
