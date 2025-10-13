@@ -28,7 +28,7 @@
           "cava"
         ];
         modules-center = [
-          "clock"
+          "group/misc"
         ];
         modules-right = [
           "group/monitor"
@@ -75,6 +75,13 @@
         };
 
         # Clock
+        "group/misc" = {
+          orientation = "horizontal";
+          modules = [
+            "clock"
+            "custom/lyric"
+          ];
+        };
         clock = {
           format = "󰥔  {:%H:%M}";
           format-alt = "󰃭  {:%Y-%m-%d %A}";
@@ -97,6 +104,15 @@
           };
           interval = 1;
           timezone = "Asia/Taipei";
+        };
+        "custom/lyric" = {
+          exec = "playerctl metadata --format='{{ title }}'";
+          format = "󰎆 {}";
+          tooltip-format = "Play/Pause";
+          on-click = "playerctl play-pause";
+          escape = true;
+          interval = 2;
+          max-length = 25;
         };
 
         # Monitor
@@ -236,7 +252,7 @@
 
       #hyprland,
       #cava,
-      #clock,
+      #misc,
       #monitor,
       #connection,
       #menu {
@@ -286,9 +302,22 @@
         margin: 0rem 0rem 0rem 0.3rem;
       }
 
-      #clock {
+      #misc {
         border-color: @blue;
+      }
+
+      #clock,
+      #custom-lyric {
+        margin: 0rem 0rem 0rem 0.7rem;
+      }
+
+      #clock {
         color: @blue;
+        margin: 0rem;
+      }
+
+      #custom-lyric {
+        color: @text;
       }
 
       #monitor,
