@@ -17,10 +17,10 @@
         gtk-layer-shell = true;
         ipc = true;
         fixed-center = true;
-        margin-top = 10;
-        margin-left = 10;
-        margin-right = 10;
-        margin-bottom = -5;
+        margin-top = 5;
+        margin-left = 5;
+        margin-right = 5;
+        margin-bottom = 0;
 
         # Definitions
         modules-left = [
