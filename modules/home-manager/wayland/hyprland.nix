@@ -86,7 +86,16 @@ in {
               "$mod, ${toString key}, workspace, ${toString ws}"
               "$mod SHIFT, ${toString key}, movetoworkspace, ${toString ws}"
             ]
-          ) 8
+          ) 9
+        )
+        ++ (
+          let 
+            key = 0;
+            ws = 10;
+          in [
+            "$mod, ${toString key}, workspace, ${toString ws}"
+            "$mod SHIFT, ${toString key}, movetoworkspace, ${toString ws}"
+          ]
         )
       );
 
