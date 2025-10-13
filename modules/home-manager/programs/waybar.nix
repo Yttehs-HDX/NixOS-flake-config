@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.waybar = {
@@ -20,27 +20,30 @@
         margin-top = 10;
         margin-left = 10;
         margin-right = 10;
-        margin-bottom = 0;
+        margin-bottom = -5;
 
         # Definitions
         modules-left = [
-          "hyprland/workspaces"
-          "hyprland/window"
+          "group/hyprland"
           "cava"
         ];
         modules-center = [
           "clock"
         ];
         modules-right = [
-          "cpu"
-          "memory"
-          "backlight"
-          "pulseaudio"
+          "group/monitor"
           "tray"
           "battery"
         ];
 
         # Module settings
+        "group/hyprland" = {
+          orientation = "horizontal";
+          modules = [
+            "hyprland/workspaces"
+            "hyprland/window"
+          ];
+        };
         "hyprland/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
@@ -54,12 +57,12 @@
         "hyprland/window" = {
           format = "{class}";
           icon = true;
-          icon-size = 16;
+          icon-size = 15;
         };
         cava = {
           hide_on_silence = true;
           framerate = 60;
-          bars = 10;
+          bars = 8;
           format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
           input_delay = 1;
           sleep_timer = 5;
@@ -67,8 +70,8 @@
           on-click = "playerctl play-pause";
         };
         clock = {
-          format = "󰥔 {:%H:%M}";
-          format-alt = "󰃭 {:%Y-%m-%d %A}";
+          format = "󰥔  {:%H:%M}";
+          format-alt = "󰃭  {:%Y-%m-%d %A}";
           locale = "ja_JP.utf8";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           calendar = {
@@ -89,6 +92,15 @@
           interval = 1;
           timezone = "Asia/Taipei";
         };
+        "group/monitor" = {
+          orientation = "horizontal";
+          modules = [
+            "cpu"
+            "memory"
+            "backlight"
+            "pulseaudio"
+          ];
+        };
         cpu = {
           interval = 10;
           format = "  {usage}%";
@@ -99,15 +111,15 @@
           max-length = 10;
         };
         backlight = {
-          format = "{icon} {percent}";
+          format = "{icon}  {percent}";
           format-icons = [ "" "" "" "" "" "" "" "" "" ];
         };
         pulseaudio = {
-          format = "{icon} {volume}";
+          format = "{icon}  {volume}";
           format-bluetooth = "  {volume}";
-          format-muted = " ";
+          format-muted = "";
           format-icons = {
-            default = [ " " " " " " ];
+            default = [ "" "" "" ];
           };
         };
         tray = {
@@ -120,11 +132,147 @@
             warning = 30;
             critical = 15;
           };
-          format = "{icon} {capacity}";
+          format = "{icon}  {capacity}";
           format-icons = [ "󰁺" "󰁻" "󰁼" "󰁾" "󰁿" "󰂀" "󰂁" "󰂁" "󰂂" "󰁹" ];
         };
       }
     ];
+
+    style = ''
+      @define-color rosewater #f5e0dc;
+      @define-color flamingo #f2cdcd;
+      @define-color pink #f5c2e7;
+      @define-color mauve #cba6f7;
+      @define-color red #f38ba8;
+      @define-color maroon #eba0ac;
+      @define-color peach #fab387;
+      @define-color yellow #f9e2af;
+      @define-color green #a6e3a1;
+      @define-color teal #94e2d5;
+      @define-color sky #89dceb;
+      @define-color sapphire #74c7ec;
+      @define-color blue #89b4fa;
+      @define-color lavender #b4befe;
+      @define-color text #cdd6f4;
+      @define-color subtext1 #bac2de;
+      @define-color subtext0 #a6adc8;
+      @define-color overlay2 #9399b2;
+      @define-color overlay1 #7f849c;
+      @define-color overlay0 #6c7086;
+      @define-color surface2 #585b70;
+      @define-color surface1 #45475a;
+      @define-color surface0 #313244;
+      @define-color base #1e1e2e;
+      @define-color mantle #181825;
+      @define-color crust #11111b;
+
+      * {
+        font-family: ${config.userTheme.fontFamily};
+        font-size: 17px;
+        min-height: 0;
+      }
+
+      #waybar {
+        background: transparent;
+        color: @text;
+      }
+
+      #hyprland,
+      #cava,
+      #clock,
+      #monitor,
+      #tray,
+      #battery {
+        border-color: @lavender;
+        border-radius: 1rem;
+        background-color: @surface0;
+        padding: 0.5rem 0.7rem;
+        margin: 0rem 0rem;
+      }
+
+      #hyprland {
+        padding: 0.5rem 0rem 0.5rem 0.5rem;
+      }
+
+      #workspaces,
+      #window {
+        padding: 0rem 0rem;
+      }
+
+      #workspaces button {
+        background: @surface1;
+        color: @lavender;
+        border-radius: 1rem;
+        padding: 0rem 0.3rem;
+        margin: 0rem 0.3rem;
+      }
+
+      #workspaces button.active {
+        color: @sky;
+      }
+
+      #workspaces button:hover {
+        color: @sapphire;
+      }
+
+      #window {
+        margin: 0rem 0.4rem 0rem 0.1rem;
+      }
+
+      #cava {
+        color: @pink;
+        margin: 0rem 0rem 0rem 0.3rem;
+      }
+
+      #clock {
+        color: @blue;
+      }
+
+      #monitor {
+        padding: 0.5rem 0.7rem;
+        margin: 0rem 0.3rem 0rem 0rem;
+      }
+
+      #cpu,
+      #memory,
+      #backlight,
+      #pulseaudio {
+        margin: 0rem 0.7rem 0rem 0rem;
+      }
+
+      #cpu {
+        color: @peach;
+      }
+
+      #memory {
+        color: @teal;
+      }
+
+      #backlight {
+        color: @yellow;
+      }
+
+      #pulseaudio {
+        color: @maroon;
+        margin: 0rem;
+      }
+
+      #tray {
+        margin: 0rem 0.3rem 0rem 0rem;
+      }
+
+      #battery {
+        color: @green;
+      }
+
+      #battery.charging {
+        color: @green;
+      }
+
+      #battery.warning:not(.charging) {
+        color: @red;
+      }
+    '';
   };
 }
 
