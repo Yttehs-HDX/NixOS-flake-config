@@ -24,6 +24,7 @@
       # Desktop
       playerctl
       brightnessctl
+      pulseaudio
       swaylock-effects
       libnotify
       wl-clipboard

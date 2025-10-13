@@ -119,16 +119,17 @@
           max-length = 10;
         };
         backlight = {
-          format = "{icon}  {percent}";
-          format-icons = [ "" "" "" "" "" "" "" "" "" ];
+          format = "{icon} {percent}";
+          format-icons = [ " " " " " " " " " " " " " " " " " " ];
         };
         pulseaudio = {
-          format = "{icon}  {volume}";
+          format = "{icon} {volume}";
           format-bluetooth = "  {volume}";
-          format-muted = "";
+          format-muted = " ";
           format-icons = {
-            default = [ "" "" "" ];
+            default = [ "" " " " " ];
           };
+          on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
         };
 
         # Connection
