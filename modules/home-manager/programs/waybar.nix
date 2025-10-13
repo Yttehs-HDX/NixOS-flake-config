@@ -78,8 +78,8 @@
         clock = {
           format = "󰥔  {:%H:%M}";
           format-alt = "󰃭  {:%Y-%m-%d %A}";
-          locale = "ja_JP.utf8";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          locale = "C";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small><span font='JetbrainsMono Nerd Font'>{calendar}</span></small></tt>";
           calendar = {
             mode = "month";
             mode-mon-col = 3;
