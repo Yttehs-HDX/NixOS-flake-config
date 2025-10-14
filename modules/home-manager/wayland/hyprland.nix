@@ -10,6 +10,7 @@ in {
     settings = {
       exec-once = [
         "wl-paste --watch cliphist store"
+        "clash-verge"
       ];
 
       "$mod" = "SUPER";
