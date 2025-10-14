@@ -45,6 +45,8 @@
       dig
       fastfetch
       tldr
+      htop
+      btop
 
       # Unfree
       google-chrome

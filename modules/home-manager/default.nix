@@ -23,6 +23,7 @@
   ./services/network-manager.nix
   ./services/blueman.nix
   ./services/swaync.nix
+  ./services/kdeconnect.nix
 
   ./wayland/hyprland.nix
 
