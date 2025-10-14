@@ -184,7 +184,6 @@
           orientation = "inherit";
           drawer = {
             transition-duration = 300;
-            children-class = "not-power";
             transition-left-to-right = false;
           };
           modules = [
