@@ -177,6 +177,7 @@
           tooltip-format-off = "Off";
           tooltip-format-disabled = "Off";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_battery_percentage}%";
+          on-click = "blueman-tray";
         };
 
         # Menu
