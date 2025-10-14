@@ -15,6 +15,7 @@
   ./programs/lazygit.nix
   ./programs/gh.nix
   ./programs/vscode.nix
+  ./programs/translate-shell.nix
 
   ./services/hyprpolkitagent.nix
   ./services/cliphist.nix

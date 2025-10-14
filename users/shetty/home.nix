@@ -47,6 +47,7 @@
       tldr
       htop
       btop
+      tgpt
 
       # Unfree
       google-chrome
