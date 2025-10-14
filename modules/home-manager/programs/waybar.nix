@@ -204,6 +204,7 @@
           };
           format = "{icon}  {capacity}";
           format-icons = [ "󰁺" "󰁻" "󰁼" "󰁾" "󰁿" "󰂀" "󰂁" "󰂁" "󰂂" "󰁹" ];
+          on-click = "swaync-client -t";
         };
       }
     ];
