@@ -40,6 +40,7 @@ in {
         "$mod, C, killactive"
         "$mod, V, exec, hyprctl dispatch togglefloating"
         "$mod, SPACE, overview:toggle"
+        "$mod, TAB, hyprexpo:expo, toggle"
 
         # Logout
         "$mod, M, exec, hyprctl dispatch exit"
@@ -171,11 +172,21 @@ in {
           workspaceActiveBorder = "rgba(f2d5cfff)";
           workspaceInactiveBorder = "rgba(6c7086ff)";
         };
+
+        hyprexpo = {
+          columns = 3;
+          gap_size = 4;
+          bg_col = "rgba(1e1e2ecc)";
+          workspace_method = "center current";
+
+          gesture_distance = 300;
+        };
       };
     };
 
-    plugins = [
-      pkgs.hyprlandPlugins.hyprspace
+    plugins = with pkgs; [
+      hyprlandPlugins.hyprspace
+      hyprlandPlugins.hyprexpo
     ];
   };
 }
