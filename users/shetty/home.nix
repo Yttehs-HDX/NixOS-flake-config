@@ -52,6 +52,7 @@
       # Unfree
       google-chrome
       qq
+      osu-lazer-bin
     ];
 
     sessionVariables = {
