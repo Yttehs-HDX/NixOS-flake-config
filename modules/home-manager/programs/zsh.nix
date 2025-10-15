@@ -23,6 +23,7 @@
       plugins = [
         "git"
         "z"
+        "extract"
         "tmux"
         "tldr"
         "history"
