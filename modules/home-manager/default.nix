@@ -17,6 +17,8 @@
   ./programs/vscode.nix
   ./programs/translate-shell.nix
   ./programs/cava.nix
+  ./programs/btop.nix
+  ./programs/htop.nix
 
   ./services/hyprpolkitagent.nix
   ./services/udiskie.nix

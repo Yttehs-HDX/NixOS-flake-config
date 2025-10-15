@@ -45,8 +45,6 @@
       dig
       fastfetch
       tldr
-      htop
-      btop
       tgpt
 
       # Unfree
