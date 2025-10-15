@@ -16,6 +16,7 @@
   ./programs/gh.nix
   ./programs/vscode.nix
   ./programs/translate-shell.nix
+  ./programs/cava.nix
 
   ./services/hyprpolkitagent.nix
   ./services/cliphist.nix
