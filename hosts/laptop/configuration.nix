@@ -97,6 +97,9 @@
 
     # Bluetooth
     blueman.enable = true;
+
+    # UDisks2
+    udisks2.enable = true;
   };
 
   # Nvidia

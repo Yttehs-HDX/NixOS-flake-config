@@ -19,6 +19,7 @@
   ./programs/cava.nix
 
   ./services/hyprpolkitagent.nix
+  ./services/udiskie.nix
   ./services/cliphist.nix
   ./services/hypridle.nix
   ./services/swww.nix
