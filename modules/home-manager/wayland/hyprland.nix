@@ -181,12 +181,18 @@ in {
 
           gesture_distance = 300;
         };
+
+        dynamic-cursors = {
+          enabled = true;
+          mode = "tilt";
+        };
       };
     };
 
     plugins = with pkgs; [
       hyprlandPlugins.hyprspace
       hyprlandPlugins.hyprexpo
+      hyprlandPlugins.hypr-dynamic-cursors
     ];
   };
 }
