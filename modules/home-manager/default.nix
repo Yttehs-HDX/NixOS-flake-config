@@ -9,6 +9,7 @@
   ./programs/yazi.nix
   ./programs/eza.nix
   ./programs/fzf.nix
+  ./programs/direnv.nix
   ./programs/command-not-found.nix
   ./programs/tmux.nix
   ./programs/git.nix
