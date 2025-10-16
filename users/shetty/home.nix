@@ -20,6 +20,7 @@
       neovim
       bat
       yazi
+      nixfmt-classic
 
       # Desktop
       playerctl
