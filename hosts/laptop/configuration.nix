@@ -66,6 +66,9 @@
     neovim
     bat
 
+    # Boot manager
+    refind
+
     # Driver
     asusctl
 
