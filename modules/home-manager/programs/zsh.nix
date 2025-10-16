@@ -30,6 +30,7 @@
         "sudo"
         "command-not-found"
         "vscode"
+        "rust"
       ];
     };
 
