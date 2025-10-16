@@ -68,6 +68,11 @@
 
     # Driver
     asusctl
+
+    # Sddm theme
+    (catppuccin-sddm.override {
+      flavor = "mocha";
+    })
   ];
   environment.variables = {
     EDITOR = "nvim";
@@ -79,6 +84,13 @@
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      theme = "catppuccin-mocha";
+      package = pkgs.kdePackages.sddm;
+      extraPackages = with pkgs; [
+        kdePackages.qtsvg
+        kdePackages.qtmultimedia
+        kdePackages.qtvirtualkeyboard
+      ];
     };
 
     # Keyring
