@@ -1,16 +1,14 @@
 { config, lib, pkgs, ... }:
 
-let
-  videoDrivers = [ "nvidia" ];
+let videoDrivers = [ "nvidia" ];
 in {
   hardware.bluetooth.enable = true;
 
   nixpkgs.config = {
     nvidia.acceptLicense = true;
     cudaSupport = true;
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "nvidia-x11"
-    ];
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [ "nvidia-x11" ];
   };
 
   services.xserver.videoDrivers = videoDrivers;

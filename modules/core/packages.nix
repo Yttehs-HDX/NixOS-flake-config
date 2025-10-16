@@ -12,9 +12,7 @@
     asusctl
 
     # Sddm theme
-    (catppuccin-sddm.override {
-      flavor = "mocha";
-    })
+    (catppuccin-sddm.override { flavor = "mocha"; })
   ];
 
   environment.variables = {

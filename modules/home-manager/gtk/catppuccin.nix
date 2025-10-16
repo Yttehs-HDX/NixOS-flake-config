@@ -11,9 +11,7 @@ in {
   gtk = {
     enable = true;
     gtk2.force = true;
-    gtk3.extraConfig = {
-      "gtk-application-prefer-dark-theme" = "1";
-    };
+    gtk3.extraConfig = { "gtk-application-prefer-dark-theme" = "1"; };
 
     theme = {
       name = "${catppuccin}-compact";

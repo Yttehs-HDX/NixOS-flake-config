@@ -5,9 +5,7 @@
     enable = true;
     package = pkgs.rofi-wayland;
 
-    modes = [
-      "run" "drun" "window" "filebrowser"
-    ];
+    modes = [ "run" "drun" "window" "filebrowser" ];
     terminal = "kitty";
 
     extraConfig = {
@@ -22,9 +20,9 @@
       sidebar-mode = true;
     };
 
-    font = "${config.userTheme.fontFamily} ${toString config.userTheme.fontSize}";
-    theme = let
-      inherit (config.lib.formats.rasi) mkLiteral;
+    font =
+      "${config.userTheme.fontFamily} ${toString config.userTheme.fontSize}";
+    theme = let inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
         border-col = mkLiteral "@blue";
@@ -51,9 +49,7 @@
         background-color = mkLiteral "@bg-col";
       };
 
-      mainbox = {
-        background-color = mkLiteral "transparent";
-      };
+      mainbox = { background-color = mkLiteral "transparent"; };
 
       inputbar = {
         children = mkLiteral "[prompt,entry]";
@@ -114,9 +110,7 @@
         text-color = mkLiteral "inherit";
       };
 
-      mode-switcher = {
-        spacing = 0;
-      };
+      mode-switcher = { spacing = 0; };
 
       button = {
         background-color = mkLiteral "@bg-col-light";

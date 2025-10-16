@@ -36,9 +36,10 @@
 
     zplug = {
       enable = true;
-      plugins = [
-        { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
-      ];
+      plugins = [{
+        name = "romkatv/powerlevel10k";
+        tags = [ "as:theme" "depth:1" ];
+      }];
     };
 
     initContent = ''

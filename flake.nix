@@ -3,9 +3,7 @@
 
   inputs = {
     # Nix packages
-    nixpkgs = {
-      url = "github:nixos/nixpkgs?ref=nixos-25.05";
-    };
+    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-25.05"; };
 
     # Home Manager (for managing users)
     home-manager = {
@@ -16,32 +14,31 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:
-  let
-    system = "x86_64-linux";
-  in {
-    nixosConfigurations = {
-      laptop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/laptop/configuration.nix
-          ./hosts/laptop/hardware-configuration.nix
+    let system = "x86_64-linux";
+    in {
+      nixosConfigurations = {
+        laptop = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/laptop/configuration.nix
+            ./hosts/laptop/hardware-configuration.nix
 
-          # Mark Home Manager as a submodule
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              # useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "hm-backup";
-              sharedModules = import ./modules/home-manager;
+            # Mark Home Manager as a submodule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                # useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-backup";
+                sharedModules = import ./modules/home-manager;
 
-              # Users begin
-              users.shetty = import ./users/shetty/home.nix;
-            };
-          }
-        ];
+                # Users begin
+                users.shetty = import ./users/shetty/home.nix;
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }
 

@@ -3,9 +3,7 @@
 {
   programs.git = {
     enable = true;
-    aliases = {
-      lazy = "!lazygit";
-    };
+    aliases = { lazy = "!lazygit"; };
   };
 }
 

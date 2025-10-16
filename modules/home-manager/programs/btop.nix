@@ -1,9 +1,7 @@
 { ... }:
 
 {
-  programs.btop = {
-    enable = true;
-  };
+  programs.btop = { enable = true; };
 
   xdg.configFile."btop/themes/catppuccin-mocha.theme".text = ''
     # Main background, empty for terminal default, need to be empty if you want transparent background

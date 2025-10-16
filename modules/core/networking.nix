@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let
-  hostName = "Shetty-Laptop";
+let hostName = "Shetty-Laptop";
 in {
   networking = {
     inherit hostName;

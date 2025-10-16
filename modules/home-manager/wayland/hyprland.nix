@@ -8,19 +8,11 @@ in {
     enable = true;
     xwayland.enable = true;
     settings = {
-      xwayland = {
-        force_zero_scaling = true;
-      };
-      exec-once = [
-        "wl-paste --watch cliphist store"
-        "clash-verge"
-      ];
+      xwayland = { force_zero_scaling = true; };
+      exec-once = [ "wl-paste --watch cliphist store" "clash-verge" ];
 
       "$mod" = "SUPER";
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
       bindl = [
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPause, exec, playerctl play-pause"
@@ -82,28 +74,20 @@ in {
 
         ", xf86KbdBrightnessUp, exec, brightnessctl -d *::kbd_backlight set 33%+"
         ", xf86KbdBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
-      ] ++ (
-        builtins.concatLists (
-          builtins.genList (i:
-            let
-              key = i + 1;
-              ws = key;
-            in [
-              "$mod, ${toString key}, workspace, ${toString ws}"
-              "$mod SHIFT, ${toString key}, movetoworkspace, ${toString ws}"
-            ]
-          ) 9
-        )
-        ++ (
-          let 
-            key = 0;
-            ws = 10;
-          in [
-            "$mod, ${toString key}, workspace, ${toString ws}"
-            "$mod SHIFT, ${toString key}, movetoworkspace, ${toString ws}"
-          ]
-        )
-      );
+      ] ++ (builtins.concatLists (builtins.genList (i:
+        let
+          key = i + 1;
+          ws = key;
+        in [
+          "$mod, ${toString key}, workspace, ${toString ws}"
+          "$mod SHIFT, ${toString key}, movetoworkspace, ${toString ws}"
+        ]) 9) ++ (let
+          key = 0;
+          ws = 10;
+        in [
+          "$mod, ${toString key}, workspace, ${toString ws}"
+          "$mod SHIFT, ${toString key}, movetoworkspace, ${toString ws}"
+        ]));
 
       general = {
         gaps_in = 2;

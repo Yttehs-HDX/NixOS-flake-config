@@ -2,12 +2,13 @@
 
 let
   variant = config.userTheme.catppuccinVariant;
-  capitalizedVariant =
-    if variant == "" then variant else
-      let
-        first = lib.toUpper (lib.substring 0 1 variant);
-        rest = lib.substring 1 (lib.stringLength variant - 1) variant;
-      in "${first}${rest}";
+  capitalizedVariant = if variant == "" then
+    variant
+  else
+    let
+      first = lib.toUpper (lib.substring 0 1 variant);
+      rest = lib.substring 1 (lib.stringLength variant - 1) variant;
+    in "${first}${rest}";
   kittyThemeName = "Catppuccin-${capitalizedVariant}";
 in {
   programs.kitty = {
