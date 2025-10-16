@@ -19,6 +19,7 @@
   ./programs/cava.nix
   ./programs/btop.nix
   ./programs/htop.nix
+  ./programs/onlyoffice.nix
 
   ./services/hyprpolkitagent.nix
   ./services/udiskie.nix

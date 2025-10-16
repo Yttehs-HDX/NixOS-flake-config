@@ -8,6 +8,9 @@ in {
     enable = true;
     xwayland.enable = true;
     settings = {
+      xwayland = {
+        force_zero_scaling = true;
+      };
       exec-once = [
         "wl-paste --watch cliphist store"
         "clash-verge"
