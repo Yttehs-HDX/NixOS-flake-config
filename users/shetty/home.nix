@@ -42,6 +42,7 @@
       noto-fonts-emoji-blob-bin
 
       # Tools
+      unzip
       duf
       dig
       fastfetch
