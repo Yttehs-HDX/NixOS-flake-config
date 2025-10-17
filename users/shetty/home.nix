@@ -48,6 +48,9 @@
       tldr
       tgpt
 
+      # Games
+      hmcl
+
       # Unfree
       google-chrome
       qq
