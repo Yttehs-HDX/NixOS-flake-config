@@ -9,7 +9,7 @@
     terminal = "kitty";
 
     extraConfig = {
-      matching = "fuzzy";
+      # matching = "fuzzy";
       show-icons = true;
       drun-display-format = "{icon} {name}";
       hide-scrollbar = false;
