@@ -1,5 +1,7 @@
 # NixOS Flake Config
 
+[![Nix Flake CI](https://github.com/Yttehs-HDX/NixOS-flake-config/actions/workflows/ci.yml/badge.svg)](https://github.com/Yttehs-HDX/NixOS-flake-config/actions/workflows/ci.yml)
+
 A reproducible NixOS setup for a personal laptop, bundled with Home Manager modules and host-specific configuration.
 
 ## Repository Layout
@@ -27,3 +29,7 @@ A reproducible NixOS setup for a personal laptop, bundled with Home Manager modu
 ## Special Thanks
 
 - [Sly-Harvey/NixOS](https://github.com/Sly-Harvey/NixOS)
+
+## License
+
+[MIT](LICENSE)
