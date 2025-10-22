@@ -11,9 +11,12 @@
       # Sync with `nixpkgs`
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Hexecute
+    hexecute = { url = "github:ThatOtherAndrew/Hexecute"; };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, hexecute, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -34,6 +37,9 @@
 
                 # Users begin
                 users.shetty = import ./users/shetty/home.nix;
+
+                # Pass extra arguments to home-manager modules
+                extraSpecialArgs = { inherit hexecute; };
               };
             }
           ];

@@ -36,6 +36,7 @@ in {
         "$mod, V, exec, hyprctl dispatch togglefloating"
         "$mod, SPACE, overview:toggle"
         "$mod, TAB, hyprexpo:expo, toggle"
+        "$mod, escape, exec, hexecute"
 
         # Logout
         "$mod, M, exec, hyprctl dispatch exit"

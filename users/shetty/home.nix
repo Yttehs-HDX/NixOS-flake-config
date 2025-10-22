@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hexecute, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -48,6 +48,7 @@
       fastfetch
       tldr
       tgpt
+      hexecute.packages.${pkgs.system}.default
 
       # Games
       hmcl
