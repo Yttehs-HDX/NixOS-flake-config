@@ -56,6 +56,7 @@
       google-chrome
       qq
       osu-lazer-bin
+      jetbrains-toolbox
     ];
 
     sessionVariables = {
