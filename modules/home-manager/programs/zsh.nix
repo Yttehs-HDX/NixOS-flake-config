@@ -11,6 +11,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
+      tree = "ls --tree";
       c = "clear";
       v = "nvim";
       whats = "gh copilot explain";
