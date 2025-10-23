@@ -33,6 +33,7 @@
       swappy
       hyprpicker
       rofimoji
+      vlc
 
       # Fonts
       nerd-fonts.jetbrains-mono
