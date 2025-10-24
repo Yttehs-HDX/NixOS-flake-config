@@ -20,7 +20,6 @@
       neovim
       bat
       yazi
-      nixfmt-classic
 
       # Desktop
       playerctl
@@ -49,9 +48,11 @@
       fastfetch
       tldr
       tgpt
+      nixfmt-classic
       hexecute.packages.${pkgs.system}.default
 
       # Games
+      asciiquarium
       hmcl
 
       # Unfree
