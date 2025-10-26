@@ -49,6 +49,8 @@
       tldr
       tgpt
       nixfmt-classic
+      android-tools
+      scrcpy
       hexecute.packages.${pkgs.system}.default
 
       # Games
