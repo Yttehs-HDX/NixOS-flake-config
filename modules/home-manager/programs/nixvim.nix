@@ -81,6 +81,22 @@
       cmp-conventionalcommits.enable = true;
       cmp-git.enable = true;
       cmp-zsh.enable = true;
+      copilot-lua = {
+        enable = true;
+        settings = {
+          filetypes = {
+            "." = false;
+            cvs = false;
+            gitcommit = true;
+            gitrebase = true;
+            help = false;
+            hgcommit = false;
+            markdown = false;
+            svn = false;
+            yaml = true;
+          };
+        };
+      };
       copilot-cmp.enable = true;
       copilot-chat.enable = true;
       render-markdown.enable = true;
