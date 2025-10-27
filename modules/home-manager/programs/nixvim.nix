@@ -47,10 +47,8 @@
           indent.enable = true;
         };
       };
-      noice = {
-        enable = true;
-        settings = { };
-      };
+      noice.enable = true;
+      cmp.enable = true;
     };
   };
 }
