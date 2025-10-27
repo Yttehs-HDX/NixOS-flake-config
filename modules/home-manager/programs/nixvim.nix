@@ -30,6 +30,7 @@
 
     plugins = {
       lualine.enable = true;
+      bufferline.enable = true;
     };
   };
 }
