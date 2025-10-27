@@ -61,6 +61,8 @@
       cmp.enable = true;
       copilot-chat.enable = true;
       copilot-cmp.enable = true;
+      render-markdown.enable = true;
+      markdown-preview.enable = true;
     };
   };
 }
