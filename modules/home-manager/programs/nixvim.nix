@@ -63,6 +63,29 @@
       copilot-cmp.enable = true;
       render-markdown.enable = true;
       markdown-preview.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          pyright.enable = true;
+          rust_analyzer = {
+            enable = true;
+            installRustc = true;
+            installCargo = true;
+          };
+          ts_ls.enable = true;
+          lua_ls.enable = true;
+          gopls.enable = true;
+          clangd.enable = true;
+          html.enable = true;
+          cssls.enable = true;
+          jsonls.enable = true;
+          yamlls.enable = true;
+          bashls.enable = true;
+          dockerls.enable = true;
+          sqls.enable = true;
+          texlab.enable = true;
+        };
+      };
     };
   };
 }
