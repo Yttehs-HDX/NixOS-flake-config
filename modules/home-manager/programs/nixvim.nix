@@ -86,6 +86,12 @@
           texlab.enable = true;
         };
       };
+      notify = {
+        enable = true;
+        settings = {
+          timeout = 500;
+        };
+      };
     };
   };
 }
