@@ -85,6 +85,26 @@
           sqls.enable = true;
           texlab.enable = true;
         };
+        keymaps = {
+          lspBuf = {
+            "gd" = "definition";
+            "gD" = "declaration";
+            "gi" = "implementation";
+            "go" = "type_definition";
+            "gr" = "references";
+            "K" = "hover";
+            "<C-k>" = "signature_help";
+            "<leader>rn" = "rename";
+            "<leader>ca" = "code_action";
+            "<leader>f" = "format";
+          };
+          diagnostic = {
+            "[d" = "goto_prev";
+            "]d" = "goto_next";
+            "<leader>e" = "open_float";
+            "<leader>q" = "setloclist";
+          };
+        };
       };
       notify = {
         enable = true;
