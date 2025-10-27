@@ -48,6 +48,10 @@
         };
       };
       noice.enable = true;
+      nvim-tree = {
+        enable = true;
+        openOnSetup = true;
+      };
       cmp.enable = true;
       copilot-chat.enable = true;
       copilot-cmp.enable = true;
