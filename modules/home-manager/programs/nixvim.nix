@@ -49,6 +49,8 @@
       };
       noice.enable = true;
       cmp.enable = true;
+      copilot-chat.enable = true;
+      copilot-cmp.enable = true;
     };
   };
 }
