@@ -151,6 +151,7 @@
         };
       };
       trouble.enable = true;
+      nvim-lightbulb.enable = true;
     };
   };
 }
