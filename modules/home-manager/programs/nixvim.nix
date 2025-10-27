@@ -1,8 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.nixvim = {
     enable = true;
+    extraPackages = with pkgs; [
+      gcc
+      clang
+      gnumake
+      pkg-config
+    ];
 
     colorschemes.catppuccin = {
       enable = true;
@@ -32,7 +38,15 @@
       lualine.enable = true;
       bufferline.enable = true;
       web-devicons.enable = true;
-      treesitter.enable = true;
+      treesitter = {
+        enable = true;
+        settings = {
+          auto_install = true;
+          highlight.enable = true;
+          incremental_selection.enable = true;
+          indent.enable = true;
+        };
+      };
       noice = {
         enable = true;
         settings = { };
