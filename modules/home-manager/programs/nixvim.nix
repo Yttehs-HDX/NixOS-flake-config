@@ -3,12 +3,7 @@
 {
   programs.nixvim = {
     enable = true;
-    extraPackages = with pkgs; [
-      gcc
-      clang
-      gnumake
-      pkg-config
-    ];
+    extraPackages = with pkgs; [ gcc clang gnumake pkg-config ];
 
     opts = {
       number = true;
@@ -146,9 +141,7 @@
       };
       notify = {
         enable = true;
-        settings = {
-          timeout = 500;
-        };
+        settings = { timeout = 500; };
       };
       trouble.enable = true;
       nvim-lightbulb.enable = true;
