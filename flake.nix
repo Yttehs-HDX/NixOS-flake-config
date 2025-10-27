@@ -14,9 +14,12 @@
 
     # Hexecute
     hexecute = { url = "github:ThatOtherAndrew/Hexecute"; };
+
+    # NixVim
+    nixvim = { url = "github:nix-community/nixvim/nixos-25.05"; };
   };
 
-  outputs = { self, nixpkgs, home-manager, hexecute, ... }:
+  outputs = { self, nixpkgs, home-manager, hexecute, nixvim, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -39,7 +42,7 @@
                 users.shetty = import ./users/shetty/home.nix;
 
                 # Pass extra arguments to home-manager modules
-                extraSpecialArgs = { inherit hexecute; };
+                extraSpecialArgs = { inherit hexecute nixvim; };
               };
             }
           ];

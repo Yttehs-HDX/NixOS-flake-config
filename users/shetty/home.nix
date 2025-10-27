@@ -1,6 +1,8 @@
-{ pkgs, hexecute, ... }:
+{ pkgs, hexecute, nixvim, ... }:
 
 {
+  imports = [ nixvim.homeModules.nixvim ];
+
   nixpkgs.config.allowUnfree = true;
 
   userTheme = {
@@ -17,7 +19,6 @@
 
     packages = with pkgs; [
       # Basic
-      neovim
       bat
       yazi
 

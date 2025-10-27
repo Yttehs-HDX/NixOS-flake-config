@@ -22,6 +22,7 @@
   ./programs/htop.nix
   ./programs/onlyoffice.nix
   ./programs/obs-studio.nix
+  ./programs/nixvim.nix
 
   ./services/hyprpolkitagent.nix
   ./services/udiskie.nix
