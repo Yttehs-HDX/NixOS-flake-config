@@ -10,6 +10,12 @@
       pkg-config
     ];
 
+    opts = {
+      number = true;
+      relativenumber = true;
+      shiftwidth = 2;
+    };
+
     colorschemes.catppuccin = {
       enable = true;
       settings = {
