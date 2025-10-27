@@ -31,6 +31,12 @@
     plugins = {
       lualine.enable = true;
       bufferline.enable = true;
+      web-devicons.enable = true;
+      treesitter.enable = true;
+      noice = {
+        enable = true;
+        settings = { };
+      };
     };
   };
 }
