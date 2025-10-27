@@ -58,9 +58,31 @@
         enable = true;
         openOnSetup = true;
       };
-      cmp.enable = true;
-      copilot-chat.enable = true;
+      cmp = {
+        enable = true;
+        settings = {
+          sources = [
+            { name = "buffer"; }
+            { name = "path"; }
+            { name = "conventionalcommits"; }
+            { name = "git"; }
+            { name = "zsh"; }
+            { name = "copilot"; }
+          ];
+          mapping = {
+            "<Tab>" = "cmp.mapping.select_next_item()";
+            "<S-Tab>" = "cmp.mapping.select_prev_item()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+          };
+        };
+      };
+      cmp-buffer.enable = true;
+      cmp-path.enable = true;
+      cmp-conventionalcommits.enable = true;
+      cmp-git.enable = true;
+      cmp-zsh.enable = true;
       copilot-cmp.enable = true;
+      copilot-chat.enable = true;
       render-markdown.enable = true;
       markdown-preview.enable = true;
       lsp = {
