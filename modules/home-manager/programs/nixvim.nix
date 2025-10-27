@@ -92,6 +92,7 @@
           timeout = 500;
         };
       };
+      trouble.enable = true;
     };
   };
 }
