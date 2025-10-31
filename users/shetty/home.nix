@@ -46,6 +46,8 @@
       unzip
       duf
       dig
+      file
+      jq
       fastfetch
       tldr
       tgpt
