@@ -62,7 +62,9 @@
             { name = "conventionalcommits"; }
             { name = "git"; }
             { name = "zsh"; }
+            { name = "calc"; }
             { name = "copilot"; }
+            { name = "treesitter"; }
           ];
           mapping = {
             "<Tab>" = "cmp.mapping.select_next_item()";
@@ -76,6 +78,7 @@
       cmp-conventionalcommits.enable = true;
       cmp-git.enable = true;
       cmp-zsh.enable = true;
+      cmp-calc.enable = true;
       copilot-lua = {
         enable = true;
         settings = {
