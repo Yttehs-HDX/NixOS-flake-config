@@ -8,5 +8,6 @@
   ./hardware.nix
   ./users.nix
   ./programs.nix
+  ./virtualisation.nix
 ]
 
