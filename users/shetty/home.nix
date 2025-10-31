@@ -61,6 +61,7 @@
       # Unfree
       google-chrome
       qq
+      wechat
       osu-lazer-bin
       jetbrains-toolbox
     ];
