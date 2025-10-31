@@ -63,6 +63,7 @@
             { name = "git"; }
             { name = "zsh"; }
             { name = "calc"; }
+            { name = "emoji"; }
             { name = "copilot"; }
             { name = "treesitter"; }
           ];
@@ -79,6 +80,7 @@
       cmp-git.enable = true;
       cmp-zsh.enable = true;
       cmp-calc.enable = true;
+      cmp-emoji.enable = true;
       copilot-lua = {
         enable = true;
         settings = {
