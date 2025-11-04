@@ -43,6 +43,7 @@
       noto-fonts-emoji-blob-bin
 
       # Tools
+      zip
       unzip
       duf
       dig
