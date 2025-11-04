@@ -23,6 +23,7 @@
       enable = true;
       plugins = [
         "git"
+        "gitignore"
         "z"
         "extract"
         "tmux"
