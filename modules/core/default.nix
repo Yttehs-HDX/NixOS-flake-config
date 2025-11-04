@@ -3,6 +3,7 @@
   ./boot.nix
   ./networking.nix
   ./locale.nix
+  ./zram.nix
   ./packages.nix
   ./services.nix
   ./hardware.nix
