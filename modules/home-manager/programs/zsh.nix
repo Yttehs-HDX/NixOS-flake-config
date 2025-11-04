@@ -33,6 +33,7 @@
         "command-not-found"
         "vscode"
         "rust"
+        "uv"
         "gradle"
       ];
     };
