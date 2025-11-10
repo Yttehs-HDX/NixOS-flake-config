@@ -57,6 +57,7 @@
       scrcpy
       hexecute.packages.${pkgs.system}.default
       krita
+      feishu
 
       # Games
       asciiquarium
