@@ -56,6 +56,7 @@
       android-tools
       scrcpy
       hexecute.packages.${pkgs.system}.default
+      krita
 
       # Games
       asciiquarium
