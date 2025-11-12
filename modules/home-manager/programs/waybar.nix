@@ -89,11 +89,11 @@
       };
       "custom/lyric" = {
         exec = "playerctl metadata --format='{{ title }}'";
-        format = "󰎆 {}";
+        format = "󰎆  {}";
         tooltip-format = "Play/Pause";
         on-click = "playerctl play-pause";
         escape = true;
-        interval = 2;
+        interval = 1;
         max-length = 25;
       };
 
@@ -210,7 +210,7 @@
       @define-color crust #11111b;
 
       * {
-        font-family: ${config.userTheme.fontFamily};
+        font-family: ${config.userTheme.fontFamily}, "Noto Sans CJK TC";
         font-size: 17px;
         min-height: 0;
       }
