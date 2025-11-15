@@ -1,4 +1,4 @@
-{ pkgs, hexecute, nixvim, ... }:
+{ pkgs, nur, hexecute, nixvim, ... }:
 
 {
   imports = [ nixvim.homeModules.nixvim ];
@@ -58,6 +58,7 @@
       hexecute.packages.${pkgs.system}.default
       krita
       feishu
+      nur.zerozawa.mikusays
 
       # Games
       asciiquarium

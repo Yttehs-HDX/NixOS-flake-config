@@ -33,7 +33,6 @@
           inherit system;
           modules = [
             nur.modules.nixos.default
-            nur.legacyPackages."${system}".repos.iopq.modules.xraya
 
             ./hosts/laptop/configuration.nix
             ./hosts/laptop/hardware-configuration.nix
@@ -51,7 +50,10 @@
                 users.shetty = import ./users/shetty/home.nix;
 
                 # Pass extra arguments to home-manager modules
-                extraSpecialArgs = { inherit hexecute nixvim; };
+                extraSpecialArgs = {
+                  nur = nur.legacyPackages.${system}.repos;
+                  inherit hexecute nixvim;
+                };
               };
             }
           ];
