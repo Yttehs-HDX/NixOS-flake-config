@@ -12,6 +12,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nix user repository (NUR)
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hexecute
     hexecute = { url = "github:ThatOtherAndrew/Hexecute"; };
 
@@ -19,13 +25,16 @@
     nixvim = { url = "github:nix-community/nixvim/nixos-25.05"; };
   };
 
-  outputs = { self, nixpkgs, home-manager, hexecute, nixvim, ... }:
+  outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
+            nur.modules.nixos.default
+            nur.legacyPackages."${system}".repos.iopq.modules.xraya
+
             ./hosts/laptop/configuration.nix
             ./hosts/laptop/hardware-configuration.nix
 
