@@ -59,6 +59,8 @@
       krita
       feishu
       nur.zerozawa.mikusays
+      figlet
+      lolcat
 
       # Games
       asciiquarium
