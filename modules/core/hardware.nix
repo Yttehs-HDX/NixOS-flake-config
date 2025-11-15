@@ -8,7 +8,7 @@ in {
     nvidia.acceptLicense = true;
     cudaSupport = true;
     allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [ "nvidia-x11" ];
+      builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings" ];
   };
 
   services.xserver.videoDrivers = videoDrivers;
