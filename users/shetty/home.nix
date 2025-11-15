@@ -61,6 +61,7 @@
       nur.zerozawa.mikusays
       figlet
       lolcat
+      tesseract
 
       # Games
       asciiquarium
