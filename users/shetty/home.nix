@@ -66,6 +66,9 @@
       # Games
       asciiquarium
       hmcl
+      cmatrix
+      cbonsai
+      pipes-rs
 
       # Unfree
       google-chrome
