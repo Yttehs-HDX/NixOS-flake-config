@@ -62,6 +62,7 @@
       figlet
       lolcat
       tesseract
+      poppler_utils
 
       # Games
       asciiquarium
