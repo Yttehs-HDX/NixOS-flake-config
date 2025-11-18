@@ -24,7 +24,7 @@
       # Definitions
       modules-left = [ "group/hyprland" "cava" ];
       modules-center = [ "group/misc" ];
-      modules-right = [ "group/monitor" "group/connection" "group/menu" ];
+      modules-right = [ "group/monitor" "group/connection" "group/menu" "group/custom" ];
 
       # Module settings
 
@@ -160,7 +160,7 @@
           transition-duration = 300;
           transition-left-to-right = false;
         };
-        modules = [ "battery" "tray" ];
+        modules = [ "battery" "tray" "custom/hexecute" ];
       };
       tray = {
         icon-size = 15;
@@ -175,6 +175,11 @@
         format = "{icon}  {capacity}";
         format-icons = [ "󰁺" "󰁻" "󰁼" "󰁾" "󰁿" "󰂀" "󰂁" "󰂁" "󰂂" "󰁹" ];
         on-click = "swaync-client -t";
+      };
+      "custom/hexecute" = {
+        format = " ";
+        tooltip-format = "魔法使い";
+        on-click = "hexecute";
       };
     }];
 
@@ -346,8 +351,13 @@
         border-color: @green;
       }
 
-      #tray {
+      #tray,
+      #custom-hexecute {
         margin: 0rem 1rem 0rem 0rem;
+      }
+
+      #custom-hexecute {
+        color: @green;
       }
 
       #battery {
