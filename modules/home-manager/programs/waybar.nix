@@ -88,12 +88,12 @@
         timezone = "Asia/Taipei";
       };
       "custom/lyric" = {
-        exec = "playerctl metadata --format='{{ title }}'";
+        exec = "playerctl metadata --format='{{ title }}' --follow";
         format = "󰎆  {}";
         tooltip-format = "Play/Pause";
         on-click = "playerctl play-pause";
         escape = true;
-        interval = 1;
+        return-type = "text";
         max-length = 25;
       };
 
