@@ -3,6 +3,17 @@
 {
   services.swaync = {
     enable = true;
+    settings = {
+      widgets = [ "mpris" "title" "dnd" "notifications" ];
+
+      widget-config = {
+        mpris = {
+          image-size = 96;
+          image-radius = 12;
+          blur = true;
+        };
+      };
+    };
     style = ''
       * {
         all: unset;
@@ -109,6 +120,10 @@
         background-color: #1e1e2e;
         color: #cdd6f4;
         padding: 14px;
+      }
+
+      .widget-title {
+        margin-bottom: 5px;
       }
 
       .control-center .widget-title > label {
@@ -254,7 +269,7 @@
       }
 
       .widget-dnd {
-        margin: 0px;
+        margin-bottom: 5px;
         font-size: 1.1rem;
       }
 
@@ -276,9 +291,15 @@
         border: 1px solid #6c7086;
       }
 
+      .widget-mpris {
+        border-radius: 18px;
+        margin-bottom: 5px;
+      }
+
       .widget-mpris .widget-mpris-player {
         background: #313244;
         padding: 7px;
+        border-radius: 18px;
       }
 
       .widget-mpris .widget-mpris-title {
