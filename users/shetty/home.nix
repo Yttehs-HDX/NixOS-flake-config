@@ -45,6 +45,7 @@
       # Tools
       zip
       unzip
+      unrar
       duf
       dig
       file
