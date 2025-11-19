@@ -55,6 +55,7 @@
       tgpt
       nixfmt-classic
       android-tools
+      universal-android-debloater
       scrcpy
       hexecute.packages.${pkgs.system}.default
       krita
