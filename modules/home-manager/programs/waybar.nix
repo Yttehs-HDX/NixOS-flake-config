@@ -24,7 +24,8 @@
       # Definitions
       modules-left = [ "group/hyprland" "cava" ];
       modules-center = [ "group/misc" ];
-      modules-right = [ "group/monitor" "group/connection" "group/menu" "group/custom" ];
+      modules-right =
+        [ "group/monitor" "group/connection" "group/menu" "group/custom" ];
 
       # Module settings
 
