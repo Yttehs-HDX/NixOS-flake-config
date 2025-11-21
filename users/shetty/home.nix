@@ -34,6 +34,7 @@
       hyprpicker
       rofimoji
       vlc
+      seahorse
 
       # Fonts
       nerd-fonts.jetbrains-mono
