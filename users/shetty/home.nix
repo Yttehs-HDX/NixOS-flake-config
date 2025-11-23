@@ -60,12 +60,15 @@
       scrcpy
       hexecute.packages.${pkgs.system}.default
       krita
-      feishu
       nur.zerozawa.mikusays
       figlet
       lolcat
       tesseract
       poppler_utils
+      wget
+
+      # Media
+      feishu
 
       # Games
       asciiquarium
