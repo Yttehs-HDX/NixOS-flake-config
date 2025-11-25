@@ -66,6 +66,7 @@
       tesseract
       poppler_utils
       wget
+      nmap
 
       # Media
       feishu
