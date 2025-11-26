@@ -54,9 +54,6 @@
       fastfetch
       tldr
       tgpt
-      nixfmt-classic
-      android-tools
-      universal-android-debloater
       scrcpy
       hexecute.packages.${pkgs.system}.default
       krita
@@ -65,8 +62,13 @@
       lolcat
       tesseract
       poppler_utils
-      wget
+
+      # Dev
       nmap
+      wget
+      android-tools
+      universal-android-debloater
+      nixfmt-classic
 
       # Media
       feishu
