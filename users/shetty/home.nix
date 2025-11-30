@@ -69,6 +69,7 @@
       android-tools
       universal-android-debloater
       nixfmt-classic
+      python313Packages.huggingface-hub
 
       # Media
       feishu
