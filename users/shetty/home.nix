@@ -55,13 +55,13 @@
       tldr
       tgpt
       scrcpy
-      hexecute.packages.${pkgs.system}.default
+      hexecute.packages.${pkgs.stdenv.hostPlatform.system}.default
       krita
       nur.zerozawa.mikusays
       figlet
       lolcat
       tesseract
-      poppler_utils
+      poppler-utils
 
       # Dev
       nmap
@@ -114,4 +114,3 @@
 
   home.stateVersion = "25.05";
 }
-

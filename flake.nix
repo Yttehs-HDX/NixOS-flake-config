@@ -3,11 +3,11 @@
 
   inputs = {
     # Nix packages
-    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-25.05"; };
+    nixpkgs = { url = "github:nixos/nixpkgs?ref=nixos-25.11"; };
 
     # Home Manager (for managing users)
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       # Sync with `nixpkgs`
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -22,7 +22,7 @@
     hexecute = { url = "github:ThatOtherAndrew/Hexecute"; };
 
     # NixVim
-    nixvim = { url = "github:nix-community/nixvim/nixos-25.05"; };
+    nixvim = { url = "github:nix-community/nixvim/nixos-25.11"; };
   };
 
   outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:

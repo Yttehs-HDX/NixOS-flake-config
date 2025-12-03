@@ -8,7 +8,11 @@ in {
     nvidia.acceptLicense = true;
     cudaSupport = true;
     allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings" ];
+      let name = lib.getName pkg;
+      in lib.hasPrefix "cuda" name || builtins.elem name [
+        "nvidia-x11"
+        "nvidia-settings"
+      ];
   };
 
   services.xserver.videoDrivers = videoDrivers;
@@ -39,9 +43,8 @@ in {
     enable32Bit = true;
     extraPackages = with pkgs; [
       nvidia-vaapi-driver
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
   };
 }
-

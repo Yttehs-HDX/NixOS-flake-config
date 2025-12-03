@@ -3,7 +3,7 @@
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
 
     modes = [ "run" "drun" "window" "filebrowser" ];
     terminal = "kitty";
@@ -137,4 +137,3 @@
     };
   };
 }
-
