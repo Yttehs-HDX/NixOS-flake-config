@@ -9,10 +9,8 @@ in {
     cudaSupport = true;
     allowUnfreePredicate = pkg:
       let name = lib.getName pkg;
-      in lib.hasPrefix "cuda" name || builtins.elem name [
-        "nvidia-x11"
-        "nvidia-settings"
-      ];
+      in lib.hasPrefix "cuda" name
+      || builtins.elem name [ "nvidia-x11" "nvidia-settings" ];
   };
 
   services.xserver.videoDrivers = videoDrivers;
