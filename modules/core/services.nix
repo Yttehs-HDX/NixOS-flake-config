@@ -2,10 +2,15 @@
 
 {
   services = {
-    displayManager.sddm = {
+    displayManager.sddm = let
+      flavor = "mocha";
+      accent = "lavender";
+    in {
       enable = true;
       wayland.enable = true;
-      theme = "catppuccin-mocha";
+      theme = "${
+          pkgs.catppuccin-sddm.override { inherit flavor accent; }
+        }/share/sddm/themes/catppuccin-${flavor}-${accent}";
       package = pkgs.kdePackages.sddm;
       extraPackages = with pkgs; [
         kdePackages.qtsvg
