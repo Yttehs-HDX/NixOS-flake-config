@@ -7,6 +7,8 @@
     nix-ld.enable = true;
     clash-verge = {
       enable = true;
+      tunMode = true;
+      serviceMode = true;
       autoStart = true;
     };
   };
