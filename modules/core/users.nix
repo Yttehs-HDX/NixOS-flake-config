@@ -4,7 +4,7 @@
   users.users.shetty = {
     isNormalUser = true;
     description = "Shetty Yttehs";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "adbusers" ];
     shell = pkgs.zsh;
   };
 }

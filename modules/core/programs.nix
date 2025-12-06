@@ -11,6 +11,7 @@
       serviceMode = true;
       autoStart = true;
     };
+    adb.enable = true;
   };
 }
 
