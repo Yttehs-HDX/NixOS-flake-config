@@ -17,7 +17,7 @@ in {
 
       listener = [
         {
-          timeout = 300; # 5 minutes
+          timeout = 600; # 10 minutes
           on-timeout = lockCmd;
         }
         {
