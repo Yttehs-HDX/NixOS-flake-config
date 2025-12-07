@@ -62,6 +62,7 @@
       lolcat
       tesseract
       poppler-utils
+      cryptsetup
 
       # Dev
       nmap
