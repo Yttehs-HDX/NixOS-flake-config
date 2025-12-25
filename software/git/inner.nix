@@ -1,6 +1,13 @@
+{ lib, config, ... }:
+
+let
+  cfg = config.software.git;
+in
 {
-  programs.git = {
-    enable = true;
-    settings = { alias = { lazy = "!lazygit"; }; };
+  config = lib.mkIf cfg.enable {
+    programs.git = {
+      enable = true;
+      settings = { alias = { lazy = "!lazygit"; }; };
+    };
   };
 }
