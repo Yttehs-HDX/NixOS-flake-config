@@ -16,6 +16,7 @@
   software = {
     git.enable = true;
     lazygit.enable = true;
+    file.enable = true;
   };
 
   home = {
@@ -24,8 +25,8 @@
 
     packages = with pkgs; [
       # Basic
-      bat
       yazi
+      bat
 
       # Desktop
       playerctl
@@ -54,7 +55,6 @@
       unrar
       duf
       dig
-      file
       jq
       fastfetch
       tldr

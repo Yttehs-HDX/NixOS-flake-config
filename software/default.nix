@@ -2,5 +2,6 @@
   imports = [
     ./git
     ./lazygit
+    ./file
   ];
 }
