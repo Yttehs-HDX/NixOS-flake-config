@@ -1,14 +1,9 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
 let
-  name = "git";
-  cfg = config.software.${name};
+  mkSoftwarePackage = import ../_lib/mkSoftwarePackage.nix { inherit lib; };
 in
-{
-  options.software.${name}.enable =
-    lib.mkEnableOption "${name}";
-
-  imports = [
-    ./inner.nix
-  ];
+mkSoftwarePackage {
+  name = "git";
+  inner = ./inner.nix;
 }

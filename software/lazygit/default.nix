@@ -1,14 +1,9 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
 let
-  name = "lazygit";
-  cfg = config.software.${name};
+  mkSoftwarePackage = import ../_lib/mkSoftwarePackage.nix { inherit lib; };
 in
-{
-  options.software.${name}.enable =
-    lib.mkEnableOption "${name}";
-
-  imports = [
-    ./inner.nix
-  ];
+mkSoftwarePackage {
+  name = "lazygit";
+  inner = ./inner.nix;
 }
