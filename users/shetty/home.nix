@@ -13,6 +13,11 @@
     cursorSize = 24;
   };
 
+  software = {
+    git.enable = true;
+    lazygit.enable = true;
+  };
+
   home = {
     username = "shetty";
     homeDirectory = "/home/shetty";

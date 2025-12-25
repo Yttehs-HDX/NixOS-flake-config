@@ -12,8 +12,8 @@
   ./programs/direnv.nix
   ./programs/command-not-found.nix
   ./programs/tmux.nix
-  ./programs/git.nix
-  ./programs/lazygit.nix
+  # ./programs/git.nix
+  # ./programs/lazygit.nix
   ./programs/gh.nix
   ./programs/vscode.nix
   ./programs/translate-shell.nix

@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 let
-  name = "git";
+  name = "lazygit";
   cfg = config.software.${name};
   inner = import ./inner.nix;
 in
