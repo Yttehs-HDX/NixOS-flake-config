@@ -1,10 +1,9 @@
 { lib, config, ... }:
 
 let
+  mkWhenEnabled = import ../_lib/mkWhenEnabled.nix { inherit lib; };
   cfg = config.software.lazygit;
 in
-{
-  config = lib.mkIf cfg.enable {
-    programs.lazygit.enable = true;
-  };
+mkWhenEnabled cfg.enable {
+  programs.lazygit.enable = true;
 }
