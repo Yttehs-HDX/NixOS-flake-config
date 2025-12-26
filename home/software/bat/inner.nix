@@ -5,5 +5,6 @@ let
   cfg = config.software.bat;
 in
 mkWhenEnabled cfg.enable {
-  home.packages = [ pkgs.bat ];
+  programs.bat.enable = true;
+  home.sessionVariables.PAGER = "${pkgs.bat}/bin/bat";
 }

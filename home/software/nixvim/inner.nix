@@ -7,6 +7,7 @@ in
 mkWhenEnabled cfg.enable {
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
     extraPackages = with pkgs; [ gcc clang gnumake pkg-config ];
 
     opts = {
