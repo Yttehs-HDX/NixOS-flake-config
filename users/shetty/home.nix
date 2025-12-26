@@ -1,8 +1,6 @@
 { pkgs, nur, hexecute, nixvim, ... }:
 
 {
-  imports = [ nixvim.homeModules.nixvim ];
-
   nixpkgs.config.allowUnfree = true;
 
   userTheme = {
