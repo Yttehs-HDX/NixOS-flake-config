@@ -46,7 +46,7 @@
                 backupFileExtension = "hm-backup";
                 sharedModules = (import ./modules/home-manager)
                   ++ [
-                    ./software
+                    ./home
                   ];
 
                 # Users begin
