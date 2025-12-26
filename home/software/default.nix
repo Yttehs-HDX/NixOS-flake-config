@@ -2,8 +2,62 @@
 
 {
   imports = [
-    ./git
-    ./lazygit
+    ./android-tools
+    ./asciiquarium
+    ./bat
+    ./btop
+    ./cava
+    ./cbonsai
+    ./cmatrix
+    ./command-not-found
+    ./cryptsetup
+    ./dig
+    ./direnv
+    ./duf
+    ./eza
+    ./fastfetch
+    ./feishu
+    ./figlet
     ./file
+    ./fzf
+    ./gh
+    ./git
+    ./google-chrome
+    ./hexecute
+    ./home-manager
+    ./htop
+    ./huggingface-hub
+    ./hmcl
+    ./jq
+    ./jetbrains-toolbox
+    ./kitty
+    ./krita
+    ./lazygit
+    ./lolcat
+    ./mikusays
+    ./nixfmt-classic
+    ./nixvim
+    ./nmap
+    ./obs-studio
+    ./onlyoffice
+    ./osu-lazer-bin
+    ./pipes-rs
+    ./poppler-utils
+    ./qq
+    ./scrcpy
+    ./tgpt
+    ./tesseract
+    ./tldr
+    ./translate-shell
+    ./tmux
+    ./universal-android-debloater
+    ./unrar
+    ./unzip
+    ./vscode
+    ./wechat
+    ./wget
+    ./yazi
+    ./zip
+    ./zsh
   ];
 }
