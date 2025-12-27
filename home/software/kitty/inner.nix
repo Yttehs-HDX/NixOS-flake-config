@@ -1,8 +1,6 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 
 let
-  mkWhenEnabled = import ../_lib/mkWhenEnabled.nix { inherit lib; };
-  cfg = config.software.kitty;
 
   variant = config.userTheme.catppuccinVariant;
   capitalizedVariant = if variant == "" then
@@ -14,7 +12,7 @@ let
     in "${first}${rest}";
   kittyThemeName = "Catppuccin-${capitalizedVariant}";
 in
-mkWhenEnabled cfg.enable {
+{
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;

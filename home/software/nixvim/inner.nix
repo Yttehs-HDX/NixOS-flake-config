@@ -1,10 +1,6 @@
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
-let
-  mkWhenEnabled = import ../_lib/mkWhenEnabled.nix { inherit lib; };
-  cfg = config.software.nixvim;
-in
-mkWhenEnabled cfg.enable {
+{
   programs.nixvim = {
     enable = true;
     defaultEditor = true;

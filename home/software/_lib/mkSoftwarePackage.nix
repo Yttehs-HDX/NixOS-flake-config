@@ -1,12 +1,13 @@
-{ lib }:
+{ lib, profile, name, inner }:
 
-{ name, inner }:
-
+let
+  home = profile.home or {};
+  sw = home.software or {};
+  item = sw.${name} or {};
+  enabled = item.enable or false;
+in
 {
-  options.software.${name}.enable =
-    lib.mkEnableOption name;
-
-  imports = [
+  imports = lib.optionals enabled [
     inner
   ];
 }

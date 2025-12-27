@@ -1,10 +1,6 @@
-{ lib, config, ... }:
+{ ... }:
 
-let
-  mkWhenEnabled = import ../_lib/mkWhenEnabled.nix { inherit lib; };
-  cfg = config.software.cava;
-in
-mkWhenEnabled cfg.enable {
+{
   programs.cava = {
     enable = true;
     settings = {

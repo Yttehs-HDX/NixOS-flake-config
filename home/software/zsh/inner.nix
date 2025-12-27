@@ -1,10 +1,6 @@
-{ lib, config, ... }:
+{ ... }:
 
-let
-  mkWhenEnabled = import ../_lib/mkWhenEnabled.nix { inherit lib; };
-  cfg = config.software.zsh;
-in
-mkWhenEnabled cfg.enable {
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;

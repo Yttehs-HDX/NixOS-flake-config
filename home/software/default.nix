@@ -1,6 +1,17 @@
-{ ... }:
+{ lib, ... }:
 
+let
+  softwareSubmodule = lib.types.submodule ({ ... }: {
+    options.enable = lib.mkEnableOption "Enable a software package.";
+  });
+in
 {
+  options.software = lib.mkOption {
+    type = lib.types.attrsOf softwareSubmodule;
+    default = {};
+    description = "Per-package software toggles for Home Manager.";
+  };
+
   imports = [
     ./android-tools
     ./asciiquarium

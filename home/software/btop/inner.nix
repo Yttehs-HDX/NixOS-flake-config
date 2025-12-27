@@ -1,10 +1,6 @@
-{ lib, config, ... }:
+{ ... }:
 
-let
-  mkWhenEnabled = import ../_lib/mkWhenEnabled.nix { inherit lib; };
-  cfg = config.software.btop;
-in
-mkWhenEnabled cfg.enable {
+{
   programs.btop = { enable = true; };
 
   xdg.configFile."btop/themes/catppuccin-mocha.theme".text = ''
