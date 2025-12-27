@@ -26,7 +26,9 @@
   };
 
   outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
-    let system = "x86_64-linux";
+    let
+      system = "x86_64-linux";
+      profile = import ./users/shetty/profile.nix { };
     in {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
@@ -47,6 +49,7 @@
                 sharedModules = (import ./modules/home-manager)
                   ++ [
                     ./home
+                    ./desktop/home.nix
                   ];
 
                 # Users begin
@@ -56,6 +59,7 @@
                 extraSpecialArgs = {
                   nur = nur.legacyPackages.${system}.repos;
                   inherit hexecute nixvim;
+                  inherit profile;
                 };
               };
             }
@@ -64,4 +68,3 @@
       };
     };
 }
-

@@ -13,8 +13,6 @@
   ./services/swaync.nix
   ./services/kdeconnect.nix
 
-  ./wayland/hyprland.nix
-
   ./i18n/fcitx5.nix
 
   ./fonts/fontconfig.nix
