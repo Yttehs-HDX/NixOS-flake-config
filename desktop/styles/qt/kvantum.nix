@@ -7,4 +7,3 @@
     style.name = "kvantum";
   };
 }
-
