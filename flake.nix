@@ -33,6 +33,9 @@
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            inherit profile;
+          };
           modules = [
             nur.modules.nixos.default
 

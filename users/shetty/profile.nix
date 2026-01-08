@@ -4,6 +4,34 @@
   desktop = {
     enable = true;
     sessions.hyprland.enable = true;
+
+    dm.sddm.enable = true;
+
+    aux = {
+      enable = true;
+
+      programs.waybar.enable = true;
+      programs.rofi.enable = true;
+
+      services.hyprpolkitagent.enable = true;
+      services.udiskie.enable = true;
+      services.cliphist.enable = true;
+      services.hypridle.enable = true;
+      services.swww.enable = true;
+      services.network-manager.enable = true;
+      services.blueman.enable = true;
+      services.swaync.enable = true;
+      services.kdeconnect.enable = true;
+
+      i18n.fcitx5.enable = true;
+    };
+
+    styles = {
+      fonts.fontconfig.enable = true;
+      gtk.catppuccin.enable = true;
+      qt.kvantum.enable = true;
+      xdg.catppuccin.enable = true;
+    };
   };
 
   home.software = {

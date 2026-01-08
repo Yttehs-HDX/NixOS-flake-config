@@ -1,25 +1,32 @@
-{ config, ... }:
+{ config, lib, profile, ... }:
 
-{
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
+let
+  desktop = profile.desktop or {};
+  aux = desktop.aux or {};
+  programs = aux.programs or {};
+  waybar = programs.waybar or {};
+  enabled = (desktop.enable or false) && (waybar.enable or false);
+in {
+  config = lib.mkIf enabled {
+    programs.waybar = {
+      enable = true;
+      systemd.enable = true;
 
-    settings = [{
-      # Generic
-      layer = "top";
-      position = "top";
-      mode = "dock";
-      height = 32;
-      exclusive = true;
-      passthrough = false;
-      gtk-layer-shell = true;
-      ipc = true;
-      fixed-center = true;
-      margin-top = 5;
-      margin-left = 5;
-      margin-right = 5;
-      margin-bottom = 0;
+      settings = [{
+        # Generic
+        layer = "top";
+        position = "top";
+        mode = "dock";
+        height = 32;
+        exclusive = true;
+        passthrough = false;
+        gtk-layer-shell = true;
+        ipc = true;
+        fixed-center = true;
+        margin-top = 5;
+        margin-left = 5;
+        margin-right = 5;
+        margin-bottom = 0;
 
       # Definitions
       modules-left = [ "group/hyprland" "cava" ];
@@ -193,10 +200,10 @@
         tooltip-format = "魔法使い";
         on-click = "hexecute";
       };
-    }];
+      }];
 
-    style = ''
-      @define-color rosewater #f5e0dc;
+      style = ''
+        @define-color rosewater #f5e0dc;
       @define-color flamingo #f2cdcd;
       @define-color pink #f5c2e7;
       @define-color mauve #cba6f7;
@@ -380,10 +387,10 @@
         color: @green;
       }
 
-      #battery.warning:not(.charging) {
-        color: @red;
-      }
-    '';
+        #battery.warning:not(.charging) {
+          color: @red;
+        }
+      '';
+    };
   };
 }
-

@@ -1,9 +1,16 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, profile, ... }:
 
-{
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi;
+let
+  desktop = profile.desktop or {};
+  aux = desktop.aux or {};
+  programs = aux.programs or {};
+  rofi = programs.rofi or {};
+  enabled = (desktop.enable or false) && (rofi.enable or false);
+in {
+  config = lib.mkIf enabled {
+    programs.rofi = {
+      enable = true;
+      package = pkgs.rofi;
 
     modes = [ "run" "drun" "window" "filebrowser" ];
     terminal = "kitty";
@@ -22,19 +29,19 @@
 
     font =
       "${config.userTheme.fontFamily} ${toString config.userTheme.fontSize}";
-    theme = let inherit (config.lib.formats.rasi) mkLiteral;
-    in {
-      "*" = {
-        border-col = mkLiteral "@blue";
-        bg-col = mkLiteral "rgba(30, 30, 46, 0.75)";
-        bg-col-light = mkLiteral "rgba(49, 50, 68, 0.7)";
-        fg-col = mkLiteral "#cdd6f4";
-        highlight = mkLiteral "#f38ba8";
-        blue = mkLiteral "#89b4fa";
-        accent = mkLiteral "#b4befecc";
-        text = mkLiteral "#6c7086";
-        width = 800;
-      };
+      theme = let inherit (config.lib.formats.rasi) mkLiteral;
+      in {
+        "*" = {
+          border-col = mkLiteral "@blue";
+          bg-col = mkLiteral "rgba(30, 30, 46, 0.75)";
+          bg-col-light = mkLiteral "rgba(49, 50, 68, 0.7)";
+          fg-col = mkLiteral "#cdd6f4";
+          highlight = mkLiteral "#f38ba8";
+          blue = mkLiteral "#89b4fa";
+          accent = mkLiteral "#b4befecc";
+          text = mkLiteral "#6c7086";
+          width = 800;
+        };
 
       "element-text, element-icon , mode-switcher" = {
         background-color = mkLiteral "inherit";
@@ -105,10 +112,10 @@
         padding = mkLiteral "10px";
       };
 
-      "element-text selected" = {
-        background-color = mkLiteral "@accent";
-        text-color = mkLiteral "inherit";
-      };
+        "element-text selected" = {
+          background-color = mkLiteral "@accent";
+          text-color = mkLiteral "inherit";
+        };
 
       mode-switcher = { spacing = 0; };
 
@@ -123,16 +130,17 @@
         text-color = mkLiteral "@blue";
       };
 
-      message = {
-        background-color = mkLiteral "inherit";
-        margin = mkLiteral "10px 10px 0px";
-      };
+        message = {
+          background-color = mkLiteral "inherit";
+          margin = mkLiteral "10px 10px 0px";
+        };
 
-      textbox = {
-        border-radius = mkLiteral "10px";
-        background-color = mkLiteral "@bg-col";
-        text-color = mkLiteral "@accent";
-        padding = mkLiteral "10px";
+        textbox = {
+          border-radius = mkLiteral "10px";
+          background-color = mkLiteral "@bg-col";
+          text-color = mkLiteral "@accent";
+          padding = mkLiteral "10px";
+        };
       };
     };
   };
