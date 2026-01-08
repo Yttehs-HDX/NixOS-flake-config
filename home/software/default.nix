@@ -70,5 +70,6 @@ in
     ./yazi
     ./zip
     ./zsh
+    ./xdg
   ];
 }

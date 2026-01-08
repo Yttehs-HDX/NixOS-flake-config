@@ -46,11 +46,10 @@
                 # useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "hm-backup";
-                sharedModules = (import ./modules/home-manager)
-                  ++ [
-                    ./home
-                    ./desktop/home.nix
-                  ];
+                sharedModules = [
+                  ./home
+                  ./desktop/home.nix
+                ];
 
                 # Users begin
                 users.shetty = import ./users/shetty/home.nix;
