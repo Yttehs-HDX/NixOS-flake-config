@@ -2,17 +2,17 @@
 
 {
   imports = [
-    ../../modules/home-manager/programs/waybar.nix
-    ../../modules/home-manager/programs/rofi.nix
-    ../../modules/home-manager/services/hyprpolkitagent.nix
-    ../../modules/home-manager/services/udiskie.nix
-    ../../modules/home-manager/services/cliphist.nix
-    ../../modules/home-manager/services/hypridle.nix
-    ../../modules/home-manager/services/swww.nix
-    ../../modules/home-manager/services/network-manager.nix
-    ../../modules/home-manager/services/blueman.nix
-    ../../modules/home-manager/services/swaync.nix
-    ../../modules/home-manager/services/kdeconnect.nix
-    ../../modules/home-manager/i18n/fcitx5.nix
+    ./programs/waybar.nix
+    ./programs/rofi.nix
+    ./services/hyprpolkitagent.nix
+    ./services/udiskie.nix
+    ./services/cliphist.nix
+    ./services/hypridle.nix
+    ./services/swww.nix
+    ./services/network-manager.nix
+    ./services/blueman.nix
+    ./services/swaync.nix
+    ./services/kdeconnect.nix
+    ./i18n/fcitx5.nix
   ];
 }
