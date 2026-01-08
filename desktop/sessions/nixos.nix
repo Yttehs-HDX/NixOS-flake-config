@@ -1,1 +1,7 @@
+{ ... }:
 
+{
+  imports = [
+    ./hyprland/nixos.nix
+  ];
+}
