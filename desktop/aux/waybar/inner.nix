@@ -1,31 +1,25 @@
-{ config, lib, profile, ... }:
+{ config, ... }:
 
-let
-  desktop = profile.desktop or {};
-  aux = desktop.aux or {};
-  waybar = aux.waybar or {};
-  enabled = (desktop.enable or false) && (waybar.enable or false);
-in {
-  config = lib.mkIf enabled {
-    programs.waybar = {
-      enable = true;
-      systemd.enable = true;
+{
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
 
-      settings = [{
-        # Generic
-        layer = "top";
-        position = "top";
-        mode = "dock";
-        height = 32;
-        exclusive = true;
-        passthrough = false;
-        gtk-layer-shell = true;
-        ipc = true;
-        fixed-center = true;
-        margin-top = 5;
-        margin-left = 5;
-        margin-right = 5;
-        margin-bottom = 0;
+    settings = [{
+      # Generic
+      layer = "top";
+      position = "top";
+      mode = "dock";
+      height = 32;
+      exclusive = true;
+      passthrough = false;
+      gtk-layer-shell = true;
+      ipc = true;
+      fixed-center = true;
+      margin-top = 5;
+      margin-left = 5;
+      margin-right = 5;
+      margin-bottom = 0;
 
       # Definitions
       modules-left = [ "group/hyprland" "cava" ];
@@ -168,7 +162,7 @@ in {
         tooltip-format-off = "Off";
         tooltip-format-disabled = "Off";
         tooltip-format-enumerate-connected =
-          "{device_alias}	{device_battery_percentage}%";
+          "{device_alias}\t{device_battery_percentage}%";
       };
 
       # Menu
@@ -199,10 +193,10 @@ in {
         tooltip-format = "魔法使い";
         on-click = "hexecute";
       };
-      }];
+    }];
 
-      style = ''
-        @define-color rosewater #f5e0dc;
+    style = ''
+      @define-color rosewater #f5e0dc;
       @define-color flamingo #f2cdcd;
       @define-color pink #f5c2e7;
       @define-color mauve #cba6f7;
@@ -386,10 +380,9 @@ in {
         color: @green;
       }
 
-        #battery.warning:not(.charging) {
-          color: @red;
-        }
-      '';
-    };
+      #battery.warning:not(.charging) {
+        color: @red;
+      }
+    '';
   };
 }

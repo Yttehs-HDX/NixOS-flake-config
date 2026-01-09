@@ -1,26 +1,20 @@
-{ config, lib, profile, ... }:
+{ config, ... }:
 
-let
-  desktop = profile.desktop or {};
-  aux = desktop.aux or {};
-  swaync = aux.swaync or {};
-  enabled = (desktop.enable or false) && (swaync.enable or false);
-in {
-  config = lib.mkIf enabled {
-    services.swaync = {
-      enable = true;
-      settings = {
-        widgets = [ "mpris" "title" "dnd" "notifications" ];
+{
+  services.swaync = {
+    enable = true;
+    settings = {
+      widgets = [ "mpris" "title" "dnd" "notifications" ];
 
-        widget-config = {
-          mpris = {
-            image-size = 96;
-            image-radius = 12;
-            blur = true;
-          };
+      widget-config = {
+        mpris = {
+          image-size = 96;
+          image-radius = 12;
+          blur = true;
         };
       };
-      style = ''
+    };
+    style = ''
       * {
         all: unset;
         font-size: 14px;
@@ -373,7 +367,6 @@ in {
       .image {
         padding-right: 0.5rem;
       }
-      '';
-    };
+    '';
   };
 }
