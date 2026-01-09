@@ -20,6 +20,9 @@
       blueman.enable = true;
       swaync.enable = true;
       kdeconnect.enable = true;
+      gnome-keyring.enable = true;
+      pipewire.enable = true;
+      udisks2.enable = true;
 
       fcitx5.enable = true;
     };
