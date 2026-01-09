@@ -3,8 +3,7 @@
 let
   desktop = profile.desktop or {};
   aux = desktop.aux or {};
-  i18n = aux.i18n or {};
-  fcitx5 = i18n.fcitx5 or {};
+  fcitx5 = aux.fcitx5 or {};
   enabled = (desktop.enable or false) && (fcitx5.enable or false);
 in {
   config = lib.mkIf enabled {

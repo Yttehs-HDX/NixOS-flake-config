@@ -3,8 +3,7 @@
 let
   desktop = profile.desktop or {};
   aux = desktop.aux or {};
-  services = aux.services or {};
-  udiskie = services.udiskie or {};
+  udiskie = aux.udiskie or {};
   enabled = (desktop.enable or false) && (udiskie.enable or false);
 in {
   config = lib.mkIf enabled {

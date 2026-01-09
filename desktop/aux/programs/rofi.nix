@@ -3,8 +3,7 @@
 let
   desktop = profile.desktop or {};
   aux = desktop.aux or {};
-  programs = aux.programs or {};
-  rofi = programs.rofi or {};
+  rofi = aux.rofi or {};
   enabled = (desktop.enable or false) && (rofi.enable or false);
 in {
   config = lib.mkIf enabled {

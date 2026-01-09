@@ -3,8 +3,7 @@
 let
   desktop = profile.desktop or {};
   aux = desktop.aux or {};
-  services = aux.services or {};
-  swaync = services.swaync or {};
+  swaync = aux.swaync or {};
   enabled = (desktop.enable or false) && (swaync.enable or false);
 in {
   config = lib.mkIf enabled {

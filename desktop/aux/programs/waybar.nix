@@ -3,8 +3,7 @@
 let
   desktop = profile.desktop or {};
   aux = desktop.aux or {};
-  programs = aux.programs or {};
-  waybar = programs.waybar or {};
+  waybar = aux.waybar or {};
   enabled = (desktop.enable or false) && (waybar.enable or false);
 in {
   config = lib.mkIf enabled {
