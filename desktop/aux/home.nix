@@ -14,5 +14,24 @@
     ./swaync/home.nix
     ./kdeconnect/home.nix
     ./fcitx5/home.nix
+
+    ./playerctl
+    ./brightnessctl
+    ./pulseaudio
+    ./swaylock-effects
+    ./libnotify
+    ./wl-clipboard
+    ./grimblast
+    ./swappy
+    ./hyprpicker
+    ./rofimoji
+    ./vlc
+    ./seahorse
+
+    ./nerd-fonts-jetbrains-mono
+    ./noto-fonts
+    ./noto-fonts-cjk-sans
+    ./noto-fonts-cjk-serif
+    ./noto-fonts-emoji-blob-bin
   ];
 }

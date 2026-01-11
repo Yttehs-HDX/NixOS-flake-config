@@ -25,6 +25,25 @@
       udisks2.enable = true;
 
       fcitx5.enable = true;
+
+      playerctl.enable = true;
+      brightnessctl.enable = true;
+      pulseaudio.enable = true;
+      swaylock-effects.enable = true;
+      libnotify.enable = true;
+      wl-clipboard.enable = true;
+      grimblast.enable = true;
+      swappy.enable = true;
+      hyprpicker.enable = true;
+      rofimoji.enable = true;
+      vlc.enable = true;
+      seahorse.enable = true;
+
+      nerd-fonts-jetbrains-mono.enable = true;
+      noto-fonts.enable = true;
+      noto-fonts-cjk-sans.enable = true;
+      noto-fonts-cjk-serif.enable = true;
+      noto-fonts-emoji-blob-bin.enable = true;
     };
 
     styles = {
