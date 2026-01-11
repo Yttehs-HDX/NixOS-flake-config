@@ -1,11 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
-let coreModules = import ../../modules/core;
-in {
+{
   imports = [
     # Hardware scan (auto generated)
     ./hardware-configuration.nix
-  ] ++ coreModules ++ [
+    ../../system/nixos.nix
     ../../desktop/nixos.nix
   ];
 
