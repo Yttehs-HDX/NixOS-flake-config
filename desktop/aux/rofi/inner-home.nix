@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
-{
+let
+  palette = config.style.palette;
+  accentAlpha = "${palette.accent}cc";
+  bgCol = "${palette.base}bf";
+  bgColLight = "${palette.surface0}b3";
+in {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi;
@@ -25,13 +30,13 @@
     in {
       "*" = {
         border-col = mkLiteral "@blue";
-        bg-col = mkLiteral "rgba(30, 30, 46, 0.75)";
-        bg-col-light = mkLiteral "rgba(49, 50, 68, 0.7)";
-        fg-col = mkLiteral "#cdd6f4";
-        highlight = mkLiteral "#f38ba8";
-        blue = mkLiteral "#89b4fa";
-        accent = mkLiteral "#b4befecc";
-        text = mkLiteral "#6c7086";
+        bg-col = mkLiteral bgCol;
+        bg-col-light = mkLiteral bgColLight;
+        fg-col = mkLiteral palette.text;
+        highlight = mkLiteral palette.red;
+        blue = mkLiteral palette.blue;
+        accent = mkLiteral accentAlpha;
+        text = mkLiteral palette.overlay0;
         width = 800;
       };
 

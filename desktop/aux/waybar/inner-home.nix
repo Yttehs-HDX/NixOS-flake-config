@@ -1,6 +1,8 @@
 { config, ... }:
 
-{
+let
+  palette = config.style.palette;
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -89,11 +91,11 @@
           mode-mon-col = 3;
           weeks-pos = "right";
           format = {
-            months = "<span color='#f5e0dc'><b>{}</b></span>";
-            days = "<span color='#f5c2e7'><b>{}</b></span>";
-            weeks = "<span color='#94e2d5'><b>W{}</b></span>";
-            weekdays = "<span color='#f9e2af'><b>{}</b></span>";
-            today = "<span color='#f38ba8'><b><u>{}</u></b></span>";
+            months = "<span color='${palette.rosewater}'><b>{}</b></span>";
+            days = "<span color='${palette.pink}'><b>{}</b></span>";
+            weeks = "<span color='${palette.teal}'><b>W{}</b></span>";
+            weekdays = "<span color='${palette.yellow}'><b>{}</b></span>";
+            today = "<span color='${palette.red}'><b><u>{}</u></b></span>";
           };
         };
         actions = { on-click-right = "mode"; };
@@ -196,35 +198,36 @@
     }];
 
     style = ''
-      @define-color rosewater #f5e0dc;
-      @define-color flamingo #f2cdcd;
-      @define-color pink #f5c2e7;
-      @define-color mauve #cba6f7;
-      @define-color red #f38ba8;
-      @define-color maroon #eba0ac;
-      @define-color peach #fab387;
-      @define-color yellow #f9e2af;
-      @define-color green #a6e3a1;
-      @define-color teal #94e2d5;
-      @define-color sky #89dceb;
-      @define-color sapphire #74c7ec;
-      @define-color blue #89b4fa;
-      @define-color lavender #b4befe;
-      @define-color text #cdd6f4;
-      @define-color subtext1 #bac2de;
-      @define-color subtext0 #a6adc8;
-      @define-color overlay2 #9399b2;
-      @define-color overlay1 #7f849c;
-      @define-color overlay0 #6c7086;
-      @define-color surface2 #585b70;
-      @define-color surface1 #45475a;
-      @define-color surface0 #313244;
-      @define-color surface0-alpha rgba(49, 50, 68, 0.8);
-      @define-color base-alpha rgba(30, 30, 46, 0.6);
-      @define-color border-alpha rgba(180, 190, 254, 0.7);
-      @define-color base #1e1e2e;
-      @define-color mantle #181825;
-      @define-color crust #11111b;
+      @define-color rosewater ${palette.rosewater};
+      @define-color flamingo ${palette.flamingo};
+      @define-color pink ${palette.pink};
+      @define-color mauve ${palette.mauve};
+      @define-color red ${palette.red};
+      @define-color maroon ${palette.maroon};
+      @define-color peach ${palette.peach};
+      @define-color yellow ${palette.yellow};
+      @define-color green ${palette.green};
+      @define-color teal ${palette.teal};
+      @define-color sky ${palette.sky};
+      @define-color sapphire ${palette.sapphire};
+      @define-color blue ${palette.blue};
+      @define-color lavender ${palette.lavender};
+      @define-color accent ${palette.accent};
+      @define-color text ${palette.text};
+      @define-color subtext1 ${palette.subtext1};
+      @define-color subtext0 ${palette.subtext0};
+      @define-color overlay2 ${palette.overlay2};
+      @define-color overlay1 ${palette.overlay1};
+      @define-color overlay0 ${palette.overlay0};
+      @define-color surface2 ${palette.surface2};
+      @define-color surface1 ${palette.surface1};
+      @define-color surface0 ${palette.surface0};
+      @define-color surface0-alpha alpha(@surface0, 0.8);
+      @define-color base-alpha alpha(@base, 0.6);
+      @define-color border-alpha alpha(@accent, 0.7);
+      @define-color base ${palette.base};
+      @define-color mantle ${palette.mantle};
+      @define-color crust ${palette.crust};
 
       * {
         font-family: ${config.style.font}, "Noto Sans CJK JP", "Noto Sans CJK TC", "Noto Sans CJK SC";
