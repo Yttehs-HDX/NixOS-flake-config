@@ -2,6 +2,7 @@
 
 {
   imports = [
-    ./options/nixos.nix
+    ./themes
+    ./fonts
   ];
 }
