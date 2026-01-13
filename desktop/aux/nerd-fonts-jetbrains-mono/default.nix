@@ -7,5 +7,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "nerd-fonts-jetbrains-mono";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

@@ -6,5 +6,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "fcitx5";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

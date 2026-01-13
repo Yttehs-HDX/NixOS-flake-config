@@ -7,5 +7,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "wl-clipboard";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

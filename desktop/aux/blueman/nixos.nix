@@ -1,13 +1,10 @@
 { lib, profile, ... }:
 
 let
-  desktop = profile.desktop or {};
-  aux = desktop.aux or {};
-  blueman = aux.blueman or {};
-  enabled = (desktop.enable or false) && (blueman.enable or false);
+  mkAuxPackage = import ../_lib/mkAuxPackage.nix;
 in
-{
-  config = lib.mkIf enabled {
-    services.blueman.enable = true;
-  };
+mkAuxPackage {
+  inherit lib profile;
+  name = "blueman";
+  inner = ./inner-nixos.nix;
 }

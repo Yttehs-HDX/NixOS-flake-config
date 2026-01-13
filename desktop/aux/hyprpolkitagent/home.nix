@@ -6,5 +6,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "hyprpolkitagent";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

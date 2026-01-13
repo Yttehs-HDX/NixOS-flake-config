@@ -7,5 +7,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "seahorse";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

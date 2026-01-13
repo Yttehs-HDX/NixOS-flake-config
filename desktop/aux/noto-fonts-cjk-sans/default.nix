@@ -7,5 +7,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "noto-fonts-cjk-sans";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

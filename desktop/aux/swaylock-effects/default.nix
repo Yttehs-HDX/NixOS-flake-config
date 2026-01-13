@@ -7,5 +7,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "swaylock-effects";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

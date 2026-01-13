@@ -7,5 +7,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "pulseaudio";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

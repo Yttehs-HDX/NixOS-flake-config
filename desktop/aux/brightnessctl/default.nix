@@ -7,5 +7,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "brightnessctl";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }

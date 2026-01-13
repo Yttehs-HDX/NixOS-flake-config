@@ -6,5 +6,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "network-manager";
-  inner = ./inner.nix;
+  inner = ./inner-home.nix;
 }
