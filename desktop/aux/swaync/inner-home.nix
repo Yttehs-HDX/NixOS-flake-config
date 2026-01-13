@@ -18,7 +18,7 @@
       * {
         all: unset;
         font-size: 14px;
-        font-family: "${config.userTheme.fontFamily}";
+        font-family: "${config.style.font}";
         transition: 200ms;
       }
 

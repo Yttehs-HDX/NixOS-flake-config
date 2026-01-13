@@ -1,6 +1,15 @@
 { ... }:
 
 {
+  style = {
+    theme = {
+      name = "catppuccin";
+      accent = "lavender";
+      variant = "mocha";
+    };
+    font = "SF Pro";
+  };
+
   desktop = {
     enable = true;
     sessions.hyprland.enable = true;

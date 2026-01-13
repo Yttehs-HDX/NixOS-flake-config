@@ -227,7 +227,7 @@
       @define-color crust #11111b;
 
       * {
-        font-family: ${config.userTheme.fontFamily}, "Noto Sans CJK JP", "Noto Sans CJK TC", "Noto Sans CJK SC";
+        font-family: ${config.style.font}, "Noto Sans CJK JP", "Noto Sans CJK TC", "Noto Sans CJK SC";
         font-size: 17px;
         min-height: 0;
       }

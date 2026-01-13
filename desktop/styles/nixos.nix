@@ -3,7 +3,6 @@
 {
   imports = [
     ./schemas
-    ./gtk/home.nix
-    ./qt/home.nix
+    ./font/nixos.nix
   ];
 }

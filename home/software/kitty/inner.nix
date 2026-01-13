@@ -2,7 +2,7 @@
 
 let
 
-  variant = config.userTheme.catppuccinVariant;
+  variant = config.style.theme.variant;
   capitalizedVariant = if variant == "" then
     variant
   else
@@ -18,7 +18,7 @@ in
     enableGitIntegration = true;
 
     font = {
-      name = "JetbrainsMono Nerd Font";
+      name = "JetBrainsMono Nerd Font";
       size = 14.0;
     };
 

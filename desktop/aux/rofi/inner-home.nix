@@ -20,8 +20,7 @@
       sidebar-mode = true;
     };
 
-    font =
-      "${config.userTheme.fontFamily} ${toString config.userTheme.fontSize}";
+    font = "${config.style.font} 12";
     theme = let inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
