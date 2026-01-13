@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, profile, ... }:
 
 let
-  style = config.style;
+  style = profile.style;
   theme = style.theme;
   variant = theme.variant;
   accent = theme.accent;
@@ -9,12 +9,26 @@ let
   fontSize = 12;
   cursorSize = 24;
   catppuccin = "catppuccin-${variant}-${accent}";
+  capitalize = value:
+    if value == "" then
+      value
+    else
+      let
+        first = lib.toUpper (lib.substring 0 1 value);
+        rest = lib.substring 1 (lib.stringLength value - 1) value;
+      in "${first}${rest}";
+  cursorVariant = "${variant}${capitalize accent}";
+  cursorName =
+    "Catppuccin-${capitalize variant}-${capitalize accent}";
+  cursorPackage = lib.getAttr cursorVariant pkgs.catppuccin-cursors;
 in {
   config = lib.mkIf (theme.name == "catppuccin") {
     gtk = {
       enable = true;
       gtk2.force = true;
-      gtk3.extraConfig = { "gtk-application-prefer-dark-theme" = "1"; };
+      gtk3.extraConfig = {
+        "gtk-application-prefer-dark-theme" = if variant == "latte" then "0" else "1";
+      };
 
       theme = {
         name = "${catppuccin}-compact";
@@ -31,9 +45,8 @@ in {
       };
 
       cursorTheme = {
-        name = "Catppuccin-Mocha-Lavender";
-        package = pkgs.catppuccin-cursors.mochaLavender;
-        # TODO: switch when other Catppuccin cursor variants are needed.
+        name = cursorName;
+        package = cursorPackage;
         size = cursorSize;
       };
 
