@@ -2,10 +2,12 @@
 
 {
   imports = [
-    ./schemas
-    ./font/home.nix
-    ./palette/home.nix
-    ./gtk/home.nix
-    ./qt/home.nix
+    ./options/schemas/themes.nix
+    ./options/schemas/font.nix
+    ./options/schemas/catppuccin.nix
+    ./options/fonts.nix
+    ./fonts/home.nix
+    ./options/catppuccin/home.nix
+    ./themes/home.nix
   ];
 }

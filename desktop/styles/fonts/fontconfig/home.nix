@@ -1,27 +1,27 @@
-{ profile, ... }:
+{ config, ... }:
 
 let
-  style = profile.style or {};
-  font = style.font or "DejaVu Sans";
+  fontDefault = config.style.font.default;
+  fontMono = config.style.font.mono;
 in {
   config = {
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
         monospace = [
-          "JetBrainsMono Nerd Font"
+          fontMono
           "Noto Sans Mono CJK JP"
           "Noto Sans Mono CJK TC"
           "Noto Sans Mono CJK SC"
         ];
         sansSerif = [
-          font
+          fontDefault
           "Noto Sans CJK JP"
           "Noto Sans CJK TC"
           "Noto Sans CJK SC"
         ];
         serif = [
-          font
+          fontDefault
           "Noto Serif CJK JP"
           "Noto Serif CJK TC"
           "Noto Serif CJK SC"

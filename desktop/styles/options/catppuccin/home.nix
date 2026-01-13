@@ -1,9 +1,6 @@
-{ lib, config, profile, ... }:
+{ lib, config, ... }:
 
 let
-  styleProfile = profile.style or {};
-  themeProfile = styleProfile.theme or {};
-
   palettes = {
     latte = {
       rosewater = "#dc8a78";
@@ -125,24 +122,11 @@ let
   palette = palettes.${variant} or palettes.mocha;
   accent = palette.${accentName} or palette.lavender;
 in {
-  config = lib.mkMerge [
-    {
-      style.palette = palette // {
+  config = {
+    style.theme.palette = lib.mkIf (theme.name == "catppuccin")
+      (palette // {
         accent = accent;
         accentName = accentName;
-      };
-    }
-    (lib.mkIf (styleProfile ? font) {
-      style.font = lib.mkDefault styleProfile.font;
-    })
-    (lib.mkIf (themeProfile ? name) {
-      style.theme.name = lib.mkDefault themeProfile.name;
-    })
-    (lib.mkIf (themeProfile ? variant) {
-      style.theme.variant = lib.mkDefault themeProfile.variant;
-    })
-    (lib.mkIf (themeProfile ? accent) {
-      style.theme.accent = lib.mkDefault themeProfile.accent;
-    })
-  ];
+      });
+  };
 }

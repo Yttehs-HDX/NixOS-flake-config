@@ -1,11 +1,11 @@
-{ config, lib, pkgs, profile, ... }:
+{ config, lib, pkgs, ... }:
 
 let
-  style = profile.style;
+  style = config.style;
   theme = style.theme;
   variant = theme.variant;
   accent = theme.accent;
-  uiFont = style.font;
+  uiFont = style.font.default;
   fontSize = 12;
   cursorSize = 24;
   catppuccin = "catppuccin-${variant}-${accent}";

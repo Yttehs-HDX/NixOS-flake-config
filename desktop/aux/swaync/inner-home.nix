@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  palette = config.style.palette;
+  palette = config.style.theme.palette;
 in {
   services.swaync = {
     enable = true;
@@ -20,7 +20,7 @@ in {
       * {
         all: unset;
         font-size: 14px;
-        font-family: "${config.style.font}";
+        font-family: "${config.style.font.default}";
         transition: 200ms;
       }
 

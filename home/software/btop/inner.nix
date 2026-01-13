@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  palette = config.style.palette;
+  palette = config.style.theme.palette;
 in {
   programs.btop = { enable = true; };
 

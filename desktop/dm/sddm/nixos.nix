@@ -1,13 +1,12 @@
-{ lib, pkgs, profile, ... }:
+{ config, lib, pkgs, profile, ... }:
 
 let
   desktop = profile.desktop or {};
   dm = desktop.dm or {};
   sddm = dm.sddm or {};
-  style = profile.style or {};
-  themeProfile = sddm.theme or style.theme or {};
-  flavor = themeProfile.variant or "mocha";
-  accent = themeProfile.accent or "lavender";
+  theme = config.style.theme;
+  flavor = theme.variant;
+  accent = theme.accent;
   enabled = (desktop.enable or false) && (sddm.enable or false);
 in {
   config = lib.mkIf enabled {

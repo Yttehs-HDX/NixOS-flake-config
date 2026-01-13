@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  palette = config.style.palette;
+  palette = config.style.theme.palette;
 in {
   programs.waybar = {
     enable = true;
@@ -230,7 +230,7 @@ in {
       @define-color crust ${palette.crust};
 
       * {
-        font-family: ${config.style.font}, "Noto Sans CJK JP", "Noto Sans CJK TC", "Noto Sans CJK SC";
+        font-family: ${config.style.font.default}, "Noto Sans CJK JP", "Noto Sans CJK TC", "Noto Sans CJK SC";
         font-size: 17px;
         min-height: 0;
       }

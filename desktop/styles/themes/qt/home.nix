@@ -1,7 +1,7 @@
-{ lib, pkgs, profile, ... }:
+{ lib, pkgs, config, ... }:
 
 let
-  style = profile.style;
+  style = config.style;
   theme = style.theme;
   variant = theme.variant;
   accent = theme.accent;

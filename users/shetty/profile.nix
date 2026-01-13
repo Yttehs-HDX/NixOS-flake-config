@@ -2,12 +2,13 @@
 
 {
   style = {
-    theme = {
-      name = "catppuccin";
-      accent = "lavender";
-      variant = "mocha";
+    theme = "catppuccin";
+    accent = "lavender";
+    flavor = "mocha";
+    font = {
+      default = "SF Pro";
+      mono = "JetBrainsMono Nerd Font";
     };
-    font = "SF Pro";
   };
 
   desktop = {
@@ -55,12 +56,6 @@
       noto-fonts-emoji-blob-bin.enable = true;
     };
 
-    styles = {
-      fonts.fontconfig.enable = true;
-      gtk.catppuccin.enable = true;
-      qt.kvantum.enable = true;
-      xdg.catppuccin.enable = true;
-    };
   };
 
   home.software = {

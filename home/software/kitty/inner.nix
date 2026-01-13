@@ -18,7 +18,7 @@ in
     enableGitIntegration = true;
 
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = config.style.font.mono;
       size = 14.0;
     };
 

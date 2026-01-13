@@ -13,7 +13,7 @@ in {
     variant = mkOption {
       type = types.enum [ "latte" "frappe" "macchiato" "mocha" ];
       default = "mocha";
-      description = "Catppuccin flavor to apply across themed modules.";
+      description = "Catppuccin flavor (variant) to apply across themed modules.";
     };
 
     accent = mkOption {
