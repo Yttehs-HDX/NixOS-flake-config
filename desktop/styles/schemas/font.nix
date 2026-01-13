@@ -2,7 +2,6 @@
 
 let
   inherit (lib) mkOption types;
-
 in {
   options.style.font = mkOption {
     type = types.str;
