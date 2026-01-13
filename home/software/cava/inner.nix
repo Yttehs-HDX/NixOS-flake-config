@@ -1,19 +1,21 @@
-{ ... }:
+{ config, ... }:
 
-{
+let
+  palette = config.style.palette;
+in {
   programs.cava = {
     enable = true;
     settings = {
       color = {
         gradient = 1;
-        gradient_color_1 = "'#94e2d5'";
-        gradient_color_2 = "'#89dceb'";
-        gradient_color_3 = "'#74c7ec'";
-        gradient_color_4 = "'#89b4fa'";
-        gradient_color_5 = "'#cba6f7'";
-        gradient_color_6 = "'#f5c2e7'";
-        gradient_color_7 = "'#eba0ac'";
-        gradient_color_8 = "'#f38ba8'";
+        gradient_color_1 = "'${palette.teal}'";
+        gradient_color_2 = "'${palette.sky}'";
+        gradient_color_3 = "'${palette.sapphire}'";
+        gradient_color_4 = "'${palette.blue}'";
+        gradient_color_5 = "'${palette.mauve}'";
+        gradient_color_6 = "'${palette.pink}'";
+        gradient_color_7 = "'${palette.maroon}'";
+        gradient_color_8 = "'${palette.red}'";
       };
     };
   };
