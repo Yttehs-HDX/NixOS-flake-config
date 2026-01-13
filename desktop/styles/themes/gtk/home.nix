@@ -3,12 +3,13 @@
 let
   style = config.style;
   theme = style.theme;
-  variant = theme.variant;
+  themeName = theme.theme;
+  flavor = theme.flavor;
   accent = theme.accent;
   uiFont = style.font.default;
   fontSize = 12;
   cursorSize = 24;
-  catppuccin = "catppuccin-${variant}-${accent}";
+  catppuccin = "catppuccin-${flavor}-${accent}";
   capitalize = value:
     if value == "" then
       value
@@ -17,23 +18,23 @@ let
         first = lib.toUpper (lib.substring 0 1 value);
         rest = lib.substring 1 (lib.stringLength value - 1) value;
       in "${first}${rest}";
-  cursorVariant = "${variant}${capitalize accent}";
+  cursorVariant = "${flavor}${capitalize accent}";
   cursorName =
-    "Catppuccin-${capitalize variant}-${capitalize accent}";
+    "Catppuccin-${capitalize flavor}-${capitalize accent}";
   cursorPackage = lib.getAttr cursorVariant pkgs.catppuccin-cursors;
 in {
-  config = lib.mkIf (theme.name == "catppuccin") {
+  config = lib.mkIf (themeName == "catppuccin") {
     gtk = {
       enable = true;
       gtk2.force = true;
       gtk3.extraConfig = {
-        "gtk-application-prefer-dark-theme" = if variant == "latte" then "0" else "1";
+        "gtk-application-prefer-dark-theme" = if flavor == "latte" then "0" else "1";
       };
 
       theme = {
         name = "${catppuccin}-compact";
         package = pkgs.catppuccin-gtk.override {
-          inherit variant;
+          variant = flavor;
           accents = [ accent ];
           size = "compact";
         };

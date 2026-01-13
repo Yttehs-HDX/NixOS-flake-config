@@ -2,15 +2,15 @@
 
 let
 
-  variant = config.style.theme.variant;
-  capitalizedVariant = if variant == "" then
-    variant
+  flavor = config.style.theme.flavor;
+  capitalizedFlavor = if flavor == "" then
+    flavor
   else
     let
-      first = lib.toUpper (lib.substring 0 1 variant);
-      rest = lib.substring 1 (lib.stringLength variant - 1) variant;
+      first = lib.toUpper (lib.substring 0 1 flavor);
+      rest = lib.substring 1 (lib.stringLength flavor - 1) flavor;
     in "${first}${rest}";
-  kittyThemeName = "Catppuccin-${capitalizedVariant}";
+  kittyThemeName = "Catppuccin-${capitalizedFlavor}";
 in
 {
   programs.kitty = {

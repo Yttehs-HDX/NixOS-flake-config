@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, profile, ... }:
 
 let
   palettes = {
@@ -115,18 +115,63 @@ let
       crust = "#11111b";
     };
   };
-
-  theme = config.style.theme;
-  variant = theme.variant or "mocha";
-  accentName = theme.accent or "lavender";
-  palette = palettes.${variant} or palettes.mocha;
-  accent = palette.${accentName} or palette.lavender;
+  styleProfile = profile.style or {};
 in {
-  config = {
-    style.theme.palette = lib.mkIf (theme.name == "catppuccin")
-      (palette // {
-        accent = accent;
-        accentName = accentName;
-      });
+  options.style.theme = lib.mkOption {
+    type = lib.types.submodule {
+      options = {
+        theme = lib.mkOption {
+          type = lib.types.enum [ "catppuccin" ];
+          default = "catppuccin";
+          description = "Style theme name (Catppuccin-only contract).";
+        };
+
+        flavor = lib.mkOption {
+          type = lib.types.enum [ "latte" "frappe" "macchiato" "mocha" ];
+          default = "mocha";
+          description = "Catppuccin flavor to apply across themed modules.";
+        };
+
+        accent = lib.mkOption {
+          type = lib.types.str;
+          default = "lavender";
+          description = "Catppuccin accent color to use across themed modules.";
+        };
+
+        palette = lib.mkOption {
+          type = lib.types.attrsOf lib.types.str;
+          internal = true;
+          readOnly = true;
+          description = "Derived palette values (computed from style.theme.flavor).";
+        };
+      };
+    };
+    default = {};
+    description = "Theme selection and derived values for style modules.";
   };
+
+  config = lib.mkMerge [
+    (lib.mkIf (styleProfile ? theme) {
+      style.theme.theme = lib.mkDefault styleProfile.theme;
+    })
+    (lib.mkIf (styleProfile ? accent) {
+      style.theme.accent = lib.mkDefault styleProfile.accent;
+    })
+    (lib.mkIf (styleProfile ? flavor) {
+      style.theme.flavor = lib.mkDefault styleProfile.flavor;
+    })
+    (let
+      theme = config.style.theme;
+      flavor = theme.flavor or "mocha";
+      accentName = theme.accent or "lavender";
+      palette = palettes.${flavor} or palettes.mocha;
+      accent = palette.${accentName} or palette.lavender;
+    in {
+      style.theme.palette = lib.mkIf (theme.theme == "catppuccin")
+        (palette // {
+          accent = accent;
+          accentName = accentName;
+        });
+    })
+  ];
 }

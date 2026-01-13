@@ -14,7 +14,7 @@ in {
         fcitx5-pinyin-zhwiki
         fcitx5-pinyin-moegirl
         fcitx5-mozc
-      ] ++ lib.optionals (theme.name == "catppuccin") [
+      ] ++ lib.optionals (theme.theme == "catppuccin") [
         catppuccin-fcitx5
       ];
     };

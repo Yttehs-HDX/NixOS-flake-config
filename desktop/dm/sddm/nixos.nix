@@ -5,11 +5,12 @@ let
   dm = desktop.dm or {};
   sddm = dm.sddm or {};
   theme = config.style.theme;
-  flavor = theme.variant;
+  themeName = theme.theme;
+  flavor = theme.flavor;
   accent = theme.accent;
   enabled = (desktop.enable or false) && (sddm.enable or false);
 in {
-  config = lib.mkIf enabled {
+  config = lib.mkIf (enabled && themeName == "catppuccin") {
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;

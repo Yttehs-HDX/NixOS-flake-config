@@ -3,13 +3,14 @@
 let
   style = config.style;
   theme = style.theme;
-  variant = theme.variant;
+  themeName = theme.theme;
+  flavor = theme.flavor;
   accent = theme.accent;
-  catppuccin = "catppuccin-${variant}-${accent}";
+  catppuccin = "catppuccin-${flavor}-${accent}";
   catppuccinKvantum =
-    pkgs.catppuccin-kvantum.override { inherit variant accent; };
+    pkgs.catppuccin-kvantum.override { variant = flavor; inherit accent; };
 in {
-  config = lib.mkIf (theme.name == "catppuccin") {
+  config = lib.mkIf (themeName == "catppuccin") {
     qt = {
       enable = true;
       platformTheme.name = "gtk";
