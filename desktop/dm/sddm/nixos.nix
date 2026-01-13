@@ -4,13 +4,14 @@ let
   desktop = profile.desktop or {};
   dm = desktop.dm or {};
   sddm = dm.sddm or {};
+  style = profile.style or {};
+  themeProfile = sddm.theme or style.theme or {};
+  flavor = themeProfile.variant or "mocha";
+  accent = themeProfile.accent or "lavender";
   enabled = (desktop.enable or false) && (sddm.enable or false);
 in {
   config = lib.mkIf enabled {
-    services.displayManager.sddm = let
-      flavor = "mocha";
-      accent = "lavender";
-    in {
+    services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
       theme = "${
@@ -25,8 +26,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      # Ensure the SDDM theme is available system-wide.
-      (catppuccin-sddm.override { flavor = "mocha"; })
+      (catppuccin-sddm.override { inherit flavor accent; })
     ];
   };
 }
