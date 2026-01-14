@@ -5,6 +5,6 @@ let
 in
 mkAuxPackage {
   inherit lib profile;
-  name = "udiskie";
+  name = "udisks2";
   inner = ./inner-home.nix;
 }

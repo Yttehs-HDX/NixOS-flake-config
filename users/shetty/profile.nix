@@ -22,7 +22,6 @@
       rofi.enable = true;
 
       hyprpolkitagent.enable = true;
-      udiskie.enable = true;
       cliphist.enable = true;
       hypridle.enable = true;
       swww.enable = true;

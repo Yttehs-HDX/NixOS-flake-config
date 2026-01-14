@@ -5,7 +5,7 @@
     ./waybar/home.nix
     ./rofi/home.nix
     ./hyprpolkitagent/home.nix
-    ./udiskie/home.nix
+    ./udisks2/home.nix
     ./cliphist/home.nix
     ./hypridle/home.nix
     ./swww/home.nix
