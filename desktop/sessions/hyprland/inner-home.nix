@@ -23,6 +23,10 @@ let
     echo -n "$cleaned" | ${pkgs.wl-clipboard}/bin/wl-copy
   '';
 in {
+  imports = [
+    ./aux/home.nix
+  ];
+
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
