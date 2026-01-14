@@ -1,5 +1,35 @@
-{ terminal, launcher, ocrScript, ... }:
+{ pkgs, ... }:
 
+let
+  terminalCmd = "kitty";
+  launcherCmd = "rofi -show drun";
+  ocrScript = pkgs.writeShellScript "ocr.sh" ''
+    set -e
+    img=$(mktemp /tmp/ocr_XXXXXX.png)
+    txt=$(mktemp /tmp/ocr_XXXXXX)
+    trap 'rm -f "$img" "''${txt}" "''${txt}.txt"' EXIT
+    # Screenshot
+    ${pkgs.grimblast}/bin/grimblast --freeze save area "$img" >/dev/null 2>&1
+    # OCR
+    ${pkgs.tesseract}/bin/tesseract "$img" "$txt" -l chi_sim+eng+jpn --psm 6
+    raw=$(cat "''${txt}.txt")
+    # Trim
+    cleaned=$(printf "%s" "$raw" \
+        | tr -d '\r' \
+        | sed ':a;N;$!ba;s/\n/ /g' \
+        | sed 's/[[:space:]]\+/ /g' \
+        | sed 's/^[ \t]*//;s/[ \t]*$//' \
+    )
+    echo -n "$cleaned" | ${pkgs.wl-clipboard}/bin/wl-copy
+  '';
+  lockCmd =
+    "swaylock --screenshots --clock --text-color=b7bdf8 --text-caps-lock-color=f5bde6 --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 25x25 --effect-vignette 0.5:0.5 --ring-color b7bdf8 --key-hl-color f5bde6 --line-color 00000000 --inside-color 00000088 --separator-color 00000000";
+  clipboardCmd =
+    "cliphist list | rofi -dmenu -p '  clipboard' -no-show-icons -display-columns 1,2 | cliphist decode | wl-copy";
+  emojiCmd = "rofimoji --action copy --prompt '󰞅  emoji' --use-icons";
+  screenshotCmd = "grimblast --freeze save area - | swappy -f -";
+  colorPickerCmd = "hyprpicker --autocopy --format=hex";
+in
 {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -20,8 +50,8 @@
     ];
     bind = [
       # Basic
-      "$mod, Q, exec, ${terminal}"
-      "$mod, R, exec, ${launcher}"
+      "$mod, Q, exec, ${terminalCmd}"
+      "$mod, R, exec, ${launcherCmd}"
       "$mod, F, fullscreen"
       "$mod, C, killactive"
       "$mod, V, exec, hyprctl dispatch togglefloating"
@@ -29,27 +59,14 @@
       "$mod, TAB, hyprexpo:expo, toggle"
       "$mod, escape, exec, hexecute"
 
-      # Logout
-      "$mod, M, exec, hyprctl dispatch exit"
-
-      # Screen lock
-      "$mod, L, exec, swaylock --screenshots --clock --text-color=b7bdf8 --text-caps-lock-color=f5bde6 --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 25x25 --effect-vignette 0.5:0.5 --ring-color b7bdf8 --key-hl-color f5bde6 --line-color 00000000 --inside-color 00000088 --separator-color 00000000"
-
-      # Clipboard manager
-      "$mod, W, exec, cliphist list | rofi -dmenu -p '  clipboard' -no-show-icons -display-columns 1,2 | cliphist decode | wl-copy"
-
-      # Emoji chooser
-      "$mod, E, exec, rofimoji --action copy --prompt '󰞅  emoji' --use-icons"
-
-      # Screenshot
-      ", Print, exec, grimblast --freeze save area - | swappy -f -"
-      "$mod SHIFT, S, exec, grimblast --freeze save area - | swappy -f -"
-
-      # OCR
+      # Advanced
+      "$mod, L, exec, ${lockCmd}"
+      "$mod, W, exec, ${clipboardCmd}"
+      "$mod, E, exec, ${emojiCmd}"
+      ", Print, exec, ${screenshotCmd}"
+      "$mod SHIFT, S, exec, ${screenshotCmd}"
       "$mod SHIFT, T, exec, ${ocrScript}"
-
-      # Color picker
-      "$mod ALT, DELETE, exec, hyprpicker --autocopy --format=hex"
+      "$mod ALT, DELETE, exec, ${colorPickerCmd}"
 
       "$mod, left, movefocus, l"
       "$mod, right, movefocus, r"
