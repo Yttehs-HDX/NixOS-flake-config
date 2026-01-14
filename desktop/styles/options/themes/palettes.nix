@@ -1,3 +1,5 @@
+{ ... }:
+
 {
   latte = {
     rosewater = "#dc8a78";

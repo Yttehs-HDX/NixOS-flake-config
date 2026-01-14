@@ -1,7 +1,7 @@
 { lib, config, profile, ... }:
 
 let
-  palettes = import ./palettes.nix;
+  palettes = import ./palettes.nix {};
   styleProfile = profile.style or {};
 in {
   imports = [
