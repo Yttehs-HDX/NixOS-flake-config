@@ -6,5 +6,5 @@ in
 mkSession {
   inherit lib profile;
   name = "hyprland";
-  inner = ./nixos-inner.nix;
+  inner = ./inner-nixos.nix;
 }
