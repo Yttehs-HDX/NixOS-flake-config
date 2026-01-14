@@ -1,12 +1,10 @@
 { lib, profile, ... }:
 
 let
-  desktop = profile.desktop or {};
-  sessions = desktop.sessions or {};
-  hypr = sessions.hyprland or {};
-  enabled = (desktop.enable or false) && (hypr.enable or false);
-in {
-  config = lib.mkIf enabled {
-    programs.hyprland.enable = true;
-  };
+  mkSession = import ../_lib/mkSession.nix;
+in
+mkSession {
+  inherit lib profile;
+  name = "hyprland";
+  inner = ./nixos-inner.nix;
 }
