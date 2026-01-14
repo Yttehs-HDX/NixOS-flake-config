@@ -12,7 +12,6 @@
     ./network-manager/home.nix
     ./blueman/home.nix
     ./swaync/home.nix
-    ./kdeconnect/home.nix
     ./fcitx5/home.nix
 
     ./playerctl

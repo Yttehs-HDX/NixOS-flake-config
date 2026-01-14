@@ -42,6 +42,7 @@ in
     ./jq
     ./jetbrains-toolbox
     ./kitty
+    ./kdeconnect
     ./krita
     ./lazygit
     ./lolcat

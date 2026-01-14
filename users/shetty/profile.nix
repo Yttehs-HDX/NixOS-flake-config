@@ -28,7 +28,6 @@
       network-manager.enable = true;
       blueman.enable = true;
       swaync.enable = true;
-      kdeconnect.enable = true;
       gnome-keyring.enable = true;
       pipewire.enable = true;
       udisks2.enable = true;
@@ -61,6 +60,7 @@
     home-manager.enable = true;
     zsh.enable = true;
     kitty.enable = true;
+    kdeconnect.enable = true;
 
     yazi.enable = true;
     eza.enable = true;
