@@ -60,11 +60,12 @@ in
       "$mod, escape, exec, hexecute"
 
       # Advanced
-      "$mod, L, exec, ${lockCmd}"
+      "$mod, M, exec, hyprctl dispatch exit"
       "$mod, W, exec, ${clipboardCmd}"
       "$mod, E, exec, ${emojiCmd}"
       ", Print, exec, ${screenshotCmd}"
       "$mod SHIFT, S, exec, ${screenshotCmd}"
+      "$mod SHIFT, L, exec, ${lockCmd}"
       "$mod SHIFT, T, exec, ${ocrScript}"
       "$mod ALT, DELETE, exec, ${colorPickerCmd}"
 
