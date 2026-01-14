@@ -2,6 +2,7 @@
 
 {
   imports = [
-    ./catppuccin/default.nix
+    ./gtk.nix
+    ./qt.nix
   ];
 }
