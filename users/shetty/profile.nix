@@ -44,6 +44,7 @@
       swappy.enable = true;
       hyprpicker.enable = true;
       rofimoji.enable = true;
+      tesseract.enable = true;
       vlc.enable = true;
       seahorse.enable = true;
 
@@ -98,7 +99,6 @@
     mikusays.enable = true;
     figlet.enable = true;
     lolcat.enable = true;
-    tesseract.enable = true;
     poppler-utils.enable = true;
     cryptsetup.enable = true;
 

@@ -58,7 +58,6 @@ in
     ./qq
     ./scrcpy
     ./tgpt
-    ./tesseract
     ./tldr
     ./translate-shell
     ./tmux

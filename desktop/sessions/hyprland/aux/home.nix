@@ -17,5 +17,6 @@
     ../../../aux/swappy/home.nix
     ../../../aux/hyprpicker/home.nix
     ../../../aux/rofimoji/home.nix
+    ../../../aux/tesseract/home.nix
   ];
 }
