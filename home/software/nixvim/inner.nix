@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./themes/catppuccin.nix
+  ];
+
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -10,30 +14,6 @@
       number = true;
       relativenumber = true;
       shiftwidth = 2;
-    };
-
-    colorschemes.catppuccin = {
-      enable = true;
-      settings = {
-        disable_underline = true;
-        flavour = "mocha";
-        integrations = {
-          cmp = true;
-          gitsigns = true;
-          mini = {
-            enabled = true;
-            indentscope_color = "";
-          };
-          notify = false;
-          nvimtree = true;
-          treesitter = true;
-        };
-        styles = {
-          booleans = [ "bold" "italic" ];
-          conditionals = [ "bold" ];
-        };
-        term_colors = true;
-      };
     };
 
     plugins = {

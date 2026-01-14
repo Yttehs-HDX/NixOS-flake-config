@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  theme = config.style.theme;
-in {
+{
+  imports = [
+    ./themes/catppuccin.nix
+  ];
+
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -14,8 +16,6 @@ in {
         fcitx5-pinyin-zhwiki
         fcitx5-pinyin-moegirl
         fcitx5-mozc
-      ] ++ lib.optionals (theme.theme == "catppuccin") [
-        catppuccin-fcitx5
       ];
     };
   };

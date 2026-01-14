@@ -1,18 +1,10 @@
-{ lib, config, ... }:
+{ config, ... }:
 
-let
-
-  flavor = config.style.theme.flavor;
-  capitalizedFlavor = if flavor == "" then
-    flavor
-  else
-    let
-      first = lib.toUpper (lib.substring 0 1 flavor);
-      rest = lib.substring 1 (lib.stringLength flavor - 1) flavor;
-    in "${first}${rest}";
-  kittyThemeName = "Catppuccin-${capitalizedFlavor}";
-in
 {
+  imports = [
+    ./themes/catppuccin.nix
+  ];
+
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;
@@ -21,8 +13,6 @@ in
       name = config.style.font.mono;
       size = 14.0;
     };
-
-    themeFile = kittyThemeName;
 
     shellIntegration = {
       mode = "no_cursor";
