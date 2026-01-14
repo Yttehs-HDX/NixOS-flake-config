@@ -6,5 +6,5 @@ in
 mkAuxPackage {
   inherit lib profile;
   name = "waybar";
-  inner = ./inner-home.nix;
+  inner = ./inner-home;
 }
