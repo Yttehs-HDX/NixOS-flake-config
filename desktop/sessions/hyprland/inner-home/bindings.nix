@@ -55,7 +55,6 @@ in
       "$mod, F, fullscreen"
       "$mod, C, killactive"
       "$mod, V, exec, hyprctl dispatch togglefloating"
-      "$mod, SPACE, overview:toggle"
       "$mod, TAB, hyprexpo:expo, toggle"
       "$mod, escape, exec, hexecute"
 
