@@ -1,6 +1,12 @@
 { ... }:
 
 {
+  user = {
+    name = "shetty";
+    description = "Shetty Yttehs";
+    isSuper = true;
+  };
+
   desktop = {
     enable = true;
 

@@ -1,11 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ lib, profile, ... }:
 
+let
+  userName = profile.user.name;
+  userDescription = profile.user.description;
+  isSuper = profile.user.isSuper;
+in
 {
-  users.users.shetty = {
+  users.users.${userName} = {
     isNormalUser = true;
-    description = "Shetty Yttehs";
-    extraGroups = [ "wheel" "adbusers" ];
-    shell = pkgs.zsh;
+    description = userDescription;
+    extraGroups = lib.optionals isSuper [ "wheel" ];
   };
 }
-
