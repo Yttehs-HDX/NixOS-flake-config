@@ -4,7 +4,6 @@
   imports = [
     ../aux/home.nix
     ./variables.nix
-    ./exec-once.nix
     (import ./bindings.nix { inherit pkgs; })
     ./xwayland.nix
     ./general.nix
