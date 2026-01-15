@@ -1,28 +1,33 @@
 { ... }:
 
 {
-  style = {
-    theme = "catppuccin";
-    accent = "lavender";
-    flavor = "mocha";
-    font = {
-      default = "SF Pro";
-      mono = "JetBrainsMono Nerd Font";
-    };
-  };
-
   desktop = {
     enable = true;
-    sessions.hyprland.enable = true;
 
     dm.sddm.enable = true;
+    sessions.hyprland.enable = true;
+
+    style = {
+      theme = {
+        name = "catppuccin";
+        accent = "lavender";
+        flavor = "mocha";
+      };
+
+      fonts = {
+        default = "SF Pro";
+        mono = {
+          default = "JetBrainsMono Nerd Font";
+        };
+        nerd-fonts-jetbrains-mono.enable = true;
+        noto-fonts.enable = true;
+        noto-fonts-cjk-sans.enable = true;
+        noto-fonts-cjk-serif.enable = true;
+        noto-fonts-emoji-blob-bin.enable = true;
+      };
+    };
 
     aux = {
-      nerd-fonts-jetbrains-mono.enable = true;
-      noto-fonts.enable = true;
-      noto-fonts-cjk-sans.enable = true;
-      noto-fonts-cjk-serif.enable = true;
-      noto-fonts-emoji-blob-bin.enable = true;
       udisks2.enable = true;
       network-manager.enable = true;
       blueman.enable = true;

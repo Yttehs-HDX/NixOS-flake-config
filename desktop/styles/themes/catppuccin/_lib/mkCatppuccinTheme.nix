@@ -1,11 +1,12 @@
 { lib, config }:
 
 let
-  style = config.style;
-  theme = style.theme;
-  themeName = theme.theme;
-  flavor = theme.flavor;
-  accent = theme.accent;
+  desktop = config.desktop or {};
+  style = desktop.style or {};
+  theme = style.theme or {};
+  themeName = theme.name or "";
+  flavor = theme.flavor or "mocha";
+  accent = theme.accent or "lavender";
   catppuccin = "catppuccin-${flavor}-${accent}";
 in
 mkConfig:

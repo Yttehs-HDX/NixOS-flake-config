@@ -1,10 +1,10 @@
 { lib, ... }:
 
 {
-  options.style.theme = lib.mkOption {
+  options.desktop.style.theme = lib.mkOption {
     type = lib.types.submodule {
       options = {
-        theme = lib.mkOption {
+        name = lib.mkOption {
           type = lib.types.enum [ "catppuccin" ];
           default = "catppuccin";
           description = "Style theme name (Catppuccin-only contract).";
@@ -26,7 +26,7 @@
           type = lib.types.attrsOf lib.types.str;
           internal = true;
           readOnly = true;
-          description = "Derived palette values (computed from style.theme.flavor).";
+          description = "Derived palette values (computed from desktop.style.theme.flavor).";
         };
       };
     };

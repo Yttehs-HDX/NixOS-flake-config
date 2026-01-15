@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  palette = config.style.theme.palette;
+  palette = config.desktop.style.theme.palette;
   accentAlpha = "${palette.accent}cc";
   bgCol = "${palette.base}bf";
   bgColLight = "${palette.surface0}b3";
@@ -25,7 +25,7 @@ in {
       sidebar-mode = true;
     };
 
-    font = "${config.style.font.default} 12";
+    font = "${config.desktop.style.fonts.default} 12";
     theme = let inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {

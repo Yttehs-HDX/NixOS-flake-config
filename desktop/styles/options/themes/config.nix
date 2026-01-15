@@ -2,30 +2,31 @@
 
 let
   palettes = import ./palettes.nix {};
-  styleProfile = profile.style or {};
+  styleProfile = (profile.desktop or {}).style or {};
+  themeProfile = styleProfile.theme or {};
 in {
   imports = [
     ./default-value.nix
   ];
 
   config = lib.mkMerge [
-    (lib.mkIf (styleProfile ? theme) {
-      style.theme.theme = lib.mkDefault styleProfile.theme;
+    (lib.mkIf (themeProfile ? name) {
+      desktop.style.theme.name = lib.mkDefault themeProfile.name;
     })
-    (lib.mkIf (styleProfile ? accent) {
-      style.theme.accent = lib.mkDefault styleProfile.accent;
+    (lib.mkIf (themeProfile ? accent) {
+      desktop.style.theme.accent = lib.mkDefault themeProfile.accent;
     })
-    (lib.mkIf (styleProfile ? flavor) {
-      style.theme.flavor = lib.mkDefault styleProfile.flavor;
+    (lib.mkIf (themeProfile ? flavor) {
+      desktop.style.theme.flavor = lib.mkDefault themeProfile.flavor;
     })
     (let
-      theme = config.style.theme;
+      theme = config.desktop.style.theme;
       flavor = theme.flavor or "mocha";
       accentName = theme.accent or "lavender";
       palette = palettes.${flavor} or palettes.mocha;
       accent = palette.${accentName} or palette.lavender;
     in {
-      style.theme.palette = lib.mkIf (theme.theme == "catppuccin")
+      desktop.style.theme.palette = lib.mkIf (theme.name == "catppuccin")
         (palette // {
           accent = accent;
           accentName = accentName;

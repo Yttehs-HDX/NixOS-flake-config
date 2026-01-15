@@ -10,7 +10,7 @@
     enableGitIntegration = true;
 
     font = {
-      name = config.style.font.mono;
+      name = config.desktop.style.fonts.mono.default;
       size = 14.0;
     };
 

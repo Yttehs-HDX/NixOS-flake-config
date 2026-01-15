@@ -6,7 +6,7 @@ let
 in {
   config = mkCatppuccinTheme ({ style, flavor, accent, catppuccin, ... }:
     let
-      uiFont = style.font.default;
+      uiFont = style.fonts.default;
       fontSize = 12;
       cursorSize = 24;
       capitalize = value:

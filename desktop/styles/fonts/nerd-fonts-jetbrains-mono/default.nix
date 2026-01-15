@@ -5,5 +5,6 @@ let
 in
 mkFont {
   inherit lib profile;
+  name = "nerd-fonts-jetbrains-mono";
   inner = ./inner-home.nix;
 }

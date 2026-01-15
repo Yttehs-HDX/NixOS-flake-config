@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  palette = config.style.theme.palette;
+  palette = config.desktop.style.theme.palette;
 in {
   programs.waybar.style = ''
     @define-color rosewater ${palette.rosewater};
@@ -36,7 +36,7 @@ in {
     @define-color crust ${palette.crust};
 
     * {
-      font-family: ${config.style.font.default}, "Noto Sans CJK JP", "Noto Sans CJK TC", "Noto Sans CJK SC";
+      font-family: ${config.desktop.style.fonts.default}, "Noto Sans CJK JP", "Noto Sans CJK TC", "Noto Sans CJK SC";
       font-size: 17px;
       min-height: 0;
     }

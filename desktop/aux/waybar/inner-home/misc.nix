@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  palette = config.style.theme.palette;
+  palette = config.desktop.style.theme.palette;
   playerTitleCmd = "playerctl metadata --format='{{ title }}' --follow";
   playPauseCmd = "playerctl play-pause";
 in {
