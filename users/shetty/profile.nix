@@ -23,6 +23,14 @@
       noto-fonts-cjk-sans.enable = true;
       noto-fonts-cjk-serif.enable = true;
       noto-fonts-emoji-blob-bin.enable = true;
+      udisks2.enable = true;
+      network-manager.enable = true;
+      blueman.enable = true;
+      fcitx5.enable = true;
+      pulseaudio.enable = true;
+      libnotify.enable = true;
+      vlc.enable = true;
+      seahorse.enable = true;
     };
   };
 
