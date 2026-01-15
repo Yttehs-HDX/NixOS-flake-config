@@ -3,25 +3,7 @@
 let
   terminalCmd = "kitty";
   launcherCmd = "rofi -show drun";
-  ocrScript = pkgs.writeShellScript "ocr.sh" ''
-    set -e
-    img=$(mktemp /tmp/ocr_XXXXXX.png)
-    txt=$(mktemp /tmp/ocr_XXXXXX)
-    trap 'rm -f "$img" "''${txt}" "''${txt}.txt"' EXIT
-    # Screenshot
-    ${pkgs.grimblast}/bin/grimblast --freeze save area "$img" >/dev/null 2>&1
-    # OCR
-    ${pkgs.tesseract}/bin/tesseract "$img" "$txt" -l chi_sim+eng+jpn --psm 6
-    raw=$(cat "''${txt}.txt")
-    # Trim
-    cleaned=$(printf "%s" "$raw" \
-        | tr -d '\r' \
-        | sed ':a;N;$!ba;s/\n/ /g' \
-        | sed 's/[[:space:]]\+/ /g' \
-        | sed 's/^[ \t]*//;s/[ \t]*$//' \
-    )
-    echo -n "$cleaned" | ${pkgs.wl-clipboard}/bin/wl-copy
-  '';
+  ocrCmd = "ocr";
   lockCmd =
     "swaylock --screenshots --clock --text-color=b7bdf8 --text-caps-lock-color=f5bde6 --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 25x25 --effect-vignette 0.5:0.5 --ring-color b7bdf8 --key-hl-color f5bde6 --line-color 00000000 --inside-color 00000088 --separator-color 00000000";
   clipboardCmd =
@@ -65,7 +47,7 @@ in
       ", Print, exec, ${screenshotCmd}"
       "$mod SHIFT, S, exec, ${screenshotCmd}"
       "$mod SHIFT, L, exec, ${lockCmd}"
-      "$mod SHIFT, T, exec, ${ocrScript}"
+      "$mod SHIFT, T, exec, ${ocrCmd}"
       "$mod ALT, DELETE, exec, ${colorPickerCmd}"
 
       "$mod, left, movefocus, l"

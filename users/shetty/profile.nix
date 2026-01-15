@@ -45,6 +45,7 @@
       hyprpicker.enable = true;
       rofimoji.enable = true;
       tesseract.enable = true;
+      ocr.enable = true;
       vlc.enable = true;
       seahorse.enable = true;
 

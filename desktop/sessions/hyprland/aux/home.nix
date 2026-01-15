@@ -18,5 +18,6 @@
     ../../../aux/hyprpicker/home.nix
     ../../../aux/rofimoji/home.nix
     ../../../aux/tesseract/home.nix
+    ../../../aux/ocr/home.nix
   ];
 }
