@@ -119,6 +119,7 @@
     pipes-rs.enable = true;
 
     google-chrome.enable = true;
+    clash-verge-rev.enable = true;
     qq.enable = true;
     wechat.enable = true;
     osu-lazer-bin.enable = true;

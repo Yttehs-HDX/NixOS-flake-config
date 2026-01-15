@@ -19,6 +19,7 @@ in
     ./btop
     ./cava
     ./cbonsai
+    ./clash-verge-rev
     ./cmatrix
     ./command-not-found
     ./cryptsetup
