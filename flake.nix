@@ -28,15 +28,19 @@
   outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
     let
       lib = nixpkgs.lib;
-      users = import ./users { };
+      homeModules = [
+        ./home
+        ./desktop/home.nix
+      ];
+      users = import ./users {
+        inherit lib nixpkgs nur home-manager hexecute nixvim homeModules;
+      };
       hosts = import ./hosts {
         inherit lib nur home-manager hexecute nixvim users;
-        homeModules = [
-          ./home
-          ./desktop/home.nix
-        ];
+        inherit homeModules;
       };
     in {
       nixosConfigurations = hosts.nixosConfigurations;
+      homeConfigurations = users.homeConfigurations;
     };
 }

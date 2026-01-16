@@ -3,7 +3,7 @@
 {
   host = {
     name = "Shetty-Laptop";
-    users = [ "shetty" ];
+    users = [ "shetty" "testuser" ];  # Multiple users to test isolation
     system = "x86_64-linux";
   };
 
