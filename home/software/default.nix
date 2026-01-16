@@ -49,7 +49,7 @@ in
     ./lolcat
     ./mikusays
     ./nixfmt-classic
-    ./nixvim
+    ./neovim
     ./nmap
     ./obs-studio
     ./onlyoffice

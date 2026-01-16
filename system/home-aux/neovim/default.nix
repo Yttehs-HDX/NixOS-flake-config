@@ -5,6 +5,6 @@ let
 in
 mkHomeAuxModule {
   inherit lib profile;
-  name = "nixvim";
+  name = "neovim";
   inner = ./inner.nix;
 }

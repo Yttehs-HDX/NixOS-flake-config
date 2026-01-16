@@ -1,14 +1,13 @@
-{ lib, profile, nixvim, ... }:
+{ lib, profile, ... }:
 
 let
   mkSoftwarePackage = import ../_lib/mkSoftwarePackage.nix;
 in
 {
   imports = [
-    nixvim.homeModules.nixvim
     (mkSoftwarePackage {
       inherit lib profile;
-      name = "nixvim";
+      name = "neovim";
       inner = ./inner.nix;
     })
   ];
