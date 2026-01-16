@@ -42,7 +42,7 @@
           modules = [
             nur.modules.nixos.default
 
-            ./hosts/laptop/configuration.nix
+            ./hosts/laptop
 
             # Mark Home Manager as a submodule
             home-manager.nixosModules.home-manager
@@ -57,7 +57,7 @@
                 ];
 
                 # Users begin
-                users.shetty = import ./users/shetty/home.nix;
+                users.shetty = import ./users/shetty;
 
                 # Pass extra arguments to home-manager modules
                 extraSpecialArgs = {
