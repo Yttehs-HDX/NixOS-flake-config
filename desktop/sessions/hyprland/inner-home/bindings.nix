@@ -46,7 +46,7 @@ in {
       ", Print, exec, ${screenshotCmd}"
       "$mod SHIFT, S, exec, ${screenshotCmd}"
       "$mod SHIFT, T, exec, ${ocrCmd}"
-      "$mod ALT, P, exec, ${lockCmd}"
+      "$mod ALT, L, exec, ${lockCmd}"
       "$mod ALT, DELETE, exec, ${colorPickerCmd}"
 
       "$mod, left, movefocus, l"
