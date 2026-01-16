@@ -2,8 +2,8 @@
 
 let
   mkUser = import ./_lib/mkUserRegistryEntry.nix;
-  usernames = [
+  names = [
     "shetty"
   ];
 in
-builtins.listToAttrs (map (username: mkUser { inherit username; }) usernames)
+builtins.listToAttrs (map (name: mkUser { inherit name; }) names)

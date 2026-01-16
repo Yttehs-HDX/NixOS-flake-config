@@ -8,7 +8,7 @@ A reproducible NixOS setup for a personal laptop, bundled with Home Manager modu
 
 - `flake.nix` – top-level flake wiring Nixpkgs and Home Manager inputs.
 
-- `hosts/` – machine profiles; `laptop/` contains the hardware and system modules for the main device.
+- `hosts/` – machine profiles; `Shetty-Laptop/` contains the hardware and system modules for the main device.
 
 - `modules/` – reusable NixOS and Home Manager modules grouped by domain (core system, services, programs, theming, etc.).
 
@@ -23,7 +23,7 @@ A reproducible NixOS setup for a personal laptop, bundled with Home Manager modu
     _It is not a good idea to use my configuration directly. You should refer to it instead of applying it directly._
 
    ```bash
-   sudo nixos-rebuild switch --flake .#laptop
+   sudo nixos-rebuild switch --flake .#Shetty-Laptop
    ```
 
 ## Special Thanks

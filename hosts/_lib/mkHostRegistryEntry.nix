@@ -1,8 +1,8 @@
-{ hostname }:
+{ name }:
 
 let
   baseDir = ../.;
-  hostDir = baseDir + "/${hostname}";
+  hostDir = baseDir + "/${name}";
   profile = import (hostDir + "/profile.nix") { };
 in {
   name = profile.host.hostname;
