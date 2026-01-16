@@ -46,8 +46,8 @@ in
       "$mod, E, exec, ${emojiCmd}"
       ", Print, exec, ${screenshotCmd}"
       "$mod SHIFT, S, exec, ${screenshotCmd}"
-      "$mod SHIFT, L, exec, ${lockCmd}"
       "$mod SHIFT, T, exec, ${ocrCmd}"
+      "$mod ALT, P, exec, ${lockCmd}"
       "$mod ALT, DELETE, exec, ${colorPickerCmd}"
 
       "$mod, left, movefocus, l"
