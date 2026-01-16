@@ -2,10 +2,6 @@
 { system, hostProfile, hostModule, hostKey }:
 
 let
-  homeModules = [
-    ../../home
-    ../../desktop/home.nix
-  ];
   hostUsers = lib.attrByPath [ "host" "users" ] users.defaultUsers hostProfile;
   userProfiles = lib.genAttrs hostUsers (name: users.profiles.${name});
   userProfile = lib.foldl' lib.recursiveUpdate { }
@@ -30,6 +26,7 @@ let
 
     ../options.nix
     ../../users/options.nix
+    ../../system/default.nix
     hostModule
     profileModule
     userProfileModule
@@ -38,7 +35,8 @@ let
       home-manager = {
         useUserPackages = true;
         backupFileExtension = "hm-backup";
-        sharedModules = homeModules ++ [
+        sharedModules = [
+          ../../home
           ../options.nix
           ../../users/options.nix
           profileModule

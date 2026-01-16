@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./nix.nix
-    ./users.nix
+    ./global
+    ../desktop/nixos.nix
     ./home-aux
     ./software
   ];

@@ -46,7 +46,6 @@
   };
 
   home.software = {
-    home-manager.enable = true;
     zsh.enable = true;
     kitty.enable = true;
     kdeconnect.enable = true;

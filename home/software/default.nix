@@ -36,7 +36,6 @@ in
     ./git
     ./google-chrome
     ./hexecute
-    ./home-manager
     ./htop
     ./huggingface-hub
     ./hmcl
