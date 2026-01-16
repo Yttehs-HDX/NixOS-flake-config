@@ -27,47 +27,62 @@
 
   outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
     let
-      system = "x86_64-linux";
+      # Layer 1: registry + library
       lib = nixpkgs.lib;
-      userProfile = import ./users/shetty/profile.nix { };
-      hostProfile = import ./hosts/laptop/profile.nix { };
+      registry = {
+        hosts = import ./hosts { };
+        users = import ./users { };
+      };
+
+      # Layer 2: selection
+      selection = {
+        host = registry.hosts.defaultHost;
+        users = registry.users.defaultUsers;
+      };
+
+      # Layer 3: resolved targets
+      system = registry.hosts.systems.${selection.host};
+      hostProfile = registry.hosts.profiles.${selection.host};
+      userProfile = lib.foldl' lib.recursiveUpdate { }
+        (map (name: registry.users.profiles.${name}) selection.users);
       profile = lib.recursiveUpdate userProfile hostProfile;
+      homeManagerUsers = lib.genAttrs selection.users
+        (name: import registry.users.modules.${name});
+
+      # Layer 4: module graph
+      nixosModules = [
+        nur.modules.nixos.default
+
+        registry.hosts.modules.${selection.host}
+
+        home-manager.nixosModules.home-manager {
+          home-manager = {
+            useUserPackages = true;
+            backupFileExtension = "hm-backup";
+            sharedModules = [
+              ./home
+              ./desktop/home.nix
+            ];
+
+            users = homeManagerUsers;
+
+            extraSpecialArgs = {
+              nur = nur.legacyPackages.${system}.repos;
+              inherit hexecute nixvim;
+              inherit profile;
+            };
+          };
+        }
+      ];
     in {
+      # Layer 5: outputs
       nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
+        ${selection.host} = lib.nixosSystem {
           inherit system;
           specialArgs = {
             inherit profile;
           };
-          modules = [
-            nur.modules.nixos.default
-
-            ./hosts/laptop
-
-            # Mark Home Manager as a submodule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                # useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "hm-backup";
-                sharedModules = [
-                  ./home
-                  ./desktop/home.nix
-                ];
-
-                # Users begin
-                users.shetty = import ./users/shetty;
-
-                # Pass extra arguments to home-manager modules
-                extraSpecialArgs = {
-                  nur = nur.legacyPackages.${system}.repos;
-                  inherit hexecute nixvim;
-                  inherit profile;
-                };
-              };
-            }
-          ];
+          modules = nixosModules;
         };
       };
     };
