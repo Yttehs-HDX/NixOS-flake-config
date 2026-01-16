@@ -1,9 +1,9 @@
-{ lib, nur, home-manager, hexecute, nixvim, users, homeModules }:
+{ lib, nur, home-manager, hexecute, nixvim, users }:
 
 let
   registry = import ./registry.nix { };
   mkHost = import ./_lib/mkHost.nix {
-    inherit lib nur home-manager hexecute nixvim users homeModules;
+    inherit lib nur home-manager hexecute nixvim users;
   };
   hostProfiles = builtins.mapAttrs (_: v: v.profile) registry;
   hostModules = builtins.mapAttrs (_: v: v.module) registry;

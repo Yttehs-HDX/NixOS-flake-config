@@ -1,7 +1,11 @@
-{ lib, nur, home-manager, hexecute, nixvim, users, homeModules }:
+{ lib, nur, home-manager, hexecute, nixvim, users }:
 { system, hostProfile, hostModule, hostKey }:
 
 let
+  homeModules = [
+    ../../home
+    ../../desktop/home.nix
+  ];
   hostUsers = lib.attrByPath [ "host" "users" ] users.defaultUsers hostProfile;
   userProfiles = lib.genAttrs hostUsers (name: users.profiles.${name});
   userProfile = lib.foldl' lib.recursiveUpdate { }

@@ -8,7 +8,6 @@
     # Home Manager (for managing users)
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
-      # Sync with `nixpkgs`
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,10 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hexecute
+    # Hexecute (Custom utility for magic power)
     hexecute = { url = "github:ThatOtherAndrew/Hexecute"; };
 
-    # NixVim
+    # NixVim (Custom NixOS Vim configuration)
     nixvim = { url = "github:nix-community/nixvim/nixos-25.11"; };
   };
 
@@ -31,10 +30,6 @@
       users = import ./users { };
       hosts = import ./hosts {
         inherit lib nur home-manager hexecute nixvim users;
-        homeModules = [
-          ./home
-          ./desktop/home.nix
-        ];
       };
     in {
       nixosConfigurations = hosts.nixosConfigurations;
