@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./config.nix
+    ./software/options.nix
   ];
 }

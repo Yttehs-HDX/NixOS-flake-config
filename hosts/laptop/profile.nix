@@ -2,7 +2,7 @@
 
 {
   host = {
-    name = "Shetty-Laptop";
+    hostname = "Shetty-Laptop";
     users = [ "shetty" ];
     system = "x86_64-linux";
   };

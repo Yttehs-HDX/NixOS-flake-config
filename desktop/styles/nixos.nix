@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./options/nixos.nix
+    ./options.nix
   ];
 }

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./options/home.nix
+    ./options.nix
     ./fonts/home.nix
     ./themes/home.nix
   ];

@@ -1,7 +1,7 @@
-{ config, lib, pkgs, profile, ... }:
+{ config, lib, pkgs, ... }:
 
 let
-  mkSddm = import ./_lib/mkSddm.nix { inherit lib profile; };
+  mkSddm = import ./_lib/mkSddm.nix { inherit lib config; };
 in {
   imports = [
     ./themes/catppuccin.nix

@@ -2,7 +2,7 @@
 
 {
   user = {
-    name = "shetty";
+    username = "shetty";
     description = "Shetty Yttehs";
     isSuper = true;
   };

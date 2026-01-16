@@ -1,7 +1,7 @@
-{ profile, ... }:
+{ config, ... }:
 
 let
-  username = profile.user.name;
+  username = config.profile.users.shetty.user.username;
 in {
   nixpkgs.config.allowUnfree = true;
 

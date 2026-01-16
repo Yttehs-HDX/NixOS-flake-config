@@ -1,14 +1,16 @@
-{ lib, profile, ... }:
+{ lib, config, ... }:
 
 let
-  userName = profile.user.name;
-  userDescription = profile.user.description;
-  isSuper = profile.user.isSuper;
+  profileUsers = config.profile.users or {};
+  mkUser = _: userProfile: {
+    name = userProfile.user.username;
+    value = {
+      isNormalUser = true;
+      description = userProfile.user.description or "";
+      extraGroups = lib.optionals (userProfile.user.isSuper or false) [ "wheel" ];
+    };
+  };
 in
 {
-  users.users.${userName} = {
-    isNormalUser = true;
-    description = userDescription;
-    extraGroups = lib.optionals isSuper [ "wheel" ];
-  };
+  users.users = lib.mapAttrs' mkUser profileUsers;
 }
