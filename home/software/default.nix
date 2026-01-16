@@ -4,11 +4,10 @@ let
   softwareSubmodule = lib.types.submodule ({ ... }: {
     options.enable = lib.mkEnableOption "Enable a software package.";
   });
-in
-{
+in {
   options.software = lib.mkOption {
     type = lib.types.attrsOf softwareSubmodule;
-    default = {};
+    default = { };
     description = "Per-package software toggles for Home Manager.";
   };
 

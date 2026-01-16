@@ -2,9 +2,7 @@
 
 let
   hostSubmodule = { ... }: {
-    imports = [
-      ../system/options.nix
-    ];
+    imports = [ ../system/options.nix ];
 
     options.host = {
       hostname = lib.mkOption {
@@ -13,7 +11,7 @@ let
       };
       users = lib.mkOption {
         type = lib.types.listOf lib.types.str;
-        default = [];
+        default = [ ];
         description = "Profile users for the host.";
       };
       system = lib.mkOption {
@@ -23,18 +21,15 @@ let
     };
 
     options.system = lib.mkOption {
-      type = lib.types.submodule {
-        options = {};
-      };
-      default = {};
+      type = lib.types.submodule { options = { }; };
+      default = { };
       description = "Profile system settings.";
     };
   };
-in
-{
+in {
   options.profile.hosts = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule hostSubmodule);
-    default = {};
+    default = { };
     description = "Per-host profile definitions.";
   };
 }

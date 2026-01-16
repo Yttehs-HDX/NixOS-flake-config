@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./hyprland/nixos.nix
-  ];
+  imports = [ ./hyprland/nixos.nix ];
 }

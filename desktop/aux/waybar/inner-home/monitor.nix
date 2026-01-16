@@ -1,7 +1,6 @@
 { ... }:
 
-let
-  toggleMuteCmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+let toggleMuteCmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
 in {
   programs.waybar.settings.main = {
     "group/monitor" = {

@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./sddm/nixos.nix
-  ];
+  imports = [ ./sddm/nixos.nix ];
 }

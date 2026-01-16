@@ -1,10 +1,9 @@
 { config, lib, ... }:
 
 let
-  profileUsers = config.profile.users or {};
+  profileUsers = config.profile.users or { };
   userNames = builtins.attrNames profileUsers;
-in
-{
+in {
   programs.adb.enable = true;
   users.groups.adbusers.members = userNames;
 }

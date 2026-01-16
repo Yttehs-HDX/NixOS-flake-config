@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./software/options.nix
-  ];
+  imports = [ ./software/options.nix ];
 }

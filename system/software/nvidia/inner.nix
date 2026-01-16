@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 
-let
-  videoDrivers = [ "nvidia" ];
+let videoDrivers = [ "nvidia" ];
 in {
   nixpkgs.config = {
     nvidia.acceptLicense = true;

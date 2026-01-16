@@ -1,14 +1,13 @@
 { config, lib, ... }:
 
 let
-  mkCatppuccinTheme =
-    import ../../../../desktop/styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
+  mkCatppuccinTheme = import
+    ../../../../desktop/styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
       inherit lib config;
     };
 in {
   config = mkCatppuccinTheme ({ style, ... }:
-    let
-      palette = style.theme.palette;
+    let palette = style.theme.palette;
     in {
       xdg.configFile."btop/themes/catppuccin-mocha.theme".text = ''
         # Main background, empty for terminal default, need to be empty if you want transparent background

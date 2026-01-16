@@ -1,10 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.cliphist
-    pkgs.wl-clipboard
-  ];
+  home.packages = [ pkgs.cliphist pkgs.wl-clipboard ];
 
   systemd.user.services.wl-clipboard-cliphist-watch = {
     Unit = {
@@ -13,11 +10,10 @@
       PartOf = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
+      ExecStart =
+        "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
       Restart = "on-failure";
     };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
+    Install = { WantedBy = [ "graphical-session.target" ]; };
   };
 }

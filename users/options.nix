@@ -2,10 +2,7 @@
 
 let
   userSubmodule = { ... }: {
-    imports = [
-      ../desktop/options.nix
-      ../home/options.nix
-    ];
+    imports = [ ../desktop/options.nix ../home/options.nix ];
 
     options.user = {
       username = lib.mkOption {
@@ -23,11 +20,10 @@ let
       };
     };
   };
-in
-{
+in {
   options.profile.users = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule userSubmodule);
-    default = {};
+    default = { };
     description = "Per-user profile definitions.";
   };
 }

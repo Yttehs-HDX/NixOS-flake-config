@@ -1,8 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./nix.nix
-    ./users.nix
-  ];
+  imports = [ ./nix.nix ./users.nix ];
 }

@@ -4,23 +4,20 @@
 let
   hostUsers = lib.attrByPath [ "host" "users" ] users.defaultUsers hostProfile;
   userProfiles = lib.genAttrs hostUsers (name: users.profiles.${name});
-  userProfile = lib.foldl' lib.recursiveUpdate { }
-    (builtins.attrValues userProfiles);
+  userProfile =
+    lib.foldl' lib.recursiveUpdate { } (builtins.attrValues userProfiles);
   profile = lib.recursiveUpdate userProfile hostProfile;
-  hostProfiles = {
-    ${hostKey} = hostProfile;
-  };
+  hostProfiles = { ${hostKey} = hostProfile; };
   profileModule = {
     config.profile = {
       users = userProfiles;
       hosts = hostProfiles;
     };
   };
-  userProfileModule = import ../../users/_lib/mkUserProfileModule.nix {
-    profile = userProfiles;
-  };
-  homeManagerUsers = lib.genAttrs hostUsers
-    (name: import users.modules.${name});
+  userProfileModule =
+    import ../../users/_lib/mkUserProfileModule.nix { profile = userProfiles; };
+  homeManagerUsers =
+    lib.genAttrs hostUsers (name: import users.modules.${name});
   nixosModules = [
     nur.modules.nixos.default
 
@@ -31,7 +28,8 @@ let
     profileModule
     userProfileModule
 
-    home-manager.nixosModules.home-manager {
+    home-manager.nixosModules.home-manager
+    {
       home-manager = {
         useUserPackages = true;
         backupFileExtension = "hm-backup";
@@ -55,8 +53,6 @@ let
   ];
 in lib.nixosSystem {
   inherit system;
-  specialArgs = {
-    inherit profile;
-  };
+  specialArgs = { inherit profile; };
   modules = nixosModules;
 }

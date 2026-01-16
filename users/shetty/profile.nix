@@ -22,9 +22,7 @@
 
       fonts = {
         default = "SF Pro";
-        mono = {
-          default = "JetBrainsMono Nerd Font";
-        };
+        mono = { default = "JetBrainsMono Nerd Font"; };
         nerd-fonts-jetbrains-mono.enable = true;
         noto-fonts.enable = true;
         noto-fonts-cjk-sans.enable = true;

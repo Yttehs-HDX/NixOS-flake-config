@@ -1,8 +1,9 @@
 { lib, config, ... }:
 
 let
-  hosts = config.profile.hosts or {};
-  hostProfile = if hosts == {} then {} else builtins.head (builtins.attrValues hosts);
+  hosts = config.profile.hosts or { };
+  hostProfile =
+    if hosts == { } then { } else builtins.head (builtins.attrValues hosts);
   hostName = hostProfile.host.hostname or "nixos";
 in {
   networking = {

@@ -1,10 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./global
-    ../desktop/home.nix
-    ./options.nix
-    ./software
-  ];
+  imports = [ ./global ../desktop/home.nix ./options.nix ./software ];
 }

@@ -6,8 +6,10 @@ let
 in {
   config = mkCatppuccinTheme ({ flavor, accent, catppuccin, ... }:
     let
-      catppuccinKvantum =
-        pkgs.catppuccin-kvantum.override { variant = flavor; inherit accent; };
+      catppuccinKvantum = pkgs.catppuccin-kvantum.override {
+        variant = flavor;
+        inherit accent;
+      };
     in {
       qt = {
         enable = true;

@@ -1,7 +1,6 @@
 { config, ... }:
 
-let
-  palette = config.desktop.style.theme.palette;
+let palette = config.desktop.style.theme.palette;
 in {
   services.swaync = {
     enable = true;

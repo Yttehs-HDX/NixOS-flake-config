@@ -1,7 +1,6 @@
 { ... }:
 
-let
-  playPauseCmd = "playerctl play-pause";
+let playPauseCmd = "playerctl play-pause";
 in {
   programs.waybar.settings.main = {
     cava = {

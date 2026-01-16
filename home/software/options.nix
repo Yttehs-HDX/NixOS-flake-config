@@ -8,11 +8,10 @@ let
       description = "Enable a home software package in the profile.";
     };
   });
-in
-{
+in {
   options.home.software = lib.mkOption {
     type = lib.types.attrsOf softwareSubmodule;
-    default = {};
+    default = { };
     description = "Profile toggles for home software packages.";
   };
 }

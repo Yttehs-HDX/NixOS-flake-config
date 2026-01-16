@@ -1,18 +1,18 @@
 { lib, config, ... }:
 
 let
-  profileUsers = config.profile.users or {};
-  userName =
-    if config ? home && config.home ? username then
-      config.home.username
-    else if profileUsers == {} then
-      null
-    else
-      builtins.head (builtins.attrNames profileUsers);
-  userProfile = if userName == null then {} else (profileUsers.${userName} or {});
-  styleProfile = (userProfile.desktop or {}).style or {};
-  fontProfile = styleProfile.fonts or {};
-  monoProfile = fontProfile.mono or {};
+  profileUsers = config.profile.users or { };
+  userName = if config ? home && config.home ? username then
+    config.home.username
+  else if profileUsers == { } then
+    null
+  else
+    builtins.head (builtins.attrNames profileUsers);
+  userProfile =
+    if userName == null then { } else (profileUsers.${userName} or { });
+  styleProfile = (userProfile.desktop or { }).style or { };
+  fontProfile = styleProfile.fonts or { };
+  monoProfile = fontProfile.mono or { };
 in {
   options.desktop.style.fonts = lib.mkOption {
     type = lib.types.submodule {
@@ -32,7 +32,7 @@ in {
               };
             };
           };
-          default = {};
+          default = { };
           description = "Monospace font settings.";
         };
       };
@@ -46,7 +46,7 @@ in {
         };
       });
     };
-    default = {};
+    default = { };
     description = "Font families for UI and monospace usage.";
   };
 

@@ -1,10 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./global
-    ../desktop/nixos.nix
-    ./home-aux
-    ./software
-  ];
+  imports = [ ./global ../desktop/nixos.nix ./home-aux ./software ];
 }

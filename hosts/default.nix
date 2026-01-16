@@ -18,10 +18,11 @@ in {
   inherit systems;
   profiles = hostProfiles;
   modules = hostModules;
-  nixosConfigurations = lib.mapAttrs (_: v: mkHost {
-    hostKey = v.hostKey;
-    system = v.system;
-    hostProfile = v.profile;
-    hostModule = v.module;
-  }) hostEntries;
+  nixosConfigurations = lib.mapAttrs (_: v:
+    mkHost {
+      hostKey = v.hostKey;
+      system = v.system;
+      hostProfile = v.profile;
+      hostModule = v.module;
+    }) hostEntries;
 }

@@ -27,7 +27,7 @@
       tooltip-format-off = "Off";
       tooltip-format-disabled = "Off";
       tooltip-format-enumerate-connected =
-        "{device_alias}\t{device_battery_percentage}%";
+        "{device_alias}	{device_battery_percentage}%";
     };
   };
 }

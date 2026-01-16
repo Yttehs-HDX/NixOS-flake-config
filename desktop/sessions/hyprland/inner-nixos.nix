@@ -1,9 +1,7 @@
 { ... }:
 
 {
-  imports = [
-    ./aux/nixos.nix
-  ];
+  imports = [ ./aux/nixos.nix ];
 
   programs.hyprland.enable = true;
 }

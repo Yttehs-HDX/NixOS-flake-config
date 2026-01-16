@@ -1,18 +1,18 @@
 { lib, config, ... }:
 
 let
-  palettes = import ./catppuccin/inner/palettes.nix {};
-  profileUsers = config.profile.users or {};
-  userName =
-    if config ? home && config.home ? username then
-      config.home.username
-    else if profileUsers == {} then
-      null
-    else
-      builtins.head (builtins.attrNames profileUsers);
-  userProfile = if userName == null then {} else (profileUsers.${userName} or {});
-  styleProfile = (userProfile.desktop or {}).style or {};
-  themeProfile = styleProfile.theme or {};
+  palettes = import ./catppuccin/inner/palettes.nix { };
+  profileUsers = config.profile.users or { };
+  userName = if config ? home && config.home ? username then
+    config.home.username
+  else if profileUsers == { } then
+    null
+  else
+    builtins.head (builtins.attrNames profileUsers);
+  userProfile =
+    if userName == null then { } else (profileUsers.${userName} or { });
+  styleProfile = (userProfile.desktop or { }).style or { };
+  themeProfile = styleProfile.theme or { };
 in {
   options.desktop.style.theme = lib.mkOption {
     type = lib.types.submodule {
@@ -39,11 +39,12 @@ in {
           type = lib.types.attrsOf lib.types.str;
           internal = true;
           readOnly = true;
-          description = "Derived palette values (computed from desktop.style.theme.flavor).";
+          description =
+            "Derived palette values (computed from desktop.style.theme.flavor).";
         };
       };
     };
-    default = {};
+    default = { };
     description = "Theme selection and derived values for style modules.";
   };
 

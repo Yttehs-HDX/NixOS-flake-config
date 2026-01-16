@@ -1,7 +1,6 @@
 { config, ... }:
 
-let
-  username = config.profile.users.shetty.user.username;
+let username = config.profile.users.shetty.user.username;
 in {
   home = {
     username = username;

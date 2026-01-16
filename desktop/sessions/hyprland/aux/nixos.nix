@@ -2,7 +2,5 @@
 
 {
   # Force imports for Hyprland session
-  imports = [
-    ../../../aux/gnome-keyring/inner-nixos.nix
-  ];
+  imports = [ ../../../aux/gnome-keyring/inner-nixos.nix ];
 }

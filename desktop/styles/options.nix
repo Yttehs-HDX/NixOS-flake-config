@@ -1,8 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./themes/options.nix
-    ./fonts/options.nix
-  ];
+  imports = [ ./themes/options.nix ./fonts/options.nix ];
 }

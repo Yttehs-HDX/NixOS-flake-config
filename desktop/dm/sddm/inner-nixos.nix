@@ -1,11 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let
-  mkSddm = import ./_lib/mkSddm.nix { inherit lib config; };
+let mkSddm = import ./_lib/mkSddm.nix { inherit lib config; };
 in {
-  imports = [
-    ./themes/catppuccin.nix
-  ];
+  imports = [ ./themes/catppuccin.nix ];
 
   config = mkSddm (_: {
     services.displayManager.sddm = {

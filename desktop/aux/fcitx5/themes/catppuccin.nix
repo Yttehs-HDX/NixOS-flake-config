@@ -6,9 +6,6 @@ let
       inherit lib config;
     };
 in {
-  config = mkCatppuccinTheme (_: {
-    i18n.inputMethod.fcitx5.addons = with pkgs; [
-      catppuccin-fcitx5
-    ];
-  });
+  config = mkCatppuccinTheme
+    (_: { i18n.inputMethod.fcitx5.addons = with pkgs; [ catppuccin-fcitx5 ]; });
 }

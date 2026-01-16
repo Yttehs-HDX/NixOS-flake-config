@@ -1,7 +1,6 @@
 { config, ... }:
 
-let
-  palette = config.desktop.style.theme.palette;
+let palette = config.desktop.style.theme.palette;
 in {
   programs.waybar.style = ''
     @define-color rosewater ${palette.rosewater};

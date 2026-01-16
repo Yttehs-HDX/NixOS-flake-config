@@ -11,8 +11,7 @@ let
   emojiCmd = "rofimoji --action copy --prompt '󰞅  emoji' --use-icons";
   screenshotCmd = "grimblast --freeze save area - | swappy -f -";
   colorPickerCmd = "hyprpicker --autocopy --format=hex";
-in
-{
+in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];

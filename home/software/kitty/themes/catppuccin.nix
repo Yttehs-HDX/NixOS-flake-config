@@ -1,8 +1,8 @@
 { config, lib, ... }:
 
 let
-  mkCatppuccinTheme =
-    import ../../../../desktop/styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
+  mkCatppuccinTheme = import
+    ../../../../desktop/styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
       inherit lib config;
     };
   capitalize = value:

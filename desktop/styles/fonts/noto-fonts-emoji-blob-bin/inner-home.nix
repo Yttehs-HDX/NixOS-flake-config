@@ -5,8 +5,6 @@
 
   fonts.fontconfig = {
     enable = true;
-    defaultFonts = {
-      emoji = [ "Noto Emoji Blob" ];
-    };
+    defaultFonts = { emoji = [ "Noto Emoji Blob" ]; };
   };
 }

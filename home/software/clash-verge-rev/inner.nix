@@ -13,8 +13,6 @@
       ExecStart = "${pkgs.clash-verge-rev}/bin/clash-verge";
       Restart = "on-failure";
     };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
+    Install = { WantedBy = [ "graphical-session.target" ]; };
   };
 }

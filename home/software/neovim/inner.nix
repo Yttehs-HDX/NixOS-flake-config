@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./themes/catppuccin.nix
-  ];
+  imports = [ ./themes/catppuccin.nix ];
 
   programs.nixvim = {
     enable = true;

@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./inner-nixos.nix
-  ];
+  imports = [ ./inner-nixos.nix ];
 }

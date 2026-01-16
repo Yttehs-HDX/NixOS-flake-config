@@ -11,11 +11,7 @@
         "Noto Sans Mono CJK TC"
         "Noto Sans Mono CJK SC"
       ];
-      sansSerif = [
-        "Noto Sans CJK JP"
-        "Noto Sans CJK TC"
-        "Noto Sans CJK SC"
-      ];
+      sansSerif = [ "Noto Sans CJK JP" "Noto Sans CJK TC" "Noto Sans CJK SC" ];
     };
   };
 }

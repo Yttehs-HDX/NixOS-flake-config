@@ -28,10 +28,7 @@
     let
       lib = nixpkgs.lib;
       users = import ./users { };
-      hosts = import ./hosts {
-        inherit lib nur home-manager hexecute nixvim users;
-      };
-    in {
-      nixosConfigurations = hosts.nixosConfigurations;
-    };
+      hosts =
+        import ./hosts { inherit lib nur home-manager hexecute nixvim users; };
+    in { nixosConfigurations = hosts.nixosConfigurations; };
 }

@@ -8,11 +8,10 @@ let
       description = "Enable a desktop feature in the profile.";
     };
   });
-in
-{
+in {
   options.desktop.aux = lib.mkOption {
     type = lib.types.attrsOf toggleItem;
-    default = {};
+    default = { };
     description = "Profile desktop auxiliary components.";
   };
 }

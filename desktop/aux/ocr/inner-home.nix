@@ -30,7 +30,4 @@ let
       echo -n "$cleaned" | wl-copy
     '';
   };
-in
-{
-  home.packages = [ ocr ];
-}
+in { home.packages = [ ocr ]; }

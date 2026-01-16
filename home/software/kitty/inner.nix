@@ -1,9 +1,7 @@
 { config, ... }:
 
 {
-  imports = [
-    ./themes/catppuccin.nix
-  ];
+  imports = [ ./themes/catppuccin.nix ];
 
   programs.kitty = {
     enable = true;

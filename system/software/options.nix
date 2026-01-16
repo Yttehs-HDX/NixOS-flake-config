@@ -8,11 +8,10 @@ let
       description = "Enable a system software package in the profile.";
     };
   });
-in
-{
+in {
   options.system.software = lib.mkOption {
     type = lib.types.attrsOf softwareSubmodule;
-    default = {};
+    default = { };
     description = "Profile toggles for system software packages.";
   };
 }
