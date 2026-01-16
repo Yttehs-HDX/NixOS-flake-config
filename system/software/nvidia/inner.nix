@@ -1,9 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
-let videoDrivers = [ "nvidia" ];
+let
+  videoDrivers = [ "nvidia" ];
 in {
-  hardware.bluetooth.enable = true;
-
   nixpkgs.config = {
     nvidia.acceptLicense = true;
     cudaSupport = true;

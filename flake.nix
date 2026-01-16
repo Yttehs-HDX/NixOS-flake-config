@@ -28,7 +28,10 @@
   outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
     let
       system = "x86_64-linux";
-      profile = import ./users/shetty/profile.nix { };
+      lib = nixpkgs.lib;
+      userProfile = import ./users/shetty/profile.nix { };
+      hostProfile = import ./hosts/laptop/profile.nix { };
+      profile = lib.recursiveUpdate userProfile hostProfile;
     in {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {

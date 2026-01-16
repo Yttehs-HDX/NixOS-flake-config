@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   time.timeZone = "Asia/Taipei";
@@ -12,4 +12,3 @@
     ];
   };
 }
-

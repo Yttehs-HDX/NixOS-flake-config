@@ -1,6 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ lib, profile, ... }:
 
-let hostName = "Shetty-Laptop";
+let
+  hostName = profile.host.name or "nixos";
 in {
   networking = {
     inherit hostName;
@@ -10,7 +11,5 @@ in {
       127.0.0.1 ${hostName}.local
     '';
     networkmanager.enable = true;
-    firewall.enable = false;
   };
 }
-
