@@ -16,10 +16,12 @@ let
   # This allows system modules to check what any user has enabled
   allUsersProfile = lib.foldl' lib.recursiveUpdate { }
     (map (name: users.profiles.${name}) hostUsers);
-  systemProfile = lib.recursiveUpdate allUsersProfile hostProfile // {
-    # Add a users attribute containing individual user profiles
-    users = lib.genAttrs hostUsers (name: users.profiles.${name});
-  };
+  systemProfile = lib.recursiveUpdate
+    (lib.recursiveUpdate allUsersProfile hostProfile)
+    {
+      # Add a users attribute containing individual user profiles
+      users = lib.genAttrs hostUsers (name: users.profiles.${name});
+    };
   
   nixosModules = [
     nur.modules.nixos.default
