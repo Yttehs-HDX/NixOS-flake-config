@@ -1,9 +1,7 @@
 { ... }:
 
 {
-  host = {
-    name = "Shetty-Laptop";
-  };
+  host.name = "Shetty-Laptop";
 
   system = {
     software = {
