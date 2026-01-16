@@ -13,6 +13,6 @@
     ./users.nix
     ./programs.nix
     ./virtualisation.nix
-    ./home-aux/nixos.nix
+    ./home-aux
   ];
 }
