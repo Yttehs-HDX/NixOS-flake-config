@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 
 let
   mkUser = import ./_lib/mkUserRegistryEntry.nix;

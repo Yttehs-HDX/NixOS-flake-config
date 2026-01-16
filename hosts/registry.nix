@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 
 let
   mkHost = import ./_lib/mkHostRegistryEntry.nix;
