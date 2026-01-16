@@ -1,6 +1,6 @@
-{
-  shetty = {
-    profile = import ./shetty/profile.nix { };
-    module = ./shetty;
-  };
-}
+let
+  mkUser = import ./_lib/mkUserRegistryEntry.nix;
+in
+builtins.listToAttrs [
+  (mkUser { username = "shetty"; })
+]
