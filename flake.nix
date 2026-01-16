@@ -43,7 +43,6 @@
             nur.modules.nixos.default
 
             ./hosts/laptop/configuration.nix
-            ./hosts/laptop/hardware-configuration.nix
 
             # Mark Home Manager as a submodule
             home-manager.nixosModules.home-manager
