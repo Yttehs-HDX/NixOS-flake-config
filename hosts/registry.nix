@@ -1,6 +1,9 @@
+{ }:
+
 let
   mkHost = import ./_lib/mkHostRegistryEntry.nix;
+  hostnames = [
+    "laptop"
+  ];
 in
-builtins.listToAttrs [
-  (mkHost { hostname = "laptop"; })
-]
+builtins.listToAttrs (map (hostname: mkHost { inherit hostname; }) hostnames)

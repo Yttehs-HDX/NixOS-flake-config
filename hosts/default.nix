@@ -1,7 +1,7 @@
 { lib, nur, home-manager, hexecute, nixvim, users, homeModules }:
 
 let
-  registry = import ./registry.nix;
+  registry = import ./registry.nix { };
   mkHost = import ./_lib/mkHost.nix {
     inherit lib nur home-manager hexecute nixvim users homeModules;
   };
