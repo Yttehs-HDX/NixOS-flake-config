@@ -4,7 +4,7 @@
   imports = [
     # Hardware scan (auto generated)
     ./hardware-configuration.nix
-    ../../system/nixos.nix
+    ../../system/default.nix
     ../../desktop/nixos.nix
   ];
 
