@@ -1,7 +1,11 @@
 { ... }:
 
 {
-  host.name = "Shetty-Laptop";
+  host = {
+    name = "Shetty-Laptop";
+    users = [ "shetty" ];
+    system = "x86_64-linux";
+  };
 
   system = {
     software = {

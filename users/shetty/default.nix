@@ -1,11 +1,13 @@
-{ ... }:
+{ profile, ... }:
 
-{
+let
+  username = profile.user.name;
+in {
   nixpkgs.config.allowUnfree = true;
 
   home = {
-    username = "shetty";
-    homeDirectory = "/home/shetty";
+    username = username;
+    homeDirectory = "/home/${username}";
   };
 
   home.stateVersion = "25.11";
