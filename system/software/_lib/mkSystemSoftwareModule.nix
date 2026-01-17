@@ -1,8 +1,3 @@
-# mkSystemSoftwareModule: Creates a module that conditionally applies config based on host profile
-# Usage in inner module:
-#   { config, lib, ... }:
-#   let mkSystemSoftware = import ../_lib/mkSystemSoftwareModule.nix { inherit lib config; name = "xxx"; };
-#   in mkSystemSoftware { services.xxx.enable = true; }
 { lib, config, name }:
 
 let

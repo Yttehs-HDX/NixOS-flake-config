@@ -1,8 +1,3 @@
-# mkFont: Creates a module that conditionally applies font config based on user profiles
-# Usage in inner module:
-#   { config, lib, pkgs, ... }:
-#   let mkFont = import ../_lib/mkFont.nix { inherit lib config; name = "xxx"; };
-#   in mkFont { fonts.packages = [ pkgs.xxx ]; }
 { lib, config, name ? null }:
 
 let

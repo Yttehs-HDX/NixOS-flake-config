@@ -2,7 +2,6 @@
 
 let palettes = import ./catppuccin/inner/palettes.nix { };
 in {
-  # This is imported inside userSubmodule, so options are relative to user profile
   options.desktop.style.theme = lib.mkOption {
     type = lib.types.submodule {
       options = {

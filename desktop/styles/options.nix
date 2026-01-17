@@ -1,7 +1,6 @@
 { lib, config, ... }:
 
 let
-  # In home-manager context, get current user's profile
   username = config.home.username or null;
   userProfile =
     if username != null then config.profile.users.${username} or { } else { };
@@ -9,8 +8,6 @@ let
 in {
   imports = [ ./themes/options.nix ./fonts/options.nix ];
 
-  # Expose user's desktop.style as _derivedStyle for convenient access
-  # This avoids conflict with structured options defined in submodules
   options._derivedStyle = lib.mkOption {
     type = lib.types.attrsOf lib.types.anything;
     default = { };
