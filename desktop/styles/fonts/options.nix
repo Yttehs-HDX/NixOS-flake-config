@@ -1,4 +1,4 @@
-{ lib, userProfilesAttr, ... }:
+{ lib, ... }:
 
 {
   options.desktop.style.fonts = lib.mkOption {

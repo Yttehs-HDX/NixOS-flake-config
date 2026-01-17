@@ -5,5 +5,5 @@ let
     inherit lib config;
     name = "htop";
   };
-  inner = import ./inner.nix;
+  inner = import ./inner.nix { };
 in mkSoftware inner

@@ -1,1 +1,5 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [ refind ]; }
+{ pkgs, ... }:
+
+{
+  environment.systemPackages = with pkgs; [ refind ];
+}

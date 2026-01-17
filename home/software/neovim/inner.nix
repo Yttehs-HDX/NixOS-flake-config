@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   imports = [ ./themes/catppuccin.nix ];
 
   programs.nixvim = {
