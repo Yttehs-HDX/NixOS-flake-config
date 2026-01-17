@@ -1,12 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  mkSoftware = import ../_lib/mkSoftwarePackage.nix {
-    inherit lib config;
-    name = "clash-verge-rev";
-  };
-in mkSoftware {
-
+{
   home.packages = [ pkgs.clash-verge-rev ];
 
   systemd.user.services.clash-verge-rev = {

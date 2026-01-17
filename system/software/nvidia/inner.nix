@@ -1,13 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
-let
-  mkSystemSoftware = import ../_lib/mkSystemSoftwareModule.nix {
-    inherit lib config;
-    name = "nvidia";
-  };
-
-  videoDrivers = [ "nvidia" ];
-in mkSystemSoftware {
+let videoDrivers = [ "nvidia" ];
+in {
   nixpkgs.config = {
     nvidia.acceptLicense = true;
     cudaSupport = true;

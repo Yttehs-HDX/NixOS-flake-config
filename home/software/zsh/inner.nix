@@ -1,12 +1,4 @@
-{ config, lib, ... }:
-
-let
-  mkSoftware = import ../_lib/mkSoftwarePackage.nix {
-    inherit lib config;
-    name = "zsh";
-  };
-in mkSoftware {
-
+{ ... }: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
