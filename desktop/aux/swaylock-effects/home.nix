@@ -5,5 +5,5 @@ let
     inherit lib config;
     name = "swaylock-effects";
   };
-  inner = import ./inner-home.nix { inherit pkgs; };
+  inner = import ./inner-home.nix { inherit config pkgs; };
 in mkAux inner
