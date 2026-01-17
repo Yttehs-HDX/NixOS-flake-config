@@ -26,9 +26,4 @@ let
         --separator-color 00000000
     '';
   };
-in {
-  home.packages = [
-    pkgs.swaylock-effects
-    swaylock-themed
-  ];
-}
+in { home.packages = [ pkgs.swaylock-effects swaylock-themed ]; }
