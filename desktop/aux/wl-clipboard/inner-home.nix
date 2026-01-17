@@ -1,11 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  mkAux = import ../_lib/mkAuxPackage.nix {
-    inherit lib config;
-    name = "wl-clipboard";
-  };
-in mkAux {
+{
   home.packages = [ pkgs.cliphist pkgs.wl-clipboard ];
   systemd.user.services.wl-clipboard-cliphist-watch = {
     Unit = {

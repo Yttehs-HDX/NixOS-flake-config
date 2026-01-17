@@ -1,5 +1,9 @@
-{ ... }:
+{ config, lib, ... }:
 
-{
-  imports = [ ./inner-home.nix ];
-}
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "waybar";
+  };
+  inner = import ./inner-home { };
+in mkAux inner

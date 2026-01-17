@@ -1,16 +1,11 @@
-{ config, lib, ... }:
+{ ... }:
 
 let
-  mkAux = import ../_lib/mkAuxPackage.nix {
-    inherit lib config;
-    name = "hypridle";
-  };
-
   lockCmd =
     "swaylock --screenshots --clock --text-color=b7bdf8 --text-caps-lock-color=f5bde6 --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 25x25 --effect-vignette 0.5:0.5 --ring-color b7bdf8 --key-hl-color f5bde6 --line-color 00000000 --inside-color 00000088 --separator-color 00000000";
   displayOnCmd = "hyprctl dispatch dpms on";
   displayOffCmd = "hyprctl dispatch dpms off";
-in mkAux {
+in {
   services.hypridle = {
     enable = true;
     settings = {

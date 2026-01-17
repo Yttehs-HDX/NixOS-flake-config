@@ -1,8 +1,5 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  mkAux = import ../_lib/mkAuxPackage.nix {
-    inherit lib config;
-    name = "swappy";
-  };
-in mkAux { home.packages = [ pkgs.swappy ]; }
+{
+  home.packages = [ pkgs.swappy ];
+}

@@ -1,8 +1,5 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  mkAux = import ../_lib/mkAuxPackage.nix {
-    inherit lib config;
-    name = "pulseaudio";
-  };
-in mkAux { home.packages = [ pkgs.pulseaudio ]; }
+{
+  home.packages = [ pkgs.pulseaudio ];
+}

@@ -1,8 +1,5 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  mkAux = import ../_lib/mkAuxPackage.nix {
-    inherit lib config;
-    name = "vlc";
-  };
-in mkAux { home.packages = [ pkgs.vlc ]; }
+{
+  home.packages = [ pkgs.vlc ];
+}

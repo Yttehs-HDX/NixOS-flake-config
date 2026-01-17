@@ -1,5 +1,9 @@
-{ ... }:
+{ config, lib, ... }:
 
-{
-  imports = [ ./inner-nixos.nix ];
-}
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "gnome-keyring";
+  };
+  inner = import ./inner-nixos.nix { };
+in mkAux inner
