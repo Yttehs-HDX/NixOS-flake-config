@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  home.packages = [ pkgs.seahorse ];
-}
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "seahorse";
+  };
+in mkAux { home.packages = [ pkgs.seahorse ]; }

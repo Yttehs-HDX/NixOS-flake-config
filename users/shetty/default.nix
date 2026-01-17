@@ -1,9 +1,11 @@
 { config, ... }:
 
-let username = config.profile.users.shetty.user.username;
+let
+  username = "shetty";
+  userProfile = config.profile.users.${username} or { };
 in {
   home = {
-    username = username;
+    inherit username;
     homeDirectory = "/home/${username}";
   };
 

@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
+let
+  mkFont = import ../_lib/mkFont.nix {
+    inherit lib config;
+    name = "noto-fonts-cjk-sans";
+  };
+in mkFont {
+
   home.packages = [ pkgs.noto-fonts-cjk-sans ];
 
   fonts.fontconfig = {

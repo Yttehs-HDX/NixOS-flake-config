@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  home.packages = [ pkgs.rofimoji ];
-}
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "rofimoji";
+  };
+in mkAux { home.packages = [ pkgs.rofimoji ]; }

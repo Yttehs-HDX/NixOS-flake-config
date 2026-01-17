@@ -1,7 +1,7 @@
 { lib, ... }:
 
 let
-  userSubmodule = { ... }: {
+  userSubmodule = lib.types.submodule {
     imports = [ ../desktop/options.nix ../home/options.nix ];
 
     options.user = {
@@ -11,6 +11,7 @@ let
       };
       description = lib.mkOption {
         type = lib.types.str;
+        default = "";
         description = "Profile user description.";
       };
       isSuper = lib.mkOption {
@@ -22,8 +23,8 @@ let
   };
 in {
   options.profile.users = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule userSubmodule);
+    type = lib.types.attrsOf userSubmodule;
     default = { };
-    description = "Per-user profile definitions.";
+    description = "User profiles indexed by username.";
   };
 }

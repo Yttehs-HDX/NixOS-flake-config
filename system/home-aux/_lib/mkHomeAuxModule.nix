@@ -1,8 +1,11 @@
-{ lib, profile, name, inner }:
+{ lib, config, name }:
 
 let
-  home = profile.home or { };
-  sw = home.software or { };
-  item = sw.${name} or { };
-  enabled = item.enable or false;
-in { imports = lib.optionals enabled [ inner ]; }
+  userProfiles = config.profile.users or { };
+  anyUserEnabled = lib.any (userProfile:
+    let
+      home = userProfile.home or { };
+      sw = home.software or { };
+      item = sw.${name} or { };
+    in item.enable or false) (builtins.attrValues userProfiles);
+in cfg: { config = lib.mkIf anyUserEnabled cfg; }

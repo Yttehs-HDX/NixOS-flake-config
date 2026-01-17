@@ -1,7 +1,13 @@
-{ config, ... }:
+{ config, lib, ... }:
 
-let palette = config.desktop.style.theme.palette;
-in {
+let
+  mkSoftware = import ../_lib/mkSoftwarePackage.nix {
+    inherit lib config;
+    name = "cava";
+  };
+
+  palette = config.desktop.style.theme.palette;
+in mkSoftware {
   programs.cava = {
     enable = true;
     settings = {

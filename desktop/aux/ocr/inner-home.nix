@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "ocr";
+  };
+
   ocr = pkgs.writeShellApplication {
     name = "ocr";
     runtimeInputs = [
@@ -30,4 +35,4 @@ let
       echo -n "$cleaned" | wl-copy
     '';
   };
-in { home.packages = [ ocr ]; }
+in mkAux { home.packages = [ ocr ]; }

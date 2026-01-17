@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  xdg.userDirs.enable = true;
+  imports = [ ./inner.nix ];
 }

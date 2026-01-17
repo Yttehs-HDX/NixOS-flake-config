@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  home.packages = [ pkgs.playerctl ];
-}
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "playerctl";
+  };
+in mkAux { home.packages = [ pkgs.playerctl ]; }

@@ -1,5 +1,8 @@
-{ ... }:
+{ config, lib, ... }:
 
-{
-  services.blueman-applet.enable = true;
-}
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "blueman";
+  };
+in mkAux { services.blueman-applet.enable = true; }

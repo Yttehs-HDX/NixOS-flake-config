@@ -1,11 +1,16 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "rofi";
+  };
+
   palette = config.desktop.style.theme.palette;
   accentAlpha = "${palette.accent}cc";
   bgCol = "${palette.base}bf";
   bgColLight = "${palette.surface0}b3";
-in {
+in mkAux {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi;

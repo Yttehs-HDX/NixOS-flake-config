@@ -1,6 +1,12 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 
-{
+let
+  mkFont = import ../_lib/mkFont.nix {
+    inherit lib config;
+    name = "user-fonts";
+  };
+in mkFont {
+
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {

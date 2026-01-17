@@ -1,6 +1,12 @@
-{ ... }:
+{ config, lib, ... }:
 
-{
+let
+  mkSystemSoftware = import ../_lib/mkSystemSoftwareModule.nix {
+    inherit lib config;
+    name = "locale";
+  };
+in mkSystemSoftware {
+
   time.timeZone = "Asia/Taipei";
   i18n = {
     defaultLocale = "en_US.UTF-8";

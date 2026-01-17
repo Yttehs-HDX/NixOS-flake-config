@@ -1,8 +1,8 @@
-{ lib, profile, ... }:
+{ config, lib, ... }:
 
-let mkSoftwarePackage = import ../_lib/mkSoftwarePackage.nix;
-in mkSoftwarePackage {
-  inherit lib profile;
-  name = "xdg";
-  inner = ./inner.nix;
-}
+let
+  mkSoftware = import ../_lib/mkSoftwarePackage.nix {
+    inherit lib config;
+    name = "xdg";
+  };
+in mkSoftware { xdg.userDirs.enable = true; }

@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 let
-  profileUsers = config.profile.users or { };
+  userProfiles = config.profile.users or { };
   mkUser = _: userProfile: {
     name = userProfile.user.username;
     value = {
@@ -11,4 +11,4 @@ let
         lib.optionals (userProfile.user.isSuper or false) [ "wheel" ];
     };
   };
-in { users.users = lib.mapAttrs' mkUser profileUsers; }
+in { users.users = lib.mapAttrs' mkUser userProfiles; }

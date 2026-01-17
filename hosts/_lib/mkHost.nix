@@ -2,22 +2,24 @@
 { system, hostProfile, hostModule, hostKey }:
 
 let
-  hostUsers = lib.attrByPath [ "host" "users" ] users.defaultUsers hostProfile;
-  userProfiles = lib.genAttrs hostUsers (name: users.profiles.${name});
-  userProfile =
-    lib.foldl' lib.recursiveUpdate { } (builtins.attrValues userProfiles);
-  profile = lib.recursiveUpdate userProfile hostProfile;
-  hostProfiles = { ${hostKey} = hostProfile; };
+  hostname = hostProfile.host.hostname;
+  hostUsers = hostProfile.host.users;
+
+  userProfilesAttr = lib.genAttrs hostUsers (name:
+    users.profiles.${name} or (throw
+      "User ${name} not found in user profiles"));
+
   profileModule = {
     config.profile = {
-      users = userProfiles;
-      hosts = hostProfiles;
+      hosts.${hostname} = hostProfile;
+      users = userProfilesAttr;
     };
   };
-  userProfileModule =
-    import ../../users/_lib/mkUserProfileModule.nix { profile = userProfiles; };
-  homeManagerUsers =
-    lib.genAttrs hostUsers (name: import users.modules.${name});
+
+  homeManagerUsers = lib.genAttrs hostUsers (name:
+    users.homeManagerUsers.${name} or (throw
+      "Home-manager config for ${name} not found"));
+
   nixosModules = [
     nur.modules.nixos.default
 
@@ -26,7 +28,6 @@ let
     ../../system/default.nix
     hostModule
     profileModule
-    userProfileModule
 
     home-manager.nixosModules.home-manager
     {
@@ -34,11 +35,11 @@ let
         useUserPackages = true;
         backupFileExtension = "hm-backup";
         sharedModules = [
+          nixvim.homeModules.nixvim
           ../../home
           ../options.nix
           ../../users/options.nix
           profileModule
-          userProfileModule
         ];
 
         users = homeManagerUsers;
@@ -46,13 +47,12 @@ let
         extraSpecialArgs = {
           nur = nur.legacyPackages.${system}.repos;
           inherit hexecute nixvim;
-          inherit profile;
         };
       };
     }
   ];
 in lib.nixosSystem {
   inherit system;
-  specialArgs = { inherit profile; };
+  specialArgs = { };
   modules = nixosModules;
 }

@@ -1,5 +1,8 @@
-{ ... }:
+{ config, lib, ... }:
 
-{
-  services.network-manager-applet.enable = true;
-}
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "network-manager";
+  };
+in mkAux { services.network-manager-applet.enable = true; }

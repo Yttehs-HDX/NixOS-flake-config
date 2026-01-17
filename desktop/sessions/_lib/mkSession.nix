@@ -1,8 +1,12 @@
-{ lib, profile, name, inner }:
+{ lib, config, name }:
 
 let
-  desktop = profile.desktop or { };
-  sessions = desktop.sessions or { };
-  item = sessions.${name} or { };
-  enabled = (desktop.enable or false) && (item.enable or false);
-in { imports = lib.optionals enabled [ inner ]; }
+  userProfiles = config.profile.users or { };
+  anyUserEnabled = lib.any (userProfile:
+    let
+      desktop = userProfile.desktop or { };
+      sessions = desktop.sessions or { };
+      item = sessions.${name} or { };
+    in (desktop.enable or false) && (item.enable or false))
+    (builtins.attrValues userProfiles);
+in cfg: { config = lib.mkIf anyUserEnabled cfg; }

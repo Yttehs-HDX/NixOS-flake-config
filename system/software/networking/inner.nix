@@ -1,11 +1,16 @@
-{ lib, config, ... }:
+{ config, lib, ... }:
 
 let
+  mkSystemSoftware = import ../_lib/mkSystemSoftwareModule.nix {
+    inherit lib config;
+    name = "networking";
+  };
+
   hosts = config.profile.hosts or { };
   hostProfile =
     if hosts == { } then { } else builtins.head (builtins.attrValues hosts);
   hostName = hostProfile.host.hostname or "nixos";
-in {
+in mkSystemSoftware {
   networking = {
     inherit hostName;
     extraHosts = ''

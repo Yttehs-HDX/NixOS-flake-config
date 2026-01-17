@@ -1,26 +1,33 @@
-{ config, ... }:
+{ config, lib, ... }:
 
-{
+let
+  mkSoftware = import ../_lib/mkSoftwarePackage.nix {
+    inherit lib config;
+    name = "kitty";
+  };
+in {
   imports = [ ./themes/catppuccin.nix ];
 
-  programs.kitty = {
-    enable = true;
-    enableGitIntegration = true;
+  config = (mkSoftware {
+    programs.kitty = {
+      enable = true;
+      enableGitIntegration = true;
 
-    font = {
-      name = config.desktop.style.fonts.mono.default;
-      size = 14.0;
-    };
+      font = {
+        name = config.desktop.style.fonts.mono.default;
+        size = 14.0;
+      };
 
-    shellIntegration = {
-      mode = "no_cursor";
-      enableZshIntegration = true;
-    };
+      shellIntegration = {
+        mode = "no_cursor";
+        enableZshIntegration = true;
+      };
 
-    settings = {
-      background_opacity = 0.9;
-      background_blur = 1;
-      remember_window_size = false;
+      settings = {
+        background_opacity = 0.9;
+        background_blur = 1;
+        remember_window_size = false;
+      };
     };
-  };
+  }).config;
 }

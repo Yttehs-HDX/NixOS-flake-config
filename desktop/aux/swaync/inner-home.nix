@@ -1,7 +1,13 @@
-{ config, ... }:
+{ config, lib, ... }:
 
-let palette = config.desktop.style.theme.palette;
-in {
+let
+  mkAux = import ../_lib/mkAuxPackage.nix {
+    inherit lib config;
+    name = "swaync";
+  };
+
+  palette = config.desktop.style.theme.palette;
+in mkAux {
   services.swaync = {
     enable = true;
     settings = {

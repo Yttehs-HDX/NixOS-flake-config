@@ -1,19 +1,8 @@
 { lib, config, ... }:
 
-let
-  palettes = import ./catppuccin/inner/palettes.nix { };
-  profileUsers = config.profile.users or { };
-  userName = if config ? home && config.home ? username then
-    config.home.username
-  else if profileUsers == { } then
-    null
-  else
-    builtins.head (builtins.attrNames profileUsers);
-  userProfile =
-    if userName == null then { } else (profileUsers.${userName} or { });
-  styleProfile = (userProfile.desktop or { }).style or { };
-  themeProfile = styleProfile.theme or { };
+let palettes = import ./catppuccin/inner/palettes.nix { };
 in {
+  # This is imported inside userSubmodule, so options are relative to user profile
   options.desktop.style.theme = lib.mkOption {
     type = lib.types.submodule {
       options = {
@@ -48,28 +37,17 @@ in {
     description = "Theme selection and derived values for style modules.";
   };
 
-  config = lib.mkMerge [
-    (lib.mkIf (themeProfile ? name) {
-      desktop.style.theme.name = lib.mkDefault themeProfile.name;
-    })
-    (lib.mkIf (themeProfile ? accent) {
-      desktop.style.theme.accent = lib.mkDefault themeProfile.accent;
-    })
-    (lib.mkIf (themeProfile ? flavor) {
-      desktop.style.theme.flavor = lib.mkDefault themeProfile.flavor;
-    })
-    (let
-      theme = config.desktop.style.theme;
-      flavor = theme.flavor or "mocha";
-      accentName = theme.accent or "lavender";
-      palette = palettes.${flavor} or palettes.mocha;
-      accent = palette.${accentName} or palette.lavender;
-    in {
-      desktop.style.theme.palette = lib.mkIf (theme.name == "catppuccin")
-        (palette // {
-          accent = accent;
-          accentName = accentName;
-        });
-    })
-  ];
+  config = let
+    theme = config.desktop.style.theme or { };
+    flavor = theme.flavor or "mocha";
+    accentName = theme.accent or "lavender";
+    palette = palettes.${flavor} or palettes.mocha;
+    accent = palette.${accentName} or palette.lavender;
+  in {
+    desktop.style.theme.palette =
+      lib.mkIf ((theme.name or "catppuccin") == "catppuccin") (palette // {
+        accent = accent;
+        accentName = accentName;
+      });
+  };
 }
