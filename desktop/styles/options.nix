@@ -4,16 +4,12 @@ let
   username = config.home.username or null;
   userProfile =
     if username != null then config.profile.users.${username} or { } else { };
-  desktopStyle = (userProfile.desktop or { }).style or { };
+  derivedFonts = ((userProfile.desktop or { }).style or { }).fonts or { };
 in {
   imports = [ ./themes/options.nix ./fonts/options.nix ];
 
-  options._derivedStyle = lib.mkOption {
-    type = lib.types.attrsOf lib.types.anything;
-    default = { };
-    internal = true;
-    description = "Derived style config from user's profile.";
+  config.desktop.style.fonts = lib.mkIf (derivedFonts != { }) {
+    default = lib.mkIf (derivedFonts ? default) derivedFonts.default;
+    mono = lib.mkIf (derivedFonts ? mono) derivedFonts.mono;
   };
-
-  config._derivedStyle = desktopStyle;
 }
