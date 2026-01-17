@@ -8,7 +8,6 @@
     # Home Manager (for managing users)
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
-      # Sync with `nixpkgs`
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,47 +17,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hexecute
+    # Hexecute (Custom utility for magic power)
     hexecute = { url = "github:ThatOtherAndrew/Hexecute"; };
 
-    # NixVim
+    # NixVim (Custom NixOS Vim configuration)
     nixvim = { url = "github:nix-community/nixvim/nixos-25.11"; };
   };
 
   outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
-    let system = "x86_64-linux";
-    in {
-      nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            nur.modules.nixos.default
-
-            ./hosts/laptop/configuration.nix
-            ./hosts/laptop/hardware-configuration.nix
-
-            # Mark Home Manager as a submodule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                # useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "hm-backup";
-                sharedModules = import ./modules/home-manager;
-
-                # Users begin
-                users.shetty = import ./users/shetty/home.nix;
-
-                # Pass extra arguments to home-manager modules
-                extraSpecialArgs = {
-                  nur = nur.legacyPackages.${system}.repos;
-                  inherit hexecute nixvim;
-                };
-              };
-            }
-          ];
-        };
-      };
-    };
+    let
+      lib = nixpkgs.lib;
+      users = import ./users { };
+      hosts =
+        import ./hosts { inherit lib nur home-manager hexecute nixvim users; };
+    in { nixosConfigurations = hosts.nixosConfigurations; };
 }
-

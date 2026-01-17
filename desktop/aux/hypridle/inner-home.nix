@@ -1,0 +1,30 @@
+{ ... }:
+
+let
+  lockCmd = "swaylock-themed";
+  displayOnCmd = "hyprctl dispatch dpms on";
+  displayOffCmd = "hyprctl dispatch dpms off";
+in {
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = displayOnCmd;
+        ignore_dbus_inhibit = false;
+        lock_cmd = lockCmd;
+      };
+
+      listener = [
+        {
+          timeout = 300;
+          on-timeout = lockCmd;
+        }
+        {
+          timeout = 600;
+          on-timeout = displayOffCmd;
+          on-resume = displayOnCmd;
+        }
+      ];
+    };
+  };
+}
