@@ -1,61 +1,41 @@
-{ lib, nur, home-manager, hexecute, nixvim, users, hosts }:
+{ lib, nur, home-manager, hexecute, nixvim, self }:
+{ hostname }:
 
 let
-  mkSystem = { hostname }:
-    let
-      hostRegistry = import ../hosts/registry.nix { };
-      hostEntry = hostRegistry.${hostname}
-        or (throw "Host ${hostname} not found");
-      hostProfile = hostEntry.profile;
-      system = hostProfile.host.system;
-      hostUsers = hostProfile.host.users;
-      hardwareConfig = hostEntry.hardwareConfig;
+  hosts = import ../hosts;
+  users = import ../users;
 
-      userProfilesAttr = lib.genAttrs hostUsers (name: users { inherit name; });
+  hostEntry = hosts { name = hostname; };
+  hostProfile = hostEntry.profile;
+  hostHardwareConfig = hostEntry.hardwareConfig;
+  hostUsers = hostProfile.host.users;
 
-      profileModule = {
-        config.profile = {
-          hosts.${hostProfile.host.hostname} = hostProfile;
-          users = userProfilesAttr;
-        };
-      };
+  userProfilesAttr = lib.genAttrs hostUsers (name: users { inherit name; });
+  profile = {
+    hosts.${hostProfile.host.hostname} = hostProfile;
+    users = userProfilesAttr;
+  };
 
-      home = import ../home;
-      homeManagerUsers =
-        lib.genAttrs hostUsers (name: home { username = name; });
+  profileModule = { config.profile = profile; };
+  nixosModules = [
+    home-manager.nixosModules.home-manager
+    nur.modules.nixos.default
 
-      nixosModules = [
-        nur.modules.nixos.default
-
-        ../hosts/options.nix
-        ../users/options.nix
-        ./global
-        ../desktop/nixos.nix
-        ./home-aux
-        ./software
-        hardwareConfig
-        profileModule
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useUserPackages = true;
-            backupFileExtension = "hm-backup";
-
-            sharedModules = [ nixvim.homeModules.nixvim profileModule ];
-
-            users = homeManagerUsers;
-
-            extraSpecialArgs = {
-              nur = nur.legacyPackages.${system}.repos;
-              inherit hexecute nixvim;
-            };
-          };
-        }
-      ];
-    in lib.nixosSystem {
-      inherit system;
-      specialArgs = { };
-      modules = nixosModules;
-    };
-in { hostname }: mkSystem { inherit hostname; }
+    ../hosts/options.nix
+    ../users/options.nix
+    ./global
+    ../desktop/nixos.nix
+    ./home-aux
+    ./software
+    hostHardwareConfig
+    profileModule
+  ];
+in lib.nixosSystem {
+  inherit (hostProfile.host) system;
+  specialArgs = {
+    inherit profile;
+    homePath = self + "/home";
+    inherit hostname nur hexecute nixvim;
+  };
+  modules = nixosModules;
+}
