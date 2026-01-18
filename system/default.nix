@@ -2,9 +2,6 @@
 { hostname }:
 
 let
-  hostsPath = ../hosts;
-  homePath = ../home;
-
   hosts = import ../hosts;
   hostHardwareConfig = (hosts { name = hostname; }).hardwareConfig;
 
