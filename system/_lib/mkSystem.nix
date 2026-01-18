@@ -1,15 +1,17 @@
-{ lib, nur, home-manager, hexecute, nixvim, users }:
-{ system, hostProfile, hostModule, hostKey }:
+{ lib, nur, home-manager, hexecute, nixvim, users, hosts }:
+{ hostname }:
 
 let
-  hostname = hostProfile.host.hostname;
+  hostProfile = hosts { name = hostname; };
+  system = hostProfile.host.system;
   hostUsers = hostProfile.host.users;
+  hostModule = ../../hosts + "/${hostname}";
 
   userProfilesAttr = lib.genAttrs hostUsers (name: users { inherit name; });
 
   profileModule = {
     config.profile = {
-      hosts.${hostname} = hostProfile;
+      hosts.${hostProfile.host.hostname} = hostProfile;
       users = userProfilesAttr;
     };
   };
@@ -20,9 +22,9 @@ let
   nixosModules = [
     nur.modules.nixos.default
 
-    ../options.nix
+    ../../hosts/options.nix
     ../../users/options.nix
-    ../../system/default.nix
+    ../modules.nix
     hostModule
     profileModule
 

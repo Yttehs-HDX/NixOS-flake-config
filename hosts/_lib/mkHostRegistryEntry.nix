@@ -1,13 +1,7 @@
-{ name }:
+{ path }:
 
 let
-  baseDir = ../.;
-  hostDir = baseDir + "/${name}";
-  profile = import (hostDir + "/profile.nix") { };
-in {
-  name = profile.host.hostname;
-  value = {
-    inherit profile;
-    module = hostDir;
-  };
-}
+  name = builtins.baseNameOf path;
+  profile = import (path + "/profile.nix") { };
+  hardwareConfig = path + "/hardware-configuration.nix";
+in { inherit name profile hardwareConfig; }

@@ -28,7 +28,14 @@
     let
       lib = nixpkgs.lib;
       users = import ./users;
-      hosts =
-        import ./hosts { inherit lib nur home-manager hexecute nixvim users; };
-    in { nixosConfigurations = hosts.nixosConfigurations; };
+      hosts = import ./hosts;
+      hostRegistry = import ./hosts/registry.nix { };
+      system = import ./system {
+        inherit lib nur home-manager hexecute nixvim users hosts;
+      };
+      hostNames = builtins.attrNames hostRegistry;
+    in {
+      nixosConfigurations =
+        lib.genAttrs hostNames (hostname: system { inherit hostname; });
+    };
 }

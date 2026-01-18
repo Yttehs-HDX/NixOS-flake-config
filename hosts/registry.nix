@@ -1,6 +1,13 @@
 { ... }:
 
 let
-  mkHost = import ./_lib/mkHostRegistryEntry.nix;
-  names = [ "Shetty-Laptop" ];
-in builtins.listToAttrs (map (name: mkHost { inherit name; }) names)
+  mkHostRegistryEntry = import ./_lib/mkHostRegistryEntry.nix;
+  paths = [ ./Shetty-Laptop ];
+in builtins.listToAttrs (map (path:
+  let entry = mkHostRegistryEntry { inherit path; };
+  in {
+    inherit (entry) name;
+    value = {
+      inherit (entry) profile hardwareConfig;
+    };
+  }) paths)
