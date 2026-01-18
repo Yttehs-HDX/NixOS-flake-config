@@ -24,13 +24,13 @@
     nixvim = { url = "github:nix-community/nixvim/nixos-25.11"; };
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
+  outputs = { nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
     let
       lib = nixpkgs.lib;
       hostRegistry = import ./hosts/registry.nix { };
       hostNames = builtins.attrNames hostRegistry;
       system =
-        import ./system { inherit lib nur home-manager hexecute nixvim self; };
+        import ./system { inherit lib nur home-manager hexecute nixvim; };
     in {
       nixosConfigurations =
         lib.genAttrs hostNames (hostname: system { inherit hostname; });

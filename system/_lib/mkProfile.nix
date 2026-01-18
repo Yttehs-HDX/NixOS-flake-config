@@ -1,9 +1,9 @@
-{ lib, hostsPath, usersPath }:
+{ lib, ... }:
 { hostname }:
 
 let
-  hosts = import hostsPath;
-  users = import usersPath;
+  hosts = import ../../hosts;
+  users = import ../../users;
 
   hostEntry = hosts { name = hostname; };
   hostProfile = hostEntry.profile;

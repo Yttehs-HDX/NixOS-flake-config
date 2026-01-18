@@ -1,15 +1,14 @@
-{ lib, nur, home-manager, hexecute, nixvim, self }:
+{ lib, nur, home-manager, hexecute, nixvim }:
 { hostname }:
 
 let
-  hostsPath = self + "/hosts";
-  homePath = self + "/home";
-  usersPath = self + "/users";
+  hostsPath = ../hosts;
+  homePath = ../home;
 
-  hosts = import hostsPath;
+  hosts = import ../hosts;
   hostHardwareConfig = (hosts { name = hostname; }).hardwareConfig;
 
-  mkProfile = import ./_lib/mkProfile.nix { inherit lib hostsPath usersPath; };
+  mkProfile = import ./_lib/mkProfile.nix { inherit lib; };
   profile = mkProfile { inherit hostname; };
   hostProfile = profile.hosts.${hostname};
   system = hostProfile.host.system;
@@ -17,7 +16,6 @@ in lib.nixosSystem {
   inherit system;
   specialArgs = {
     inherit profile;
-    inherit homePath hostsPath;
     inherit hostname nur hexecute nixvim system;
   };
   modules = [
