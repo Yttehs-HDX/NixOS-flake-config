@@ -1,7 +1,7 @@
-{ lib, config, nur, hexecute, nixvim, homePath, ... }:
+{ lib, config, nur, hexecute, nixvim, homePath, system, ... }:
 
 let
-  systemProfile = config.profile;
+  profile = config.profile;
   home = import homePath;
   userProfiles = config.profile.users or { };
   mkHomeUser = _: userProfile: {
@@ -9,16 +9,6 @@ let
     value = home { username = userProfile.user.username; };
   };
   homeManagerUsers = lib.mapAttrs' mkHomeUser userProfiles;
-
-  hostProfiles = config.profile.hosts or { };
-  hostProfile = if hostProfiles == { } then
-    null
-  else
-    lib.head (builtins.attrValues hostProfiles);
-  system = if hostProfile == null then
-    (throw "Host profile not found")
-  else
-    hostProfile.host.system;
 in {
   home-manager = {
     useUserPackages = true;
@@ -26,14 +16,14 @@ in {
 
     sharedModules = [
       nixvim.homeModules.nixvim
-      ({ config, ... }: { config.profile = systemProfile; })
+      ({ config, ... }: { config.profile = profile; })
     ];
 
     users = homeManagerUsers;
 
     extraSpecialArgs = {
       nur = nur.legacyPackages.${system}.repos;
-      profile = config.profile;
+      inherit (config) profile;
       inherit hexecute nixvim;
     };
   };

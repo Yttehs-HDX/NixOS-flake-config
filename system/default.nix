@@ -2,40 +2,40 @@
 { hostname }:
 
 let
-  hosts = import ../hosts;
-  users = import ../users;
+  hostsPath = self + "/hosts";
+  homePath = self + "/home";
+  usersPath = self + "/users";
 
-  hostEntry = hosts { name = hostname; };
-  hostProfile = hostEntry.profile;
-  hostHardwareConfig = hostEntry.hardwareConfig;
-  hostUsers = hostProfile.host.users;
+  hosts = import hostsPath;
+  hostHardwareConfig = (hosts { name = hostname; }).hardwareConfig;
 
-  userProfilesAttr = lib.genAttrs hostUsers (name: users { inherit name; });
-  profile = {
-    hosts.${hostProfile.host.hostname} = hostProfile;
-    users = userProfilesAttr;
+  mkProfile = import ./_lib/mkProfile.nix { inherit lib hostsPath usersPath; };
+  profile = mkProfile { inherit hostname; };
+  hostProfile = profile.hosts.${hostname};
+  system = hostProfile.host.system;
+in lib.nixosSystem {
+  inherit system;
+  specialArgs = {
+    inherit profile;
+    inherit homePath hostsPath;
+    inherit hostname nur hexecute nixvim system;
   };
-
-  profileModule = { config.profile = profile; };
-  nixosModules = [
+  modules = [
     home-manager.nixosModules.home-manager
     nur.modules.nixos.default
 
-    ../hosts/options.nix
+    hostHardwareConfig
+
     ../users/options.nix
-    ./global
-    ../desktop/nixos.nix
+    ../home/options.nix
+    ../hosts/options.nix
+    ../system/options.nix
+    ../desktop/options.nix
+
     ./home-aux
     ./software
-    hostHardwareConfig
-    profileModule
+    ./global
+
+    ../desktop/nixos.nix
   ];
-in lib.nixosSystem {
-  inherit (hostProfile.host) system;
-  specialArgs = {
-    inherit profile;
-    homePath = self + "/home";
-    inherit hostname nur hexecute nixvim;
-  };
-  modules = nixosModules;
 }
