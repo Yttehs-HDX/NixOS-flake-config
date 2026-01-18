@@ -32,6 +32,8 @@ in lib.nixosSystem {
     ../system/options.nix
     ../desktop/options.nix
 
+    ./injections
+
     ./home-aux
     ./software
     ./global
