@@ -1,11 +1,29 @@
 { lib, ... }:
 
-{
-  imports = [ ./software/options.nix ];
+let
+  hostSubmodule = lib.types.submodule {
+    imports = [ ./software/options.nix ./global/options.nix ];
 
-  options.profile = lib.mkOption {
-    type = lib.types.submodule { };
+    options.host = {
+      hostname = lib.mkOption {
+        type = lib.types.str;
+        description = "Profile hostname.";
+      };
+      users = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [ ];
+        description = "Users assigned to this host.";
+      };
+      system = lib.mkOption {
+        type = lib.types.str;
+        description = "Profile system (e.g. x86_64-linux).";
+      };
+    };
+  };
+in {
+  options.profile.hosts = lib.mkOption {
+    type = lib.types.attrsOf hostSubmodule;
     default = { };
-    description = "Profile data for the system.";
+    description = "Host profiles indexed by hostname.";
   };
 }

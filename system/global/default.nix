@@ -1,5 +1,11 @@
 { ... }:
 
 {
-  imports = [ ./nix.nix ./users.nix ./home-manager.nix ./state-version.nix ];
+  imports = [
+    ./nix.nix
+    ./users.nix
+    ./home-manager.nix
+    ./state-version.nix
+    ./options.nix
+  ];
 }

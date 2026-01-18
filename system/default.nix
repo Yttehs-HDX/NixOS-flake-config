@@ -18,9 +18,6 @@ in lib.nixosSystem {
     home-manager.nixosModules.home-manager
     nur.modules.nixos.default
 
-    ../users/options.nix
-    ../home/options.nix
-    ../hosts/options.nix
     ../system/options.nix
     ../desktop/options.nix
 

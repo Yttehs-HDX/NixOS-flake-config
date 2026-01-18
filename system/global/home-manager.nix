@@ -1,9 +1,9 @@
 { lib, config, nur, hexecute, nixvim, system, ... }:
 
 let
-  profile = config.profile;
+  profile = { users = config.profile.users or { }; };
   home = import ../../home;
-  userProfiles = config.profile.users or { };
+  userProfiles = profile.users;
   mkHomeUser = _: userProfile: {
     name = userProfile.user.username;
     value = home { username = userProfile.user.username; };
