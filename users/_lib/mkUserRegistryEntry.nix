@@ -4,10 +4,8 @@ let
   baseDir = ../.;
   userDir = baseDir + "/${name}";
   profile = import (userDir + "/profile.nix") { };
+  username = profile.user.username;
 in {
-  name = profile.user.username;
-  value = {
-    inherit profile;
-    module = userDir;
-  };
+  name = username;
+  value = { inherit profile username; };
 }
