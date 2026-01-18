@@ -2,8 +2,7 @@
 
 { lib, config, ... }:
 
-let
-  actualUsername = config.profile.users.${username}.user.username;
+let actualUsername = config.profile.users.${username}.user.username;
 in {
   home = {
     username = actualUsername;

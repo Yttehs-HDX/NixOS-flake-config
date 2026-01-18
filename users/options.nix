@@ -25,6 +25,6 @@ in {
   options.profile.users = lib.mkOption {
     type = lib.types.attrsOf userSubmodule;
     default = { };
-    description = "User profiles indexed by username.";
+    description = "User profiles indexed by directory name.";
   };
 }

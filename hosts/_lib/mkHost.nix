@@ -5,8 +5,7 @@ let
   hostname = hostProfile.host.hostname;
   hostUsers = hostProfile.host.users;
 
-  userProfilesAttr = lib.genAttrs hostUsers
-    (name: (users.${name} or (throw "User ${name} not found")).profile);
+  userProfilesAttr = lib.genAttrs hostUsers (name: users { inherit name; });
 
   profileModule = {
     config.profile = {
@@ -16,9 +15,7 @@ let
   };
 
   home = import ../../home;
-  homeManagerUsers = lib.genAttrs hostUsers (name:
-    let username = (users.${name} or (throw "User ${name} not found")).username;
-    in home { inherit username; });
+  homeManagerUsers = lib.genAttrs hostUsers (name: home { username = name; });
 
   nixosModules = [
     nur.modules.nixos.default
