@@ -1,25 +1,22 @@
-{ lib, nur, home-manager, hexecute, nixvim }:
-{ hostname }:
+{ lib, nur, home-manager, hexecute, nixvim, ... }:
+{ hostname, profiles }:
 
 let
-  hosts = import ../hosts;
-  hostHardwareConfig = (hosts { name = hostname; }).hardwareConfig;
+  hosts = import ../hosts { name = hostname; };
+  hostHardwareConfig = hosts.hardwareConfig;
 
-  mkProfile = import ./_lib/mkProfile.nix { inherit lib; };
-  profile = mkProfile { inherit hostname; };
-  hostProfile = profile.hosts.${hostname};
+  hostProfile = profiles.hosts.${hostname};
   system = hostProfile.host.system;
 in lib.nixosSystem {
   inherit system;
-  specialArgs = {
-    inherit profile;
-    inherit hostname nur hexecute nixvim system;
-  };
+  specialArgs = { inherit hostname nur hexecute nixvim system; };
   modules = [
-    home-manager.nixosModules.home-manager
-    nur.modules.nixos.default
+    ({ ... }: { config.profile = profiles; })
 
     hostHardwareConfig
+
+    home-manager.nixosModules.home-manager
+    nur.modules.nixos.default
 
     ../users/options.nix
     ../home/options.nix
@@ -27,12 +24,9 @@ in lib.nixosSystem {
     ../system/options.nix
     ../desktop/options.nix
 
-    ./injections
-
     ./home-aux
     ./software
     ./global
-
     ../desktop/nixos.nix
   ];
 }

@@ -1,5 +1,0 @@
-{ profile, ... }:
-
-{
-  config.profile = profile;
-}

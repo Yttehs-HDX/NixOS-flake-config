@@ -28,11 +28,16 @@
     let
       lib = nixpkgs.lib;
       hostRegistry = import ./hosts/registry.nix { };
+      userRegistry = import ./users/registry.nix { };
+      profiles = {
+        hosts = lib.mapAttrs (_: entry: entry.profile) hostRegistry;
+        users = userRegistry;
+      };
       hostNames = builtins.attrNames hostRegistry;
       system =
         import ./system { inherit lib nur home-manager hexecute nixvim; };
     in {
-      nixosConfigurations =
-        lib.genAttrs hostNames (hostname: system { inherit hostname; });
+      nixosConfigurations = lib.genAttrs hostNames
+        (hostname: system { inherit hostname profiles; });
     };
 }
