@@ -15,10 +15,10 @@ let
     };
   };
 
-  mkHomeManagerModule = import ../../home/_lib/mkHomeManagerModule.nix;
+  home = import ../../home;
   homeManagerUsers = lib.genAttrs hostUsers (name:
     let username = (users.${name} or (throw "User ${name} not found")).username;
-    in { imports = [ (mkHomeManagerModule { inherit username; }) ]; });
+    in home { inherit username; });
 
   nixosModules = [
     nur.modules.nixos.default
@@ -34,13 +34,8 @@ let
       home-manager = {
         useUserPackages = true;
         backupFileExtension = "hm-backup";
-        sharedModules = [
-          nixvim.homeModules.nixvim
-          ../../home
-          ../options.nix
-          ../../users/options.nix
-          profileModule
-        ];
+
+        sharedModules = [ nixvim.homeModules.nixvim profileModule ];
 
         users = homeManagerUsers;
 
