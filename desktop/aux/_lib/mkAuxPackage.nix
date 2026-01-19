@@ -4,17 +4,34 @@ let
   lookup = import ../../../_lib/getProfile.nix { inherit lib; };
   hasUser = username != null;
   hasHost = hostname != null;
-  profile = if hasUser then
-    lookup.getUserProfile config username
-  else if hasHost then
-    lookup.getHostProfile config hostname
+
+  userProfile = if hasUser then lookup.getUserProfile config username else null;
+  integrated =
+    if hasHost then lookup.getHostIntegratedProfile config hostname else null;
+  userProfiles = if hasHost then integrated.users else { };
+
+  userEnabled = if hasUser then
+    let
+      desktop = userProfile.desktop or { };
+      aux = desktop.aux or { };
+      item = aux.${name} or { };
+    in (desktop.enable or false) && (item.enable or false)
   else
-    { };
-  desktop = profile.desktop or { };
-  aux = desktop.aux or { };
-  item = aux.${name} or { };
-  enabled = (hasUser || hasHost) && (desktop.enable or false)
-    && (item.enable or false);
+    false;
+
+  anyUserEnabled = if hasHost then
+    lib.any (profile:
+      let
+        desktop = profile.desktop or { };
+        aux = desktop.aux or { };
+        item = aux.${name} or { };
+      in (desktop.enable or false) && (item.enable or false))
+    (builtins.attrValues userProfiles)
+  else
+    false;
+
+  enabled =
+    if hasUser then userEnabled else if hasHost then anyUserEnabled else false;
 in cfg:
 let
   imports = cfg.imports or [ ];

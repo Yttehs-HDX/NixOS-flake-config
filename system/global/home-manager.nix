@@ -16,8 +16,10 @@ in {
     useUserPackages = true;
     backupFileExtension = "hm-backup";
 
-    sharedModules =
-      [ nixvim.homeModules.nixvim ({ config, ... }: { config.profile = profile; }) ];
+    sharedModules = [
+      nixvim.homeModules.nixvim
+      ({ config, ... }: { config.profile = profile; })
+    ];
 
     users = homeManagerUsers;
 

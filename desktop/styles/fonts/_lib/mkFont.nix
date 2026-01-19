@@ -3,8 +3,7 @@
 let
   lookup = import ../../../../_lib/getProfile.nix { inherit lib; };
   hasUser = username != null;
-  userProfile =
-    if hasUser then lookup.getUserProfile config username else { };
+  userProfile = if hasUser then lookup.getUserProfile config username else { };
   desktop = userProfile.desktop or { };
   style = desktop.style or { };
   fonts = style.fonts or { };

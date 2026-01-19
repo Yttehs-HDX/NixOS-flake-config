@@ -36,6 +36,4 @@ let
       users = selectedUsers;
       usernames = hostUsers;
     };
-in {
-  inherit getUserProfile getHostProfile getHostIntegratedProfile;
-}
+in { inherit getUserProfile getHostProfile getHostIntegratedProfile; }

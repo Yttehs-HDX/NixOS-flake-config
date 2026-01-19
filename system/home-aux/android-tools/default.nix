@@ -5,6 +5,5 @@ let
     inherit lib config hostname;
     name = "android-tools";
   };
-  inner =
-    integrated: import ./inner.nix { inherit (integrated) usernames; };
+  inner = integrated: import ./inner.nix { inherit (integrated) usernames; };
 in mkHomeAux inner

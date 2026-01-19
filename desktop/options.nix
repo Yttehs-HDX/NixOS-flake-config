@@ -1,11 +1,7 @@
 { lib, ... }:
 
 {
-  imports = [
-    ./aux/options.nix
-    ./sessions/options.nix
-    ./styles/options.nix
-  ];
+  imports = [ ./sessions/options.nix ./styles/options.nix ];
 
   options.desktop.enable = lib.mkOption {
     type = lib.types.bool;

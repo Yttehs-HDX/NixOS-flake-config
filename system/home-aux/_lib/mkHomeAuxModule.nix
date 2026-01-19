@@ -11,8 +11,5 @@ let
       item = sw.${name} or { };
     in item.enable or false) (builtins.attrValues userProfiles);
 in cfg:
-let
-  configBody = if lib.isFunction cfg then cfg integrated else cfg;
-in {
-  config = lib.mkIf anyUserEnabled configBody;
-}
+let configBody = if lib.isFunction cfg then cfg integrated else cfg;
+in { config = lib.mkIf anyUserEnabled configBody; }

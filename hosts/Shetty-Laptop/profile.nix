@@ -21,12 +21,6 @@
       };
     };
 
-    aux = {
-      gnome-keyring.enable = true;
-      pipewire.enable = true;
-      blueman.enable = true;
-      udisks2.enable = true;
-    };
   };
 
   system.software = {
