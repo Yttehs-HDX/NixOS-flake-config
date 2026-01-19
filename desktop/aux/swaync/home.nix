@@ -1,8 +1,8 @@
-{ config, lib, ... }:
+{ config, lib, username, ... }:
 
 let
   mkAux = import ../_lib/mkAuxPackage.nix {
-    inherit lib config;
+    inherit lib config username;
     name = "swaync";
   };
   inner = import ./inner-home.nix { };

@@ -1,23 +1,27 @@
-{ lib, config, name }:
+{ lib, config, name, username ? null, ... }:
 
 let
   userProfiles = config.profile.users or { };
-
-  anyUserEnabled = lib.any (userProfile:
-    let
-      desktop = userProfile.desktop or { };
-      aux = desktop.aux or { };
-      item = aux.${name} or { };
-    in (desktop.enable or false) && (item.enable or false))
+  userProfile =
+    if username != null then userProfiles.${username} or { } else { };
+  desktop = userProfile.desktop or { };
+  aux = desktop.aux or { };
+  item = aux.${name} or { };
+  enabled = if username != null then
+    (desktop.enable or false) && (item.enable or false)
+  else
+    lib.any (profile:
+      let
+        desktop = profile.desktop or { };
+        aux = desktop.aux or { };
+        item = aux.${name} or { };
+      in (desktop.enable or false) && (item.enable or false))
     (builtins.attrValues userProfiles);
 in cfg:
 let
-  hasImports = cfg ? imports;
   imports = cfg.imports or [ ];
   configWithoutImports = builtins.removeAttrs cfg [ "imports" ];
-in if hasImports then {
+in {
   inherit imports;
-  config = lib.mkIf anyUserEnabled configWithoutImports;
-} else {
-  config = lib.mkIf anyUserEnabled cfg;
+  config = lib.mkIf enabled configWithoutImports;
 }

@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 let
-  username = config.home.username or null;
+  username = config._module.args.username or null;
   userProfile =
     if username != null then config.profile.users.${username} or { } else { };
   derivedStyle = ((userProfile.desktop or { }).style or { });
