@@ -4,7 +4,6 @@
   imports = [
     ./aux/options.nix
     ./sessions/options.nix
-    ./dm/options.nix
     ./styles/options.nix
   ];
 

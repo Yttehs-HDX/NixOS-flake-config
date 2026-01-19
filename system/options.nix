@@ -6,6 +6,7 @@ let
       ./software/options.nix
       ./global/options.nix
       ../desktop/options.nix
+      ../desktop/dm/options.nix
     ];
 
     options.host = {
