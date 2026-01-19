@@ -1,14 +1,14 @@
-{ lib, config, name ? null }:
+{ lib, config, username ? null, name ? null }:
 
 let
-  userProfiles = config.profile.users or { };
-  anyUserEnabled = lib.any (userProfile:
-    let
-      desktop = userProfile.desktop or { };
-      style = desktop.style or { };
-      fonts = style.fonts or { };
-      fontItem = if name == null then { } else (fonts.${name} or { });
-    in (desktop.enable or false)
-    && (name == null || (fontItem.enable or false)))
-    (builtins.attrValues userProfiles);
-in cfg: { config = lib.mkIf anyUserEnabled cfg; }
+  lookup = import ../../../../_lib/getProfile.nix { inherit lib; };
+  hasUser = username != null;
+  userProfile =
+    if hasUser then lookup.getUserProfile config username else { };
+  desktop = userProfile.desktop or { };
+  style = desktop.style or { };
+  fonts = style.fonts or { };
+  fontItem = if name == null then { } else (fonts.${name} or { });
+  enabled = hasUser && (desktop.enable or false)
+    && (name == null || (fontItem.enable or false));
+in cfg: { config = lib.mkIf enabled cfg; }

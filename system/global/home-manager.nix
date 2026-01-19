@@ -1,9 +1,11 @@
-{ lib, config, nur, hexecute, nixvim, system, ... }:
+{ lib, config, nur, hexecute, nixvim, system, hostname, ... }:
 
 let
-  profile = { users = config.profile.users or { }; };
+  lookup = import ../../_lib/getProfile.nix { inherit lib; };
+  integrated = lookup.getHostIntegratedProfile config hostname;
+  profile = { users = integrated.users; };
   home = import ../../home;
-  userProfiles = profile.users;
+  userProfiles = integrated.users;
   mkHomeUser = _: userProfile: {
     name = userProfile.user.username;
     value = home { username = userProfile.user.username; };
@@ -14,16 +16,14 @@ in {
     useUserPackages = true;
     backupFileExtension = "hm-backup";
 
-    sharedModules = [
-      nixvim.homeModules.nixvim
-      ({ config, ... }: { config.profile = profile; })
-    ];
+    sharedModules =
+      [ nixvim.homeModules.nixvim ({ config, ... }: { config.profile = profile; }) ];
 
     users = homeManagerUsers;
 
     extraSpecialArgs = {
       nur = nur.legacyPackages.${system}.repos;
-      inherit (config) profile;
+      inherit profile;
       inherit hexecute nixvim;
     };
   };

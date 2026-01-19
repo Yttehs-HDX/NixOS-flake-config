@@ -1,6 +1,9 @@
 { lib, config, username, ... }:
 
-let actualUsername = config.profile.users.${username}.user.username;
+let
+  lookup = import ../../_lib/getProfile.nix { inherit lib; };
+  userProfile = lookup.getUserProfile config username;
+  actualUsername = userProfile.user.username;
 in {
   home = {
     username = actualUsername;

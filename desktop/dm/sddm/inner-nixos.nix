@@ -1,6 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hostname, ... }:
 
-let mkSddm = import ./_lib/mkSddm.nix { inherit lib config; };
+let mkSddm = import ./_lib/mkSddm.nix { inherit lib config hostname; };
 in {
   imports = [ ./themes/catppuccin.nix ];
 

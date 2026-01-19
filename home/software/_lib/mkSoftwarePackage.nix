@@ -1,7 +1,8 @@
 { lib, config, name, username }:
 
 let
-  userProfile = config.profile.users.${username} or { };
+  lookup = import ../../../_lib/getProfile.nix { inherit lib; };
+  userProfile = lookup.getUserProfile config username;
   home = userProfile.home or { };
   sw = home.software or { };
   item = sw.${name} or { };

@@ -2,7 +2,11 @@
 
 let
   hostSubmodule = lib.types.submodule {
-    imports = [ ./software/options.nix ./global/options.nix ];
+    imports = [
+      ./software/options.nix
+      ./global/options.nix
+      ../desktop/options.nix
+    ];
 
     options.host = {
       hostname = lib.mkOption {

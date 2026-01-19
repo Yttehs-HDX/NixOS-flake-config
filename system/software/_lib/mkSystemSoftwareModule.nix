@@ -1,8 +1,8 @@
 { lib, config, name, hostname }:
 
 let
-  hosts = config.profile.hosts or { };
-  hostProfile = hosts.${hostname} or { };
+  lookup = import ../../../_lib/getProfile.nix { inherit lib; };
+  hostProfile = lookup.getHostProfile config hostname;
   systemProfile = hostProfile.system or { };
   sw = systemProfile.software or { };
   item = sw.${name} or { };

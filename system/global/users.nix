@@ -1,7 +1,9 @@
-{ lib, config, ... }:
+{ lib, config, hostname, ... }:
 
 let
-  userProfiles = config.profile.users or { };
+  lookup = import ../../_lib/getProfile.nix { inherit lib; };
+  integrated = lookup.getHostIntegratedProfile config hostname;
+  userProfiles = integrated.users;
   mkUser = _: userProfile: {
     name = userProfile.user.username;
     value = {

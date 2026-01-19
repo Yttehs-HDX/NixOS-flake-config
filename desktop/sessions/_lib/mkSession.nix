@@ -1,14 +1,20 @@
-{ lib, config, name }:
+{ lib, config, name, username ? null, hostname ? null }:
 
 let
-  userProfiles = config.profile.users or { };
-  anyUserEnabled = lib.any (userProfile:
-    let
-      desktop = userProfile.desktop or { };
-      sessions = desktop.sessions or { };
-      item = sessions.${name} or { };
-    in (desktop.enable or false) && (item.enable or false))
-    (builtins.attrValues userProfiles);
+  lookup = import ../../../_lib/getProfile.nix { inherit lib; };
+  hasUser = username != null;
+  hasHost = hostname != null;
+  profile = if hasUser then
+    lookup.getUserProfile config username
+  else if hasHost then
+    lookup.getHostProfile config hostname
+  else
+    { };
+  desktop = profile.desktop or { };
+  sessions = desktop.sessions or { };
+  item = sessions.${name} or { };
+  enabled = (hasUser || hasHost) && (desktop.enable or false)
+    && (item.enable or false);
 in cfg:
 let
   hasImports = cfg ? imports;
@@ -16,7 +22,7 @@ let
   configWithoutImports = builtins.removeAttrs cfg [ "imports" ];
 in if hasImports then {
   inherit imports;
-  config = lib.mkIf anyUserEnabled configWithoutImports;
+  config = lib.mkIf enabled configWithoutImports;
 } else {
-  config = lib.mkIf anyUserEnabled cfg;
+  config = lib.mkIf enabled cfg;
 }

@@ -7,6 +7,28 @@
     system = "x86_64-linux";
   };
 
+  desktop = {
+    enable = true;
+
+    dm.sddm.enable = true;
+    sessions.hyprland.enable = true;
+
+    style = {
+      theme = {
+        name = "catppuccin";
+        accent = "lavender";
+        flavor = "mocha";
+      };
+    };
+
+    aux = {
+      gnome-keyring.enable = true;
+      pipewire.enable = true;
+      blueman.enable = true;
+      udisks2.enable = true;
+    };
+  };
+
   system.software = {
     bluetooth.enable = true;
     networking.enable = true;
