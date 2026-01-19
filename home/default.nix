@@ -1,11 +1,12 @@
-{ username }:
+{ username, ... }:
 
 {
+  _module.args = { inherit username; };
   imports = [
     ./global
     ../desktop/home.nix
     ./options.nix
     ./software
-    (import ./global/user.nix { inherit username; })
+    ./global/user.nix
   ];
 }

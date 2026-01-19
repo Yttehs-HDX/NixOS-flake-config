@@ -1,8 +1,8 @@
-{ config, lib, ... }:
+{ config, lib, username, ... }:
 
 let
   mkSoftware = import ../_lib/mkSoftwarePackage.nix {
-    inherit lib config;
+    inherit lib config username;
     name = "zsh";
   };
   inner = import ./inner.nix { };
