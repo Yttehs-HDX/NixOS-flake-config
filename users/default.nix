@@ -1,10 +1,4 @@
-{ ... }:
+{ name }:
 
-let
-  registry = import ./registry.nix { };
-  profiles = builtins.mapAttrs (_: v: v.profile) registry;
-  modules = builtins.mapAttrs (_: v: v.module) registry;
-  defaultUsers = builtins.attrNames profiles;
-  homeManagerUsers =
-    builtins.mapAttrs (name: _: import modules.${name}) profiles;
-in { inherit defaultUsers profiles modules homeManagerUsers; }
+let registry = import ./registry.nix { };
+in registry.${name} or (throw "User ${name} not found")

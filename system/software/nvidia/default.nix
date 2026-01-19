@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hostname, ... }:
 
 let
   mkSystemSoftware = import ../_lib/mkSystemSoftwareModule.nix {
-    inherit lib config;
+    inherit lib config hostname;
     name = "nvidia";
   };
   inner = import ./inner.nix { inherit lib pkgs; };

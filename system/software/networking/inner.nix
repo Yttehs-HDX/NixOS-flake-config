@@ -1,10 +1,9 @@
-{ config, ... }:
+{ lib, config, hostname, ... }:
 
 let
-  hosts = config.profile.hosts or { };
-  hostProfile =
-    if hosts == { } then { } else builtins.head (builtins.attrValues hosts);
-  hostName = hostProfile.host.hostname or "nixos";
+  lookup = import ../../../_lib/getProfile.nix { inherit lib; };
+  hostProfile = lookup.getHostProfile config hostname;
+  hostName = (hostProfile.host or { }).hostname or "nixos";
 in {
   networking = {
     inherit hostName;

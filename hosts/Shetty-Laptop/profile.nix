@@ -7,6 +7,21 @@
     system = "x86_64-linux";
   };
 
+  desktop = {
+    enable = true;
+
+    dm.sddm.enable = true;
+
+    style = {
+      theme = {
+        name = "catppuccin";
+        accent = "lavender";
+        flavor = "mocha";
+      };
+    };
+
+  };
+
   system.software = {
     bluetooth.enable = true;
     networking.enable = true;

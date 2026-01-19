@@ -10,7 +10,6 @@
   desktop = {
     enable = true;
 
-    dm.sddm.enable = true;
     sessions.hyprland.enable = true;
 
     style = {
@@ -35,6 +34,8 @@
       udisks2.enable = true;
       network-manager.enable = true;
       blueman.enable = true;
+      gnome-keyring.enable = true;
+      pipewire.enable = true;
       fcitx5.enable = true;
       pulseaudio.enable = true;
       libnotify.enable = true;

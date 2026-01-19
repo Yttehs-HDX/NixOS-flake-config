@@ -1,13 +1,6 @@
-{ name }:
+{ path }:
 
 let
-  baseDir = ../.;
-  userDir = baseDir + "/${name}";
-  profile = import (userDir + "/profile.nix") { };
-in {
-  name = profile.user.username;
-  value = {
-    inherit profile;
-    module = userDir;
-  };
-}
+  name = builtins.baseNameOf path;
+  profile = import (path + "/profile.nix") { };
+in { inherit name profile; }
