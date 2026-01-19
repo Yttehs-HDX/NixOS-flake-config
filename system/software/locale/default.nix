@@ -1,8 +1,8 @@
-{ config, lib, ... }:
+{ config, lib, hostname, ... }:
 
 let
   mkSystemSoftware = import ../_lib/mkSystemSoftwareModule.nix {
-    inherit lib config;
+    inherit lib config hostname;
     name = "locale";
   };
   inner = import ./inner.nix { };
