@@ -11,7 +11,6 @@
     enable = true;
 
     dm.sddm.enable = true;
-    sessions.hyprland.enable = true;
 
     style = {
       theme = {
