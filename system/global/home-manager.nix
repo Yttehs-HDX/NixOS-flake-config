@@ -25,7 +25,6 @@ in {
 
     extraSpecialArgs = {
       nur = nur.legacyPackages.${system}.repos;
-      inherit profile;
       inherit hexecute nixvim;
     };
   };
