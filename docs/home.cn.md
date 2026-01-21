@@ -18,7 +18,8 @@ home
 ## 构成
 ### software
 software 作为用户层的一个子模块，负责维护 home-manager 层级的软件包，
-通过 `_lib/mkSoftwarePackage.nix`，读取用户的 home.software.some-package 选项，
+通过 [`mkSoftwarePackage.nix`](../home/software/_lib/mkSoftwarePackage.nix)，
+读取用户的 home.software.some-package 选项，
 决定是否为该用户生成这个软件包的配置。
 
 所有软件包的配置统一由 `default.nix` 模块汇总，传递给上层。

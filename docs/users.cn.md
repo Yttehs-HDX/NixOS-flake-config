@@ -19,7 +19,7 @@ profile.nix 是用户层面的纯配置，包括 3 项子配置。
 主要涉及 home-manager 层面的配置，也会轻微涉及到 nixosSystem 层面。
 
 #### desktop
-定义用户的个性化桌面配置，比如字体、主题。
+定义用户的个性化桌面配置，比如字体、主题、桌面会话。
 涉及到 home-manager 与 nixosSystem 两个层面。
 
 ### registry.nix
