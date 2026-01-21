@@ -19,7 +19,7 @@ home
 ### software
 software 作为用户层的一个子模块，负责维护 home-manager 层级的软件包，
 通过 [`mkSoftwarePackage.nix`](../home/software/_lib/mkSoftwarePackage.nix)，
-读取用户的 home.software.some-package 选项，
+读取用户的 `home.software.some-package` 选项，
 决定是否为该用户生成这个软件包的配置。
 
 所有软件包的配置统一由 `default.nix` 模块汇总，传递给上层。
@@ -33,12 +33,11 @@ global 作为用户层的一个子模块，负责维护 home-manager 层级的�
 
 #### user.nix
 user.nix 定义了 home-manager 内部对用户的基本属性的设置，
-包括用户名和用户家目录两项属性，读取的是用户 profile 中 `user.username` 配置。
-
-由于每个用户不同，因此需要传入 `username` 参数对 profile 进行查询。
+通过调用 [`getProfile.getUserProfile`](../_lib/getProfile.nix#L4) 函数，
+得到该用户的 profile，读取用户 profile 中 `user.username` 配置，
+以此设置 home-manager 中用户名和用户家目录两项属性，
 
 ---
-
 global 目录内所有配置统一由 `default.nix` 模块汇总，传递给上层。
 
 ### options.nix
