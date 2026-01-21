@@ -29,5 +29,5 @@ registry.nix 内部主动维护所有的用户定义相对路径集合，
 
 ### default.nix
 users 本质上是一个 nix 模块函数，由 `default.nix` 决定。  
-形参为 `name`，表示用户名，
+形参为 `name`，表示用户名，通过查询 `registry.nix` 生成的 set 集合，
 返回值为这个用户的 profile，即 profile.nix 中的内容。
