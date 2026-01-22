@@ -1,17 +1,16 @@
-{ config, lib, pkgs, hostname, ... }:
+{ config, pkgs, ... }:
 
-let mkSddm = import ./_lib/mkSddm.nix { inherit lib config hostname; };
-in {
-  config = mkSddm (_: {
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      package = pkgs.kdePackages.sddm;
-      extraPackages = with pkgs; [
-        kdePackages.qtsvg
-        kdePackages.qtmultimedia
-        kdePackages.qtvirtualkeyboard
-      ];
-    };
-  });
+{
+  imports = [ ./themes/nixos.nix ];
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    package = pkgs.kdePackages.sddm;
+    extraPackages = with pkgs; [
+      kdePackages.qtsvg
+      kdePackages.qtmultimedia
+      kdePackages.qtvirtualkeyboard
+    ];
+  };
 }

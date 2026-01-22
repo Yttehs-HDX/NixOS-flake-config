@@ -1,21 +1,20 @@
-{ config, lib, pkgs, hostname, ... }:
+{ config, lib, pkgs, ... }:
 
 let
-  mkCatppuccinTheme =
-    import ../../../styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
-      inherit lib config;
-    };
-  mkSddm = import ../_lib/mkSddm.nix { inherit lib config hostname; };
+  theme = config.desktop.style.theme or { };
+  themeName = theme.name or "";
+  flavor = theme.flavor or "mocha";
+  accent = theme.accent or "lavender";
+  catppuccin = "catppuccin-${flavor}-${accent}";
 in {
-  config = mkSddm (_:
-    mkCatppuccinTheme ({ flavor, accent, catppuccin, ... }: {
-      services.displayManager.sddm = {
-        theme = "${
-            pkgs.catppuccin-sddm.override { inherit flavor accent; }
-          }/share/sddm/themes/${catppuccin}";
-      };
+  config = lib.mkIf (themeName == "catppuccin") {
+    services.displayManager.sddm = {
+      theme = "${
+          pkgs.catppuccin-sddm.override { inherit flavor accent; }
+        }/share/sddm/themes/${catppuccin}";
+    };
 
-      environment.systemPackages = with pkgs;
-        [ (catppuccin-sddm.override { inherit flavor accent; }) ];
-    }));
+    environment.systemPackages = with pkgs;
+      [ (catppuccin-sddm.override { inherit flavor accent; }) ];
+  };
 }

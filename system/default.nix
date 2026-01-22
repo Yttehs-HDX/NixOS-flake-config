@@ -18,12 +18,11 @@ in lib.nixosSystem {
     home-manager.nixosModules.home-manager
     nur.modules.nixos.default
 
-    ../system/options.nix
-    ../desktop/options.nix
-
     ./home-aux
     ./software
     ./global
     ../desktop/nixos.nix
+
+    ./options.nix
   ];
 }

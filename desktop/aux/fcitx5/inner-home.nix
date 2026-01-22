@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./themes/catppuccin.nix ];
+  imports = [ ./themes/home.nix ];
 
   i18n.inputMethod = {
     type = "fcitx5";

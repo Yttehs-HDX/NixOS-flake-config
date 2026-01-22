@@ -5,8 +5,7 @@ let
     imports = [
       ./software/options.nix
       ./global/options.nix
-      ../desktop/options.nix
-      ../desktop/dm/options.nix
+      ../desktop/options-nixos.nix
     ];
 
     options.host = {
