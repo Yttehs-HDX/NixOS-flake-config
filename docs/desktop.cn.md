@@ -1,0 +1,116 @@
+# 桌面层
+```plaintext
+desktop
+├── aux
+│   ├── some-package
+│   │   ├── home.nix
+│   │   ├── inner-home.nix
+│   │   ├── inner-nixos.nix
+│   │   ├── nixos.nix
+│   │   └── themes
+│   ├── home.nix
+│   ├── nixos.nix
+│   └── options.nix
+├── dm
+│   ├── nixos.nix
+│   ├── options.nix
+│   └── some-dm
+│       ├── inner-nixos.nix
+│       ├── nixos.nix
+│       └── themes
+├── home.nix
+├── nixos.nix
+├── options.nix
+├── sessions
+│   ├── home.nix
+│   ├── some-session
+│   │   ├── aux
+│   │   ├── home.nix
+│   │   ├── inner-home
+│   │   ├── inner-nixos.nix
+│   │   └── nixos.nix
+│   ├── nixos.nix
+│   └── options.nix
+└── styles
+    ├── fonts
+    │   ├── home.nix
+    │   ├── some-font
+    │   │   ├── default.nix
+    │   │   └── inner-home.nix
+    │   ├── options.nix
+    │   └── user-fonts
+    ├── home-inject.nix
+    ├── home.nix
+    ├── host-inject.nix
+    ├── nixos.nix
+    ├── options.nix
+    └── themes
+        ├── some-theme
+        │   ├── default.nix
+        │   ├── gtk.nix
+        │   ├── inner
+        │   │   └── palettes.nix
+        │   └── qt.nix
+        ├── home.nix
+        └── options.nix
+```
+
+> 桌面层是最复杂的一个层级。
+> 因为桌面层分为用户层实现和系统层实现，分别被用户层和系统层调用。
+> 再加上桌面层需要处理主题与样式，尤为复杂。
+
+## 构成
+桌面层分为系统层和用户层，系统层由 nixos.nix 模块统一管理，
+用户层由 home.nix 模块统一管理。
+
+### dm
+dm 模块维护着一系列可用的 display manager 集合，由主机 profile 决定，
+其中 sddm 使用 [`mkSddm`](../desktop/dm/sddm/_lib/mkSddm.nix) 函数，
+通过 [`getProfile.getHostProfile`](../_lib/getProfile.nix#L11) 函数得到当前主机的
+`desktop.dm.some-dm` 配置选项，决定知否实现该 dm。
+
+### aux
+aux 维护着一系列桌面环境辅助软件包，由用户 profile 决定。
+使用 [`mkAuxPackage`](../desktop/aux/_lib/mkAuxPackage.nix) 函数，
+aux 需要用户层和系统层一起完成，
+所以通过 [`getProfile.getUserProfile`](../_lib/getProfile.nix#L4) 函数
+得到当前用户配置的 `desktop.aux.some-package`，
+与 [`getProfile.getHostIntegratedProfile`](../_lib/getProfile.nix#L18) 函数
+得到当前主机选择的所有用户配置的 `desktop.aux.some-package`，
+home 模块根据单个用户配置生成辅助软件包的 home-manager 配置，
+nixos 模块只要检测到存在一个及以上用户使用了辅助软件包，就生成相应的 nixosSystem 配置。
+
+### sessions
+sessions 模块维护着一系列可用的桌面会话集合，由用户 profile 决定。
+使用 [`mkSession`](../desktop/sessions/_lib/mkSession.nix) 函数，
+sessions 也需要用户层和系统层一起完成，
+所以通过 [`getProfile.getUserProfile`](../_lib/getProfile.nix#L4) 函数
+得到当前用户配置的 `desktop.sessions.some-session`，
+与 [`getProfile.getHostIntegratedProfile`](../_lib/getProfile.nix#L18) 函数
+得到当前主机选择的所有用户配置的 `desktop.sessions.some-session`，
+home 模块根据单个用户配置生成桌面会话的 home-manager 配置，
+nixos 模块只要检测到存在一个及以上用户使用了某个桌面会话，就生成相应的 nixosSystem 配置。
+
+#### some-session/aux
+这里的 aux 维护着当前桌面会话必要的辅助软件包，跟随 `mkSession` 函数开关控制，
+通过直接导入辅助软件包的 home.nix 或 nixos.nix，绕过 `mkAuxPackage` 检查，
+在 `desktop.some-session.enable` 为 `true` 时直接激活配置。
+
+### styles
+由于存在用户与主机两个特权级，并且主机与用户是一对多的关系，
+所以主机与用户需要各自维护自己的主题与样式配置。
+比如，display manager 完全由主机层决定，那么主题也由主机决定；
+每个用户的桌面会话互相独立，所以主题由用户自身决定。
+
+#### fonts
+
+#### themes
+
+### options.nix
+所有 `options.nix` 文件统一属于 options 系统，请参阅[TODO]()。
+
+### home.nix
+desktop 的 home-manager 层本质上是一个 nix 模块函数，由 `home.nix` 决定。  
+
+### nixos.nix
+desktop 的 nixosSystem 层本质上是一个 nix 模块函数，由 `nixos.nix` 决定。  

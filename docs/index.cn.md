@@ -4,3 +4,4 @@
 - [用户层](./home.cn.md)
 - [主机配置](./hosts.cn.md)
 - [系统层](./system.cn.md)
+- [桌面层](./desktop.cn.md)
