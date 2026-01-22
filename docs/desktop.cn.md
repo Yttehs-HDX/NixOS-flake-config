@@ -21,6 +21,7 @@ desktop
 ├── home.nix
 ├── nixos.nix
 ├── options.nix
+├── profile-options.nix
 ├── sessions
 │   ├── home.nix
 │   ├── some-session
@@ -38,12 +39,14 @@ desktop
     │   │   ├── default.nix
     │   │   └── inner-home.nix
     │   ├── options.nix
+    │   ├── profile-options.nix
     │   └── user-fonts
     ├── home-inject.nix
     ├── home.nix
     ├── host-inject.nix
     ├── nixos.nix
     ├── options.nix
+    ├── profile-options.nix
     └── themes
         ├── some-theme
         │   ├── default.nix
@@ -52,7 +55,8 @@ desktop
         │   │   └── palettes.nix
         │   └── qt.nix
         ├── home.nix
-        └── options.nix
+        ├── options.nix
+        └── profile-options.nix
 ```
 
 > 桌面层是最复杂的一个层级。
@@ -65,7 +69,7 @@ desktop
 
 ### dm
 dm 模块维护着一系列可用的 display manager 集合，由主机 profile 决定，
-其中 sddm 使用 [`mkSddm`](../desktop/dm/sddm/_lib/mkSddm.nix) 函数，
+其中 sddm 使用 [`mkDisplayManager`](../desktop/dm/_lib/mkDisplayManager.nix) 函数，
 通过 [`getProfile.getHostProfile`](../_lib/getProfile.nix#L11) 函数得到当前主机的
 `desktop.dm.some-dm` 配置选项，决定知否实现该 dm。
 
@@ -101,6 +105,13 @@ nixos 模块只要检测到存在一个及以上用户使用了某个桌面会�
 所以主机与用户需要各自维护自己的主题与样式配置。
 比如，display manager 完全由主机层决定，那么主题也由主机决定；
 每个用户的桌面会话互相独立，所以主题由用户自身决定。
+
+由于样式配置存在特殊的 config 注入（在 [themes](#themes) 部分解释），
+所以样式的配置将导出到运行时的 `config.profile.style` 中，并且在用户与主机的视角不同。  
+`config.profile.style` 由 [`host-inject.nix`](../desktop/styles/host-inject.nix) 或
+[`home-inject.nix`](../desktop/styles/home-inject.nix) 从
+`profile.hosts.*.desktop.style` 或 `profile.users.*.desktop.style` 注入得到，
+主题模块再在 `config.profile.style.theme` 上派生 `palette` 等运行态值。
 
 #### fonts
 

@@ -1,6 +1,10 @@
 { ... }:
 
 {
-  imports =
-    [ ./options.nix ./home-inject.nix ./fonts/home.nix ./themes/home.nix ];
+  imports = [
+    ./profile-options.nix
+    ./home-inject.nix
+    ./fonts/home.nix
+    ./themes/home.nix
+  ];
 }

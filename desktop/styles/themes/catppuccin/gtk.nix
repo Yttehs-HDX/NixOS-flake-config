@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  style = config.desktop.style or { };
+  style = config.profile.style or { };
   theme = style.theme or { };
   themeName = theme.name or "";
   flavor = theme.flavor or "mocha";

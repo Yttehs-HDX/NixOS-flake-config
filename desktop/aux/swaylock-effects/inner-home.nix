@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  palette = config.desktop.style.theme.palette;
+  palette = config.profile.style.theme.palette;
   lavender = builtins.substring 1 6 palette.lavender;
   pink = builtins.substring 1 6 palette.pink;
 

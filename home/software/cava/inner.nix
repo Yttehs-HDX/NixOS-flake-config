@@ -1,6 +1,6 @@
 { config, ... }:
 
-let palette = config.desktop.style.theme.palette;
+let palette = config.profile.style.theme.palette;
 in {
   programs.cava = {
     enable = true;

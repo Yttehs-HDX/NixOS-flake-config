@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  theme = config.desktop.style.theme or { };
+  theme = config.profile.style.theme or { };
   themeName = theme.name or "";
 in {
   config = lib.mkIf (themeName == "catppuccin") {
