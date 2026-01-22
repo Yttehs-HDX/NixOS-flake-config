@@ -1,6 +1,6 @@
 { lib, config, ... }:
 
-let palettes = import ./catppuccin/inner/palettes.nix { };
+let palettes = import ./inner/palettes.nix { };
 in {
   options.desktop.style.theme = lib.mkOption {
     type = lib.types.submodule {
