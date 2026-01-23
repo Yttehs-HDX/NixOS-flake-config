@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./profile-options.nix ./host-inject.nix ];
+  imports = [ ./runtime-options.nix ./host-inject.nix ];
 }

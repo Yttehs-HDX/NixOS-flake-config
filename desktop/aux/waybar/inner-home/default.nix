@@ -5,11 +5,10 @@
     ./base.nix
     ./hyprland.nix
     ./cava.nix
-    ./misc.nix
     ./monitor.nix
     ./connection.nix
     ./menu.nix
-    ./style.nix
+    ../themes/default.nix
   ];
 
   programs.waybar = {

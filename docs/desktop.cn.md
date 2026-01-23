@@ -20,8 +20,8 @@ desktop
 │       └── themes
 ├── home.nix
 ├── nixos.nix
-├── options.nix
-├── profile-options.nix
+├── options-home.nix
+├── options-nixos.nix
 ├── sessions
 │   ├── home.nix
 │   ├── some-session
@@ -39,14 +39,14 @@ desktop
     │   │   ├── default.nix
     │   │   └── inner-home.nix
     │   ├── options.nix
-    │   ├── profile-options.nix
+    │   ├── runtime-options.nix
     │   └── user-fonts
     ├── home-inject.nix
     ├── home.nix
     ├── host-inject.nix
     ├── nixos.nix
     ├── options.nix
-    ├── profile-options.nix
+    ├── runtime-options.nix
     └── themes
         ├── some-theme
         │   ├── default.nix
@@ -56,7 +56,7 @@ desktop
         │   └── qt.nix
         ├── home.nix
         ├── options.nix
-        └── profile-options.nix
+        └── runtime-options.nix
 ```
 
 > 桌面层是最复杂的一个层级。
@@ -106,22 +106,31 @@ nixos 模块只要检测到存在一个及以上用户使用了某个桌面会�
 比如，display manager 完全由主机层决定，那么主题也由主机决定；
 每个用户的桌面会话互相独立，所以主题由用户自身决定。
 
-由于样式配置存在特殊的 config 注入（在 [themes](#themes) 部分解释），
-所以样式的配置将导出到运行时的 `config.profile.style` 中，并且在用户与主机的视角不同。  
-`config.profile.style` 由 [`host-inject.nix`](../desktop/styles/host-inject.nix) 或
-[`home-inject.nix`](../desktop/styles/home-inject.nix) 从
-`profile.hosts.*.desktop.style` 或 `profile.users.*.desktop.style` 注入得到，
-主题模块再在 `config.profile.style.theme` 上派生 `palette` 等运行态值。
-
 #### fonts
+fonts 模块只在用户层有效。  
+通过读取用户 profile 中的 `desktop.style.fonts.some-font`，
+控制一种字体在 home-manager 层面的配置。
+
+##### user-fonts
+user-fonts 控制用户自定义的字体，将用户 profile 中的 `desktop.style.fonts.default` 与
+ `desktop.style.fonts.mono.default` 作为默认值注入。
 
 #### themes
+主题配置存在特殊的 config 注入，即根据 accent 生成相应的 palette 配置。  
+因为读取 config 后直接对其进行注入会导致**循环依赖**，
+所以样式的配置将导出到运行时的 `config.profile.style` 中，并且在用户与主机的视角不同。  
+`config.profile.style` 由 [`host-inject.nix`](../desktop/styles/host-inject.nix) 或
+ [`home-inject.nix`](../desktop/styles/home-inject.nix) 从
+ `profile.hosts.*.desktop.style` 或 `profile.users.*.desktop.style` 注入得到，
+主题模块再在 `config.profile.style.theme` 上派生 `palette` 等运行态值。
 
 ### options.nix
-所有 `options.nix` 文件统一属于 options 系统，请参阅[TODO]()。
+所有 `options.nix` 与 `runtime-options.nix` 文件统一属于 options 系统，请参阅[TODO]()。
 
 ### home.nix
 desktop 的 home-manager 层本质上是一个 nix 模块函数，由 `home.nix` 决定。  
+home.nix 最终被用户层调用，作为其一部分生成 home-manager 配置。
 
 ### nixos.nix
 desktop 的 nixosSystem 层本质上是一个 nix 模块函数，由 `nixos.nix` 决定。  
+nixos.nix 最终被系统层调用，作为其一部分生成 nixosSystem 配置。

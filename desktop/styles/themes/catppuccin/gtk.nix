@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 let
-  style = config.profile.style or { };
+  lookup = import ../../../../_lib/getStyle.nix { };
+  style = lookup.getStyle config;
   theme = style.theme or { };
   themeName = theme.name or "";
   flavor = theme.flavor or "mocha";

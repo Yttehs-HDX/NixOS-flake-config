@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 let
-  theme = config.profile.style.theme or { };
+  lookup = import ../../../../_lib/getStyle.nix { };
+  theme = lookup.getTheme config;
   themeName = theme.name or "";
 in {
   config = lib.mkIf (themeName == "catppuccin") {

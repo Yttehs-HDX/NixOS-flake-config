@@ -2,9 +2,7 @@
 
 {
   options.desktop.style.theme = lib.mkOption {
-    type = lib.types.submodule ({ config, ... }: {
-      imports = [ ./catppuccin/options.nix ];
-
+    type = lib.types.submodule {
       options = {
         name = lib.mkOption {
           type = lib.types.enum [ "catppuccin" ];
@@ -23,16 +21,8 @@
           default = "lavender";
           description = "Catppuccin accent color to use across themed modules.";
         };
-
-        palette = lib.mkOption {
-          type = lib.types.attrsOf lib.types.str;
-          internal = true;
-          readOnly = true;
-          description =
-            "Derived palette values (computed from desktop.style.theme.flavor).";
-        };
       };
-    });
+    };
     default = { };
     description = "Theme selection and derived values for style modules.";
   };
