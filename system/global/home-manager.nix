@@ -3,7 +3,7 @@
 let
   lookup = import ../../_lib/getProfile.nix { inherit lib; };
   integrated = lookup.getHostIntegratedProfile config hostname;
-  profile = { users = integrated.users; };
+  profiles = { users = integrated.users; };
   home = import ../../home;
   userProfiles = integrated.users;
   mkHomeUser = _: userProfile: {
@@ -18,7 +18,7 @@ in {
 
     sharedModules = [
       nixvim.homeModules.nixvim
-      ({ config, ... }: { config.profile = profile; })
+      ({ config, ... }: { config.profile = profiles; })
     ];
 
     users = homeManagerUsers;
