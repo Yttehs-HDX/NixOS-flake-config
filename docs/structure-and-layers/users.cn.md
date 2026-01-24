@@ -28,6 +28,5 @@ registry.nix 内部主动维护所有的用户定义相对路径集合，
 生成由用户名到用户 profile 的 set 集合。
 
 ### default.nix
-users 本质上是一个 nix 模块函数，由 `default.nix` 决定。  
-形参为 `name`，表示用户名，查询 `registry.nix` 生成的 set 集合，
-返回值为该用户的 profile，即 profile.nix 中的内容。
+default.nix 直接返回 `registry.nix` 生成的 set 集合，  
+因此 `import ./users` 即可拿到用户名到 profile 的映射。

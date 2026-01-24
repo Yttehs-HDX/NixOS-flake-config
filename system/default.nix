@@ -2,8 +2,9 @@
 { hostname, profiles }:
 
 let
-  hosts = import ../hosts { name = hostname; };
-  hostHardwareConfig = hosts.hardwareConfig;
+  hosts = import ../hosts;
+  hostEntry = hosts.${hostname} or (throw "Host ${hostname} not found");
+  hostHardwareConfig = hostEntry.hardwareConfig;
 
   hostProfile = profiles.hosts.${hostname};
   system = hostProfile.host.system;

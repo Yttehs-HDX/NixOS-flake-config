@@ -27,8 +27,8 @@
   outputs = { nixpkgs, nur, home-manager, hexecute, nixvim, ... }:
     let
       lib = nixpkgs.lib;
-      hostRegistry = import ./hosts/registry.nix { };
-      userRegistry = import ./users/registry.nix { };
+      hostRegistry = import ./hosts;
+      userRegistry = import ./users;
       profiles = {
         hosts = lib.mapAttrs (_: entry: entry.profile) hostRegistry;
         users = userRegistry;
