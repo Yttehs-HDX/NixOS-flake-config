@@ -47,7 +47,7 @@ profiles 变量随后在调用系统层函数时作为参数传入。
 
 ### nixosSystem 层的 config 注入
 与 home-manager 层类似，
-[`desktop/styles/system-inject.nix`](../../desktop/styles/system-inject.nix) 中，
+[`desktop/styles/nixos-inject.nix`](../../desktop/styles/nixos-inject.nix) 中，
 利用 getProfile 函数得到当前 profile 的 `desktop.style` 部分，将常规的配置都注入到
  `config.profile.style` 中。
 
