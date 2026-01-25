@@ -11,3 +11,7 @@
 ## 特殊域
 - [Config 注入](./special_scope/config_injection.cn.md)
 - [Options 系统](./special-scope/options-system.cn.md)
+
+## 杂项
+- [开发规范](./misc/development-guidelines.cn.md)
+- [项目的由来](./misc/project-origin.cn.md)
