@@ -43,7 +43,7 @@ desktop
     │   └── user-fonts
     ├── home-inject.nix
     ├── home.nix
-    ├── host-inject.nix
+    ├── system-inject.nix
     ├── nixos.nix
     ├── options.nix
     ├── runtime-options.nix
@@ -119,7 +119,7 @@ user-fonts 控制用户自定义的字体，将用户 profile 中的 `desktop.st
 主题配置存在特殊的 config 注入，即根据 accent 生成相应的 palette 配置。  
 因为读取 config 后直接对其进行注入会导致**循环依赖**，
 所以样式的配置将导出到运行时的 `config.profile.style` 中，并且在用户与主机的视角不同。  
-`config.profile.style` 由 [`host-inject.nix`](../desktop/styles/host-inject.nix) 或
+`config.profile.style` 由 [`system-inject.nix`](../desktop/styles/system-inject.nix) 或
  [`home-inject.nix`](../desktop/styles/home-inject.nix) 从
  `profile.hosts.*.desktop.style` 或 `profile.users.*.desktop.style` 注入得到，
 主题模块再在 `config.profile.style.theme` 上派生 `palette` 等运行态值。
