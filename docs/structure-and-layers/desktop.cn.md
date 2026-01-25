@@ -125,7 +125,7 @@ user-fonts 控制用户自定义的字体，将用户 profile 中的 `desktop.st
 主题模块再在 `config.profile.style.theme` 上派生 `palette` 等运行态值。
 
 ### options.nix
-所有 `options.nix` 与 `runtime-options.nix` 文件统一属于 options 系统，请参阅[TODO]()。
+所有 `options.nix` 与 `runtime-options.nix` 文件统一属于 options 系统，请参阅 [Options 系统](../special-scope/options-system.cn.md)。
 
 ### home.nix
 desktop 的 home-manager 层本质上是一个 nix 模块函数，由 `home.nix` 决定。  

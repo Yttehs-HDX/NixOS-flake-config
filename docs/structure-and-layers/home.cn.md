@@ -41,7 +41,7 @@ user.nix 定义了 home-manager 内部对用户的基本属性的设置，
 global 目录内所有配置统一由 `default.nix` 模块汇总，传递给上层。
 
 ### options.nix
-所有 `options.nix` 文件统一属于 options 系统，请参阅[TODO]()。
+所有 `options.nix` 文件统一属于 options 系统，请参阅 [Options 系统](../special-scope/options-system.cn.md)。
 
 ### default.nix
 home 本质上是一个 nix 模块函数，由 `default.nix` 决定。  

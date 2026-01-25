@@ -52,7 +52,7 @@ home-manager.nix 负责 home-manager 模块在 nixosSystem 层级的配置，
 得到该主机配置 `host.users` 中所有用户的 profile 集合，
 遍历生成 `home-manager.users` 配置项。
 
-这个文件内还发生了重要的 profile 注入用户层的 config 的行为，这将在[TODO]()中详细说明。
+这个文件内还发生了重要的 profile 注入用户层的 config 的行为，这将在 [Config 注入](../special-scope/config-injection.cn.md)中详细说明。
 
 ---
 global 目录内所有配置统一由 `default.nix` 模块汇总，传递给上层。
@@ -71,11 +71,11 @@ home-aux 中的只能存在软件包的声明形式，
 所有软件包的配置统一由 `default.nix` 模块汇总，传递给上层。
 
 ### options.nix
-所有 `options.nix` 文件统一属于 options 系统，请参阅[TODO]()。
+所有 `options.nix` 文件统一属于 options 系统，请参阅[Options 系统](../special-scope/options-system.cn.md)。
 
 ### default.nix
 system 本质上是一个 nix 模块函数，由 `default.nix` 决定。  
 形参为 `hostname` 和 `profiles`，`hostname` 表示主机名。
-`profiles` 变量比较特殊，请参阅[TODO]()，此处不做讨论。
+`profiles` 变量比较特殊，请参阅[Config 注入](../special-scope/config-injection.cn.md)，此处不做讨论。
 调用目录内的一切配置，加上桌面层的系统部分，形成 nixosSystem 配置，
 返回值为该主机的所有 nixosSystem 配置。
