@@ -58,8 +58,8 @@ profile 注入 `config.profile` 后，需要定义 options.something 定义，
 
 - [`desktop/sessions/options.nix`](../../desktop/sessions/options.nix)
 
-  定义了主机 profile 中 `desktop.dm.submodule.enable` 选项。
-  该文件被 `desktop/options-nixos.nix` 内部引用。
+  定义了用户 profile 中 `desktop.sessions.submodule.enable` 选项。
+  该文件被 `desktop/options-home.nix` 内部引用。
 
 - [`desktop/styles/fonts/options.nix`](../../desktop/styles/fonts/options.nix)
 

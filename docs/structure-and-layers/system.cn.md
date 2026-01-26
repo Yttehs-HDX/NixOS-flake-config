@@ -28,7 +28,7 @@ system
 ## 构成
 ### software
 software 作为系统层的一个子模块，负责维护 nixosSystem 层级的软件包，
-通过 [`mkSystemSoftwarePackage.nix`](../system/software/_lib/mkSystemSoftwareModule.nix)，
+通过 [`mkSystemSoftwareModule.nix`](../../system/software/_lib/mkSystemSoftwareModule.nix)，
 读取主机的 system.software.some-package 选项，
 决定是否为该主机生成这个软件包的配置。
 
@@ -43,12 +43,12 @@ global 作为系统层的一个子模块，负责维护 nixosSystem 层级的公
 
 #### users.nix
 users.nix 负责 nixosSystem 层面的用户创建，
-通过调用 [`getProfile.getHostIntegratedProfile`](../_lib/getProfile.nix#L18) 函数，
+通过调用 [`getProfile.getHostIntegratedProfile`](../../_lib/getProfile.nix#L18) 函数，
 得到该主机配置 `host.users` 中所有用户的 profile 集合，并遍历生成用户。
 
 #### home-manager.nix
 home-manager.nix 负责 home-manager 模块在 nixosSystem 层级的配置，
-通过调用 [`getProfile.getHostIntegratedProfile`](../_lib/getProfile.nix#L18) 函数，
+通过调用 [`getProfile.getHostIntegratedProfile`](../../_lib/getProfile.nix#L18) 函数，
 得到该主机配置 `host.users` 中所有用户的 profile 集合，
 遍历生成 `home-manager.users` 配置项。
 
@@ -61,11 +61,11 @@ global 目录内所有配置统一由 `default.nix` 模块汇总，传递给上�
 home-aux 是用户层辅助模块，对于一些软件包，如果只给予用户的权限等级，
 无法满足这些软件包的正常工作条件，因此需要系统层提供系统等级的权限。
 
-home-aux 中的只能存在软件包的声明形式，
-通过调用 [`getProfile.getHostIntegratedProfile`](../_lib/getProfile.nix#L4) 函数，
+home-aux 中只能存在软件包的声明形式，
+通过调用 [`getProfile.getHostIntegratedProfile`](../../_lib/getProfile.nix#L18) 函数，
 得到该主机下所有用户的 profile，
 读取用户 profile 中 `home.software.some-package` 选项，
-再调用 [`mkHomeAuxModule`](../_lib/getProfile.nix) 判断任意一个用户是否启用了该软件包，
+再调用 [`mkHomeAuxModule`](../../system/home-aux/_lib/mkHomeAuxModule.nix) 判断任意一个用户是否启用了该软件包，
 最终生成软件包在系统层的配置。
 
 所有软件包的配置统一由 `default.nix` 模块汇总，传递给上层。

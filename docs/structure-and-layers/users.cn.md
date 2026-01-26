@@ -24,7 +24,7 @@ profile.nix 是用户层面的纯配置，包括 3 项子配置。
 
 ### registry.nix
 registry.nix 内部主动维护所有的用户定义相对路径集合，
-使用辅助函数 [`mkUserRegistryEntry`](../users/_lib/mkUserRegistryEntry.nix)，
+使用辅助函数 [`mkUserRegistryEntry`](../../users/_lib/mkUserRegistryEntry.nix)，
 生成由用户名到用户 profile 的 set 集合。
 
 ### default.nix

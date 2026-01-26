@@ -9,7 +9,7 @@
 - [Flake 层](./structure-and-layers/flake.cn.md)
 
 ## 特殊域
-- [Config 注入](./special_scope/config_injection.cn.md)
+- [Config 注入](./special-scope/config-injection.cn.md)
 - [Options 系统](./special-scope/options-system.cn.md)
 
 ## 杂项

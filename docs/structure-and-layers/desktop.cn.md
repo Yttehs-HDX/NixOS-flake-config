@@ -69,36 +69,38 @@ desktop
 
 ### dm
 dm 模块维护着一系列可用的 display manager 集合，由主机 profile 决定，
-其中 sddm 使用 [`mkDisplayManager`](../desktop/dm/_lib/mkDisplayManager.nix) 函数，
-通过 [`getProfile.getHostProfile`](../_lib/getProfile.nix#L11) 函数得到当前主机的
-`desktop.dm.some-dm` 配置选项，决定知否实现该 dm。
+其中 sddm 使用 [`mkDisplayManager`](../../desktop/dm/_lib/mkDisplayManager.nix) 函数，
+通过 [`getProfile.getHostProfile`](../../_lib/getProfile.nix#L11) 函数得到当前主机的
+`desktop.dm.some-dm` 配置选项，并结合 `desktop.enable` 决定是否实现该 dm。
 
 ### aux
 aux 维护着一系列桌面环境辅助软件包，由用户 profile 决定。
-使用 [`mkAuxPackage`](../desktop/aux/_lib/mkAuxPackage.nix) 函数，
+使用 [`mkAuxPackage`](../../desktop/aux/_lib/mkAuxPackage.nix) 函数，
 aux 需要用户层和系统层一起完成，
-所以通过 [`getProfile.getUserProfile`](../_lib/getProfile.nix#L4) 函数
+所以通过 [`getProfile.getUserProfile`](../../_lib/getProfile.nix#L4) 函数
 得到当前用户配置的 `desktop.aux.some-package`，
-与 [`getProfile.getHostIntegratedProfile`](../_lib/getProfile.nix#L18) 函数
+与 [`getProfile.getHostIntegratedProfile`](../../_lib/getProfile.nix#L18) 函数
 得到当前主机选择的所有用户配置的 `desktop.aux.some-package`，
 home 模块根据单个用户配置生成辅助软件包的 home-manager 配置，
-nixos 模块只要检测到存在一个及以上用户使用了辅助软件包，就生成相应的 nixosSystem 配置。
+nixos 模块只要检测到存在一个及以上用户启用该组件（需同时满足 `desktop.enable` 与
+`desktop.aux.some-package.enable`），就生成相应的 nixosSystem 配置。
 
 ### sessions
 sessions 模块维护着一系列可用的桌面会话集合，由用户 profile 决定。
-使用 [`mkSession`](../desktop/sessions/_lib/mkSession.nix) 函数，
+使用 [`mkSession`](../../desktop/sessions/_lib/mkSession.nix) 函数，
 sessions 也需要用户层和系统层一起完成，
-所以通过 [`getProfile.getUserProfile`](../_lib/getProfile.nix#L4) 函数
+所以通过 [`getProfile.getUserProfile`](../../_lib/getProfile.nix#L4) 函数
 得到当前用户配置的 `desktop.sessions.some-session`，
-与 [`getProfile.getHostIntegratedProfile`](../_lib/getProfile.nix#L18) 函数
+与 [`getProfile.getHostIntegratedProfile`](../../_lib/getProfile.nix#L18) 函数
 得到当前主机选择的所有用户配置的 `desktop.sessions.some-session`，
 home 模块根据单个用户配置生成桌面会话的 home-manager 配置，
-nixos 模块只要检测到存在一个及以上用户使用了某个桌面会话，就生成相应的 nixosSystem 配置。
+nixos 模块只要检测到存在一个及以上用户启用该会话（需同时满足 `desktop.enable` 与
+`desktop.sessions.some-session.enable`），就生成相应的 nixosSystem 配置。
 
 #### some-session/aux
 这里的 aux 维护着当前桌面会话必要的辅助软件包，跟随 `mkSession` 函数开关控制，
 通过直接导入辅助软件包的 home.nix 或 nixos.nix，绕过 `mkAuxPackage` 检查，
-在 `desktop.some-session.enable` 为 `true` 时直接激活配置。
+在 `desktop.sessions.some-session.enable` 为 `true` 时直接激活配置。
 
 ### styles
 由于存在用户与主机两个特权级，并且主机与用户是一对多的关系，
@@ -119,8 +121,8 @@ user-fonts 控制用户自定义的字体，将用户 profile 中的 `desktop.st
 主题配置存在特殊的 config 注入，即根据 accent 生成相应的 palette 配置。  
 因为读取 config 后直接对其进行注入会导致**循环依赖**，
 所以样式的配置将导出到运行时的 `config.profile.style` 中，并且在用户与主机的视角不同。  
-`config.profile.style` 由 [`nixos-inject.nix`](../desktop/styles/nixos-inject.nix) 或
- [`home-inject.nix`](../desktop/styles/home-inject.nix) 从
+`config.profile.style` 由 [`nixos-inject.nix`](../../desktop/styles/nixos-inject.nix) 或
+ [`home-inject.nix`](../../desktop/styles/home-inject.nix) 从
  `profile.hosts.*.desktop.style` 或 `profile.users.*.desktop.style` 注入得到，
 主题模块再在 `config.profile.style.theme` 上派生 `palette` 等运行态值。
 

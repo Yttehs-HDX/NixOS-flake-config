@@ -24,7 +24,7 @@ profiles 变量随后在调用系统层函数时作为参数传入。
 
 ### home-manager 层的 config 注入
 [`system/global/home-manager`](../../system/global/home-manager.nix) 中，
-通过 `getProfile.getHostIntegratedProfile` 获取当期主机选择的所有用户 profile，
+通过 `getProfile.getHostIntegratedProfile` 获取当前主机选择的所有用户 profile，
 整合到内部 profiles 变量，在 home-manager.sharedModules 内
 完成将 profiles 注入到 `config.profile` 的过程。
 
