@@ -1,8 +1,8 @@
 # Options 系统
-profile 注入 `config.profile` 后，需要定义 options.something 定义，
-不仅可以使 config 生效，而且可以为配置选项定义类型限制。
+profile 注入 `config.profile` 后，需要通过 options.* 定义选项，
+不仅使配置生效，也为选项提供类型约束。
 
-为了便于管理，options.nix 文件存放于使用其定义处，统一向上级 options.nix 汇总。
+为便于管理，options.nix 文件放在其使用处，并统一向上级 options.nix 汇总。
 
 ## 用户层
 - [`home/software/options.nix`](../../home/software/options.nix)
@@ -13,7 +13,7 @@ profile 注入 `config.profile` 后，需要定义 options.something 定义，
 - [`home/options.nix`](../../home/options.nix)
 
   定义了用户 profile 中 `user.{username,description,isSuper}` 选项。
-  该文件被 `system/global/options.nix` 内部引用，相当于软链接。
+  该文件被 `system/global/options.nix` 内部引用，相当于复用。
 
 ## 系统层
 - [`system/global/options.nix`](../../system/global/options.nix)
@@ -34,7 +34,7 @@ profile 注入 `config.profile` 后，需要定义 options.something 定义，
   `nixosSystem.modules` 使用。
 
 ## 桌面层
-桌面层不仅需要处理用户与主机 profile 的配置，还要处理自身的 config.profile.style 注入。
+桌面层不仅需要处理用户与主机 profile 的配置，还要处理 `config.profile.style` 的注入。
 
 - [`desktop/options-home.nix`](../../desktop/options-home.nix)
 
@@ -78,12 +78,12 @@ profile 注入 `config.profile` 后，需要定义 options.something 定义，
   该文件被 `desktop/options-home.nix` 和 `desktop/options-nixos.nix` 内部引用。
 
 ---
-桌面层存在特殊的运行时将用户或主机的样式注入 `config.profile.style` 过程。
+桌面层存在特殊的运行时注入流程，将用户或主机的样式注入 `config.profile.style`。
 
 - [`desktop/styles/fonts/runtime-options.nix`](../../desktop/styles/fonts/runtime-options.nix)
 
   定义了 `profile.style.fonts.{default,mono.default}` 与
-   `profile.style.fonts.submodule.enable` 选项。
+  `profile.style.fonts.submodule.enable` 选项。
   该文件被 `desktop/styles/runtime-options.nix` 内部引用。
 
 - `desktop/styles/themes/some-theme/options.nix`
@@ -99,7 +99,7 @@ profile 注入 `config.profile` 后，需要定义 options.something 定义，
 - [`desktop/styles/runtime-options.nix`](../../desktop/styles/runtime-options.nix)
 
   简单导入 `desktop/styles/fonts/runtime-options.nix` 和
-   `desktop/styles/themes/runtime-options.nix` 模块。
+  `desktop/styles/themes/runtime-options.nix` 模块。
   该文件被 `desktop/styles/{home.nix,nixos.nix}` 内部导入，
   最终汇总于 [`desktop/home.nix`](../../desktop/home.nix) 和
    [`desktop/nixos.nix`](../../desktop/nixos.nix) 中，在外部调用时自动获得。
