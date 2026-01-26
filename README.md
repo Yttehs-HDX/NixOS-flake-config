@@ -1,7 +1,12 @@
 # Nix Flake Config
 [![Nix Flake CI](https://github.com/Yttehs-HDX/NixOS-flake-config/actions/workflows/ci.yml/badge.svg)](https://github.com/Yttehs-HDX/NixOS-flake-config/actions/workflows/ci.yml)
 
+|English|[简体中文](./docs/README.cn.md)|
+
 A modular, reproducible Nix Flake for managing multi-host and multi-user configurations, with Home Manager integration.
+
+## Documentation
+- Index: [`docs/index.md`](docs/index.md)
 
 ## Getting Started
 Apply the system configuration for a host:
