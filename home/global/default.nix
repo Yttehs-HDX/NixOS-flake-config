@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./nix.nix ./home-manager.nix ];
+  imports = [ ./nix.nix ./home-manager.nix ./state-version.nix ];
 }

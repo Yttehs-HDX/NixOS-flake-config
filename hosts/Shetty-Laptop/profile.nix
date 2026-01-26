@@ -19,7 +19,6 @@
         flavor = "mocha";
       };
     };
-
   };
 
   system.software = {

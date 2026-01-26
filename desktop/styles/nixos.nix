@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./options.nix ./host-inject.nix ];
+  imports = [ ./runtime-options.nix ./nixos-inject.nix ];
 }

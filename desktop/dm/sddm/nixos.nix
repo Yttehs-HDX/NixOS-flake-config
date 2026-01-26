@@ -1,5 +1,9 @@
-{ ... }:
+{ config, lib, hostname, pkgs, ... }:
 
-{
-  imports = [ ./inner-nixos.nix ];
-}
+let
+  mkDm = import ../_lib/mkDisplayManager.nix {
+    inherit lib config hostname;
+    name = "sddm";
+  };
+  inner = import ./inner-nixos.nix { inherit config pkgs; };
+in mkDm inner

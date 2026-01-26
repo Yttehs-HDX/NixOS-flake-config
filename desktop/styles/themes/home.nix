@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./catppuccin/default.nix ];
+  imports = [ ./catppuccin/home.nix ];
 }

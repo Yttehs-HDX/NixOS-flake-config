@@ -1,12 +1,12 @@
 { config, lib, ... }:
 
 let
-  mkCatppuccinTheme = import
-    ../../../../desktop/styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
-      inherit lib config;
-    };
+  lookup = import ../../../../_lib/getStyle.nix { };
+  theme = lookup.getTheme config;
+  themeName = theme.name or "";
+  flavor = theme.flavor or "mocha";
 in {
-  config = mkCatppuccinTheme ({ flavor, ... }: {
+  config = lib.mkIf (themeName == "catppuccin") {
     programs.nixvim.colorschemes.catppuccin = {
       enable = true;
       settings = {
@@ -30,5 +30,5 @@ in {
         term_colors = true;
       };
     };
-  });
+  };
 }

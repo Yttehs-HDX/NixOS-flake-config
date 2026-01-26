@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./themes/catppuccin.nix ];
+  imports = [ ./themes ];
 
   programs.btop.enable = true;
 }

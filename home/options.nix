@@ -2,11 +2,7 @@
 
 let
   userSubmodule = lib.types.submodule {
-    imports = [
-      ./software/options.nix
-      ../desktop/options.nix
-      ../desktop/aux/options.nix
-    ];
+    imports = [ ./software/options.nix ../desktop/options-home.nix ];
 
     options.user = {
       username = lib.mkOption {

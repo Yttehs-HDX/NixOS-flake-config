@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  mkCatppuccinTheme =
-    import ../../../styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
-      inherit lib config;
-    };
+  lookup = import ../../../../_lib/getStyle.nix { };
+  theme = lookup.getTheme config;
+  themeName = theme.name or "";
 in {
-  config = mkCatppuccinTheme
-    (_: { i18n.inputMethod.fcitx5.addons = with pkgs; [ catppuccin-fcitx5 ]; });
+  config = lib.mkIf (themeName == "catppuccin") {
+    i18n.inputMethod.fcitx5.addons = with pkgs; [ catppuccin-fcitx5 ];
+  };
 }

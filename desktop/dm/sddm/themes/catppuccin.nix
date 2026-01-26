@@ -1,12 +1,14 @@
 { config, lib, pkgs, ... }:
 
 let
-  mkCatppuccinTheme =
-    import ../../../styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
-      inherit lib config;
-    };
+  lookup = import ../../../../_lib/getStyle.nix { };
+  theme = lookup.getTheme config;
+  themeName = theme.name or "";
+  flavor = theme.flavor or "mocha";
+  accent = theme.accent or "lavender";
+  catppuccin = "catppuccin-${flavor}-${accent}";
 in {
-  config = mkCatppuccinTheme ({ flavor, accent, catppuccin, ... }: {
+  config = lib.mkIf (themeName == "catppuccin") {
     services.displayManager.sddm = {
       theme = "${
           pkgs.catppuccin-sddm.override { inherit flavor accent; }
@@ -15,5 +17,5 @@ in {
 
     environment.systemPackages = with pkgs;
       [ (catppuccin-sddm.override { inherit flavor accent; }) ];
-  });
+  };
 }

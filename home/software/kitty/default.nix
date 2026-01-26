@@ -5,5 +5,5 @@ let
     inherit lib config username;
     name = "kitty";
   };
-  inner = import ./inner.nix { inherit config; };
+  inner = import ./inner.nix { inherit config lib; };
 in mkSoftware inner

@@ -1,10 +1,10 @@
 { config, lib, ... }:
 
 let
-  mkCatppuccinTheme = import
-    ../../../../desktop/styles/themes/catppuccin/_lib/mkCatppuccinTheme.nix {
-      inherit lib config;
-    };
+  lookup = import ../../../../_lib/getStyle.nix { };
+  theme = lookup.getTheme config;
+  themeName = theme.name or "";
+  flavor = theme.flavor or "mocha";
   capitalize = value:
     if value == "" then
       value
@@ -14,7 +14,7 @@ let
         rest = lib.substring 1 (lib.stringLength value - 1) value;
       in "${first}${rest}";
 in {
-  config = mkCatppuccinTheme ({ flavor, ... }: {
+  config = lib.mkIf (themeName == "catppuccin") {
     programs.kitty.themeFile = "Catppuccin-${capitalize flavor}";
-  });
+  };
 }

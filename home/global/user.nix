@@ -8,6 +8,5 @@ in {
   home = {
     username = actualUsername;
     homeDirectory = "/home/${actualUsername}";
-    stateVersion = "25.11";
   };
 }
