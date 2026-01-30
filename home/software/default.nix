@@ -11,6 +11,7 @@
     ./clash-verge-rev
     ./cmatrix
     ./command-not-found
+    ./copilot-cli
     ./cryptsetup
     ./dig
     ./direnv

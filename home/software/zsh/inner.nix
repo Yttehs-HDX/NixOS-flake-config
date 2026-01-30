@@ -14,8 +14,6 @@
       tree = "ls --tree";
       c = "clear";
       v = "nvim";
-      whats = "gh copilot explain";
-      howto = "gh copilot suggest";
       ai = "tgpt -i";
     };
 

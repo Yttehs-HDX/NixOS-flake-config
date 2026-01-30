@@ -54,6 +54,7 @@
     fzf.enable = true;
     direnv.enable = true;
     command-not-found.enable = true;
+    copilot-cli.enable = true;
     tmux.enable = true;
     git.enable = true;
     lazygit.enable = true;
