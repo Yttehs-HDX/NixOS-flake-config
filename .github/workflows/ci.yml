@@ -27,3 +27,6 @@ jobs:
 
       - name: Run nix flake check
         run: nix flake check
+      
+      - name: Test build VM-Machine
+        run: nix build .#nixosConfigurations.VM-Machine.config.system.build.vm -L
