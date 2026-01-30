@@ -2,7 +2,7 @@
 
 let
   mkHostRegistryEntry = import ./_lib/mkHostRegistryEntry.nix;
-  paths = [ ./Shetty-Laptop ];
+  paths = [ ./Shetty-Laptop ./VM-Machine ];
 in builtins.listToAttrs (map (path:
   let entry = mkHostRegistryEntry { inherit path; };
   in {

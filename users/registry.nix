@@ -2,7 +2,7 @@
 
 let
   mkUserRegistryEntry = import ./_lib/mkUserRegistryEntry.nix;
-  names = [ ./shetty ];
+  names = [ ./shetty ./test-user ];
 in builtins.listToAttrs (map (path:
   let entry = mkUserRegistryEntry { inherit path; };
   in {
