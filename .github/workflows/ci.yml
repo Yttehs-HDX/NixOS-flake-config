@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         host:
-          - VM-Machine
+          - Virtual-Machine
 
     steps:
       - name: Check out repository
