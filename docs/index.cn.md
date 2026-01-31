@@ -15,3 +15,4 @@
 ## 其他
 - [开发规范](./misc/development-guidelines.cn.md)
 - [项目的由来](./misc/project-origin.cn.md)
+- [我对这个项目闲谈](https://blog.shettydev.com/2026/01/30/nix-flake-project/)

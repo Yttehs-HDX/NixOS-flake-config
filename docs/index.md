@@ -16,3 +16,4 @@
 ## Misc
 - [Development Guidelines](./misc/development-guidelines.md)
 - [Project Origin](./misc/project-origin.md)
+- [My Thoughts on This Project](https://blog.shettydev.com/2026/01/30/nix-flake-project/)
