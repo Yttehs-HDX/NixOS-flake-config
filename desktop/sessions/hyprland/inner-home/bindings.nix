@@ -61,8 +61,8 @@ in {
       "$mod SHIFT, K, movewindow, u"
       "$mod SHIFT, J, movewindow, d"
 
-      "$mod, mouse_down, workspace, e+1"
-      "$mod, mouse_up, workspace, e-1"
+      "$mod, mouse_down, workspace, e-1"
+      "$mod, mouse_up, workspace, e+1"
 
       ", xf86KbdBrightnessUp, exec, brightnessctl -d *::kbd_backlight set 33%+"
       ", xf86KbdBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
