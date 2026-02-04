@@ -22,7 +22,7 @@ sudo nixos-rebuild switch --flake .#<hostname>
 > 不建议直接套用，建议仅作参考并按需调整。
 
 ## 关键特性
-- **profile 驱动**：以 profile 定义用户与主机，隔离环境与设置。
+- **Profile 驱动**：以 profile 定义用户与主机，隔离环境与设置。
 - **环境隔离**：不同主机与用户互不干扰，减少冲突。
 - **模块化组合**：按需组合 system / home / desktop 构建目标环境。
 - **逻辑复用**：通用逻辑集中在 `_lib/`，降低重复配置。

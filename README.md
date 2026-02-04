@@ -21,7 +21,7 @@ sudo nixos-rebuild switch --flake .#<hostname>
 > It is not recommended to use it directly. Use it as a reference and adjust as needed.
 
 ## Key Features
-- **profile-driven** – Define users and hosts via profiles to isolate environments and settings.
+- **Profile-driven** – Define users and hosts via profiles to isolate environments and settings.
 - **Environment isolation** – Host and user configurations are independent, reducing conflicts.
 - **Modular composition** – Combine system / home / desktop modules as needed.
 - **Reusable logic** – Common logic lives under `_lib/` to reduce duplication.
