@@ -39,6 +39,7 @@
     ./mikusays
     ./nixfmt-classic
     ./neovim
+    ./net-tools
     ./nmap
     ./obs-studio
     ./onlyoffice
