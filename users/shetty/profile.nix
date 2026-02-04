@@ -67,6 +67,7 @@
     onlyoffice.enable = true;
     obs-studio.enable = true;
     neovim.enable = true;
+    net-tools.enable = true;
     file.enable = true;
 
     bat.enable = true;
